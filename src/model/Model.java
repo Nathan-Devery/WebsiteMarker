@@ -26,7 +26,9 @@ public class Model extends java.util.Observable{
         //Could replace with enhanced for loop
         for(int i = 0; i < files.length; i++){
             try {
-                documents.add(Jsoup.parse(files[i], "UTF-8", "http://example.com/"));
+                String currentDirectory = files[i].getAbsolutePath().substring(0, files[i].getAbsolutePath().length()
+                        - files[i].getName().length());
+                documents.add(Jsoup.parse(files[i], "UTF-8", currentDirectory));
             }catch(Exception e){
                 e.printStackTrace();
             }

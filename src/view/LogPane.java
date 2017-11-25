@@ -54,6 +54,7 @@ public class LogPane extends JPanel {
         for(Testable test: currentTests){
             report += "**" + test.toString() + "**";
             report += "\n";
+            report += "\n";
             report += test.getReport();
             report += "\n";
             report += "------------------------------------------------------";

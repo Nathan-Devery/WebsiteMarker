@@ -1,5 +1,7 @@
-package model;
+package model.WebsiteTests;
 
+import model.TagType;
+import model.Testable;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -9,11 +11,11 @@ import java.util.ArrayList;
 /**
  * Created by Nathan on 22/11/2017.
  */
-public class TagSearch extends Testable {
+public class TagSearchTest extends Testable {
 
     TagType tagType;
 
-    public TagSearch(String name, TagType tagType) {
+    public TagSearchTest(String name, TagType tagType) {
         super(name);
         this.tagType = tagType;
     }

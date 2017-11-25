@@ -59,6 +59,8 @@ public class UI implements Observer{
         frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        ImageIcon img = new ImageIcon("src/assests/tick.png");
+        frame.setIconImage(img.getImage());
         frame.pack();
         frame.setVisible(true);
     }
