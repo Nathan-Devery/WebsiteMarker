@@ -29,4 +29,8 @@ public class Controller {
     public void loadFiles(File[] files){
         model.loadFiles(files);
     }
+
+    public void closeFiles(){
+        model.closeFiles();
+    }
 }

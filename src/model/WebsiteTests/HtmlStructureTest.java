@@ -20,6 +20,8 @@ public class HtmlStructureTest extends Testable {
 
     @Override
     public void runTest(ArrayList<Document> documents) {
+        clear();
+
         int correct = 0;
         for(Document document: documents){
             //Check composite structure

@@ -3,6 +3,7 @@ package model;
 import javafx.beans.Observable;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -15,14 +16,17 @@ public class Model extends java.util.Observable{
 
     ArrayList<Document> documents = new ArrayList<>();
 
-    ArrayList<Testable> availableTests = new ArrayList<>();
+    ArrayList<Testable> availableTests;
     List<Testable> currentTests = new ArrayList<>();
+    String currentDirectory = "";
 
     public Model() {
         availableTests = TestManager.initializeTests();
     }
 
     public void loadFiles(File[] files){
+        currentDirectory = files[0].getParent();
+
         //Could replace with enhanced for loop
         for(int i = 0; i < files.length; i++){
             try {
@@ -33,6 +37,20 @@ public class Model extends java.util.Observable{
                 e.printStackTrace();
             }
         }
+
+        setChanged();
+        notifyObservers();
+    }
+
+    /**
+     * Removes the currently loaded in files/documents
+     */
+    public void closeFiles(){
+        this.currentDirectory = "";
+        this.documents = new ArrayList<>();
+        this.currentTests = new ArrayList<>();
+        setChanged();
+        notifyObservers();
     }
 
     public void runTests() throws Exception{
@@ -51,6 +69,10 @@ public class Model extends java.util.Observable{
 
     public List<Testable> getCurrentTests() {
         return currentTests;
+    }
+
+    public String getCurrentDirectory() {
+        return currentDirectory;
     }
 
     public void setToTest(List<Testable> currentTests) {

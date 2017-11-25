@@ -70,6 +70,8 @@ public class UI implements Observer{
         JMenu menu1;
         JMenu menu2;
         JMenuItem menuItem;
+        JMenuItem menuItem1;
+        JMenuItem menuItem2;
         menuBar = new JMenuBar();
 
         menu1 = new JMenu("File");
@@ -81,6 +83,7 @@ public class UI implements Observer{
 
         menuItem = new JMenuItem("Open");
         menuItem.addActionListener(e -> {
+            model.closeFiles();
             int returnValue = chooser.showOpenDialog(frame);
 
             if (returnValue == JFileChooser.APPROVE_OPTION) {
@@ -88,6 +91,12 @@ public class UI implements Observer{
                 System.out.println("Opening files");
                 controller.loadFiles(files);
             }
+        });
+        menu1.add(menuItem);
+
+        menuItem = new JMenuItem("Close");
+        menuItem.addActionListener(e -> {
+            controller.closeFiles();
         });
         menu1.add(menuItem);
 
@@ -100,11 +109,20 @@ public class UI implements Observer{
                     new ImageIcon("src/assests/victoriaLogo.png"));
         });
         menu2.add(menuItem);
+
+        menuItem = new JMenuItem("Support");
+        menuItem.addActionListener(e -> {
+            JOptionPane.showMessageDialog(frame,
+                    "Email:\ninsertEmail@gmail.com",
+                    "Support",
+                    JOptionPane.INFORMATION_MESSAGE);
+        });
+        menu2.add(menuItem);
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        //optionsPane.redraw();     Doesn't require update at this point
+        optionsPane.drawDirectory();     //Doesn't require update at this point
         resultsPane.redraw();
         logPane.redraw();
     }

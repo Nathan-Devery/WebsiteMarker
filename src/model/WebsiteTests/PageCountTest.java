@@ -19,6 +19,8 @@ public class PageCountTest extends Testable {
 
     @Override
     public void runTest(ArrayList<Document> documents) {
+        clear();
+
         if(documents.size() >= requirePageNumber){
             result = true;
             report += "Correct";

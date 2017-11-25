@@ -17,6 +17,8 @@ public class IndexTest extends Testable {
 
     @Override
     public void runTest(ArrayList<Document> documents) {
+        clear();
+
         String path = documents.get(0).location();
         File folder = new File(path);
         File[] listOfFiles = folder.listFiles();

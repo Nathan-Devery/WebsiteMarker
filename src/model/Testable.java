@@ -32,4 +32,9 @@ public abstract class Testable {
 
     public abstract void runTest(ArrayList<Document> documents);
 
+    public void clear(){
+        result = false;
+        report = "";
+    }
+
 }

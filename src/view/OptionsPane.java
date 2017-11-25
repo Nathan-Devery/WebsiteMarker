@@ -15,6 +15,7 @@ public class OptionsPane extends JPanel {
     Controller controller;
     JList<Testable> list;
     JFrame frame;
+    JLabel directoryLabel = new JLabel("");
 
     public OptionsPane(Model model, Controller controller, JFrame frame){
         this.model = model;
@@ -27,6 +28,10 @@ public class OptionsPane extends JPanel {
         redraw();
     }
 
+    public void redrawList(){
+        drawList();
+    }
+
     public void redraw(){
         removeAll();
         //Add gap
@@ -37,12 +42,16 @@ public class OptionsPane extends JPanel {
         this.add(Box.createRigidArea(new Dimension(0, UI.HEIGHT/20)));
         drawButton();
 
+        this.add(Box.createRigidArea(new Dimension(0, UI.HEIGHT/20)));
+
+        drawDirectory();
+
         revalidate();
         repaint();
     }
 
     private void drawList(){
-        int cellWidth = UI.WIDTH * 2/3;
+        int cellWidth = UI.WIDTH * 4/5;
         int cellHeight = UI.HEIGHT / 2;
 
         list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -81,6 +90,16 @@ public class OptionsPane extends JPanel {
         });
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(button);
+    }
+
+    public void drawDirectory(){
+        this.remove(this.directoryLabel);
+        directoryLabel = new JLabel(model.getCurrentDirectory());
+        directoryLabel.setForeground(Color.green.darker());
+        directoryLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(directoryLabel);
+        revalidate();
+        repaint();
     }
 
 }

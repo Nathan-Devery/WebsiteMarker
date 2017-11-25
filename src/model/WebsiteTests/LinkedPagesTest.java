@@ -15,9 +15,11 @@ import java.util.ArrayList;
  * Checks whether whole website can be navigated from at least one entry point.
  * Checks if connected graph
  */
+
+//TODO Make this functional
 public class LinkedPagesTest extends Testable {
 
-    ArrayList<Document> visited = new ArrayList<>();
+    ArrayList<Document> visited;
     String path;
 
     public LinkedPagesTest() {
@@ -26,6 +28,10 @@ public class LinkedPagesTest extends Testable {
 
     @Override
     public void runTest(ArrayList<Document> documents) {
+        clear();
+        visited = new ArrayList<>();
+        path = "";
+
         path = documents.get(0).location();
 
         for(Document document: documents){
@@ -34,6 +40,8 @@ public class LinkedPagesTest extends Testable {
         if(visited.size() == documents.size()){
             result = true;
             report += documents.size() + " pages can be navigated from some entry point";
+        }else{
+            report += documents.size() - visited.size() + "pages cannot be visited from all possible entry points";
         }
     }
 

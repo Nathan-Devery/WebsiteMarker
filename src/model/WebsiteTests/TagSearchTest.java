@@ -22,6 +22,8 @@ public class TagSearchTest extends Testable {
 
     @Override
     public void runTest(ArrayList<Document> documents) {
+        clear();
+
         for(Document document: documents){
             Elements elements = document.select(tagType.searchString);
             if(!elements.isEmpty()){
