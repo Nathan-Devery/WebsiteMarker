@@ -13,10 +13,12 @@ import java.util.List;
 public class LogPane extends JPanel {
 
     Model model;
+    JFrame frame;
     Controller controller;
 
-    public LogPane(Model model, Controller controller){
+    public LogPane(Model model, JFrame frame,Controller controller){
         this.model = model;
+        this.frame = frame;
         this.controller = controller;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         redraw();

@@ -1,9 +1,9 @@
-package developmentTests;
+package junit.html;
 
-import model.WebsiteTests.HtmlStructureTest;
-import model.WebsiteTests.IndexTest;
-import model.WebsiteTests.LinkedPagesTest;
-import model.WebsiteTests.PageCountTest;
+import model.htmlTests.HtmlStructureTest;
+import model.htmlTests.IndexTest;
+import model.htmlTests.LinkedPagesTest;
+import model.htmlTests.PageCountTest;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Test;

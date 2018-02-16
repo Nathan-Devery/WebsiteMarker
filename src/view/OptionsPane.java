@@ -78,14 +78,17 @@ public class OptionsPane extends JPanel {
 
     private void drawButton(){
         JButton button = new JButton("Test");
-        button.addActionListener(e -> {
-            controller.setToTest(list.getSelectedValuesList());
+        button.addActionListener(k -> {
+            //controller.setToTest(list.getSelectedValuesList());
             try {
-                controller.runTests();
-            }catch (Exception k){
+                controller.runTests(list.getSelectedValuesList());  //This possibly breaks MVC philosophy
+            }catch (Exception e){
+                /*
                 JOptionPane.showMessageDialog(frame, k.getMessage(),
                         "Operation Error",
                         JOptionPane.WARNING_MESSAGE);
+                        */
+                UI.displayError(frame, e);
             }
         });
         button.setAlignmentX(Component.CENTER_ALIGNMENT);

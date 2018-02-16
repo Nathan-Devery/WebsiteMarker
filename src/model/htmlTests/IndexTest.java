@@ -1,4 +1,4 @@
-package model.WebsiteTests;
+package model.htmlTests;
 
 import model.Testable;
 import org.jsoup.nodes.Document;

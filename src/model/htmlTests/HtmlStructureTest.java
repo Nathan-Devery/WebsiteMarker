@@ -1,12 +1,9 @@
-package model.WebsiteTests;
+package model.htmlTests;
 
 import model.Testable;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -33,9 +30,9 @@ public class HtmlStructureTest extends Testable {
         }
         if(correct == documents.size()){
             result = true;
-            report += "Html structure correct for all " + documents.size() + " pages: (html, title, body)";
+            report += "Html structure correct for all " + documents.size() + " pages: (junit.html.junit.html, title, body)";
         }else{
-            report += "Wrong html structure for " + (documents.size() - correct) + "pages";
+            report += "Wrong junit.html.junit.html structure for " + (documents.size() - correct) + "pages";
         }
     }
 }

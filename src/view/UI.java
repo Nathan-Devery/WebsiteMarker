@@ -40,13 +40,16 @@ public class UI implements Observer{
         initializeFrame();
         initializeMenu();
 
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("HTML FILES", "html");
+        /*
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("HTML FILES", "junit.html.junit.html");
         chooser.setFileFilter(filter);
+        */
         chooser.setMultiSelectionEnabled(true);
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
         optionsPane = new OptionsPane(model, controller, frame);
-        resultsPane = new ResultsPane(model, controller);
-        logPane = new LogPane(model, controller);
+        resultsPane = new ResultsPane(model, frame, controller);
+        logPane = new LogPane(model, frame, controller);
 
         tabbedPane.addTab("Options", optionsPane);
         tabbedPane.addTab("Results", resultsPane);
@@ -59,7 +62,7 @@ public class UI implements Observer{
         frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        ImageIcon img = new ImageIcon("src/assests/tick.png");
+        ImageIcon img = new ImageIcon("src/assets/tick.png");
         frame.setIconImage(img.getImage());
         frame.pack();
         frame.setVisible(true);
@@ -81,6 +84,7 @@ public class UI implements Observer{
 
         frame.setJMenuBar(menuBar);
 
+        /*
         menuItem = new JMenuItem("Open");
         menuItem.addActionListener(e -> {
             model.closeFiles();
@@ -93,6 +97,23 @@ public class UI implements Observer{
             }
         });
         menu1.add(menuItem);
+        */
+
+        menuItem = new JMenuItem("Open");
+        menuItem.addActionListener(e -> {
+            model.closeFiles();
+            chooser.showOpenDialog(frame);
+            controller.loadFolders(chooser.getSelectedFiles());
+            /*
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                File[] files = chooser.getSelectedFiles();
+                System.out.println("Opening files");
+                //controller.loadFiles(files);
+            }
+            */
+        });
+        menu1.add(menuItem);
+        //Temp end
 
         menuItem = new JMenuItem("Close");
         menuItem.addActionListener(e -> {
@@ -106,7 +127,7 @@ public class UI implements Observer{
                     "Build 1.1\nCreated by Nathan Devery",
                     "About",
                     JOptionPane.INFORMATION_MESSAGE,
-                    new ImageIcon("src/assests/victoriaLogo.png"));
+                    new ImageIcon("src/assets/victoriaLogo.png"));
         });
         menu2.add(menuItem);
 
@@ -118,6 +139,12 @@ public class UI implements Observer{
                     JOptionPane.INFORMATION_MESSAGE);
         });
         menu2.add(menuItem);
+    }
+
+    public static void displayError(JFrame frame, Exception e){
+        JOptionPane.showMessageDialog(frame, e.getMessage(),
+                "Operation Error",
+                JOptionPane.WARNING_MESSAGE);
     }
 
     @Override

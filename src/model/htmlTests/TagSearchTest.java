@@ -1,6 +1,5 @@
-package model.WebsiteTests;
+package model.htmlTests;
 
-import model.TagType;
 import model.Testable;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

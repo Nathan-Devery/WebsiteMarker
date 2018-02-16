@@ -18,16 +18,16 @@ public class Controller {
         this.model = model;
     }
 
-    public void runTests() throws Exception{
-        model.runTests();
+    public void runTests(List<Testable> tests) throws Exception{
+        model.runTests(tests);
     }
 
     public void setToTest(List<Testable> tests){
         model.setToTest(tests);
     }
 
-    public void loadFiles(File[] files){
-        model.loadFiles(files);
+    public void loadFolders(File[] folders){
+        model.loadFiles(folders);
     }
 
     public void closeFiles(){

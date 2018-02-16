@@ -1,5 +1,5 @@
-package developmentTests;
-import model.TagType;
+package junit.html;
+import model.htmlTests.TagType;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -55,9 +55,7 @@ public class TagTypeTests {
     }
 
     @Test
-    public void OrderedList_3_3Return() {
-        assertEquals(3, getNumber("o1", TagType.ORDEREDLIST));
-    }
+    public void OrderedList_3_3Return() {assertEquals(3, getNumber("o1", TagType.ORDEREDLIST));}
 
     @Test
     public void OrderedList_4_4Return() {
@@ -177,9 +175,9 @@ public class TagTypeTests {
     }
 
     /**
-     * Returns html document under the given name. Root directory 'testFiles'
+     * Returns junit.html.junit.html document under the given name. Root directory 'testFiles'
      * @param testFileName
-     * @return html Document
+     * @return junit.html.junit.html Document
      */
     private Document getDocument(String testFileName){
         File input = new File("src/testFiles/" + testFileName + ".html");

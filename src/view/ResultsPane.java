@@ -16,11 +16,13 @@ import java.util.List;
 public class ResultsPane extends JPanel {
 
     Model model;
+    JFrame frame;
     Controller controller;
 
 
-    public ResultsPane(Model model, Controller controller){
+    public ResultsPane(Model model, JFrame frame, Controller controller){
         this.model = model;
+        this.frame = frame;
         this.controller = controller;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         redraw();

@@ -1,6 +1,6 @@
 package model;
 
-import model.WebsiteTests.*;
+import model.htmlTests.*;
 
 import java.util.ArrayList;
 
