@@ -61,7 +61,6 @@ public class ResultsPane extends JPanel {
         }
 
         String[] columns = new String[]{"Test", "Result"};
-
         return new JTable(data, columns);
     }
 

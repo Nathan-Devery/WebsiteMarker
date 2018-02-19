@@ -2,6 +2,7 @@ package model.htmlTests;
 
 import model.Testable;
 import org.jsoup.nodes.Document;
+import org.w3c.dom.css.CSSStyleSheet;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public class PageCountTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents) {
+    public void runTest(ArrayList<Document> documents, ArrayList<CSSStyleSheet> sheets) {
         clear();
 
         if(documents.size() >= requirePageNumber){

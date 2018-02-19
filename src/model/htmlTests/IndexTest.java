@@ -2,6 +2,7 @@ package model.htmlTests;
 
 import model.Testable;
 import org.jsoup.nodes.Document;
+import org.w3c.dom.css.CSSStyleSheet;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -16,16 +17,16 @@ public class IndexTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents) {
+    public void runTest(ArrayList<Document> documents, ArrayList<CSSStyleSheet> sheets) {
         clear();
 
         String path = documents.get(0).location();
         File folder = new File(path);
         File[] listOfFiles = folder.listFiles();
-        for(File file: listOfFiles){
-            if(file.getName().equals("index.html")){
+        for (File file : listOfFiles) {
+            if (file.getName().equals("index.html")) {
                 result = true;
-                report += "Index present at: "+ path + file.getName();
+                report += "Index present at: " + path + file.getName();
                 return;
             }
         }

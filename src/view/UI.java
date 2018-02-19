@@ -145,6 +145,7 @@ public class UI implements Observer{
         JOptionPane.showMessageDialog(frame, e.getMessage(),
                 "Operation Error",
                 JOptionPane.WARNING_MESSAGE);
+        e.printStackTrace();
     }
 
     @Override

@@ -3,6 +3,7 @@ package model.htmlTests;
 import model.Testable;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.w3c.dom.css.CSSStyleSheet;
 
 import java.util.ArrayList;
 
@@ -16,23 +17,23 @@ public class HtmlStructureTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents) {
+    public void runTest(ArrayList<Document> documents, ArrayList<CSSStyleSheet> sheets) {
         clear();
 
         int correct = 0;
-        for(Document document: documents){
+        for (Document document : documents) {
             //Check composite structure
-            for(Element element: document.select("html")){
-                if(!element.select("head").isEmpty() && !element.select("body").isEmpty() && !element.select("title").isEmpty()){
+            for (Element element : document.select("html")) {
+                if (!element.select("head").isEmpty() && !element.select("body").isEmpty() && !element.select("title").isEmpty()) {
                     correct++;
                 }
             }
         }
-        if(correct == documents.size()){
+        if (correct == documents.size()) {
             result = true;
-            report += "Html structure correct for all " + documents.size() + " pages: (junit.html.junit.html, title, body)";
-        }else{
-            report += "Wrong junit.html.junit.html structure for " + (documents.size() - correct) + "pages";
+            report += "Html structure correct for all " + documents.size() + " pages: (html, head, title, body)";
+        } else {
+            report += "Wrong html structure for " + (documents.size() - correct) + "pages";
         }
     }
 }

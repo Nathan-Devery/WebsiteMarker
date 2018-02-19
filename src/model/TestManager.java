@@ -10,13 +10,13 @@ import java.util.ArrayList;
  */
 public class TestManager {
 
-    public static ArrayList<Testable> initializeTests(){
+    public static ArrayList<Testable> getTests(){
         ArrayList<Testable> availableTests = new ArrayList<>();
 
-        availableTests.add(new HtmlStructureTest());
-        availableTests.add(new LinkedPagesTest());
+        availableTests.add(new HtmlStructureTest());    //TODO test/fix
+        //availableTests.add(new LinkedPagesTest());    Not required, error prone
         availableTests.add(new PageCountTest(6));
-        availableTests.add(new IndexTest());
+        //availableTests.add(new IndexTest());  //TODO test/fix
 
         for(TagType tagType: TagType.values()){
             availableTests.add(new TagSearchTest(tagType.name(), tagType));

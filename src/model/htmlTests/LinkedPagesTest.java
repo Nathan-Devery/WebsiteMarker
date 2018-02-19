@@ -5,6 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.w3c.dom.css.CSSStyleSheet;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class LinkedPagesTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents) {
+    public void runTest(ArrayList<Document> documents, ArrayList<CSSStyleSheet> sheets) {
         clear();
         visited = new ArrayList<>();
         path = "";

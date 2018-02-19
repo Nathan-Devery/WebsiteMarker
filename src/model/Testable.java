@@ -1,6 +1,7 @@
 package model;
 
 import org.jsoup.nodes.Document;
+import org.w3c.dom.css.CSSStyleSheet;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ public abstract class Testable {
     private String name = "n/a";
     protected boolean result;
     protected String report = "";
+
 
     public Testable(String name){
         this.name = name;
@@ -30,11 +32,10 @@ public abstract class Testable {
         return report;
     }
 
-    public abstract void runTest(ArrayList<Document> documents);
+    public abstract void runTest(ArrayList<Document> documents, ArrayList<CSSStyleSheet> sheets);
 
     public void clear(){
         result = false;
         report = "";
     }
-
 }
