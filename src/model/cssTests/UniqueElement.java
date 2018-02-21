@@ -1,12 +1,12 @@
 package model.cssTests;
 
-public enum DivSpan {
+public enum UniqueElement {
     DIV("div"),
     SPAN("span");
 
     String htmlAttribute;
 
-    DivSpan(String htmlAttribute) {
+    UniqueElement(String htmlAttribute) {
         this.htmlAttribute = htmlAttribute;
     }
 }

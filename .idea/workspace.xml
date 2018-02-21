@@ -7,8 +7,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="040e1581-03de-45d4-ba83-d2589d306abf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/junit/css/GroupsTests.java" afterPath="$PROJECT_DIR$/src/junit/css/GroupsTests.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/junit/html/MiscellaneousTests.java" afterPath="$PROJECT_DIR$/src/junit/html/MiscellaneousTests.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/junit/css/DivSpanTests.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/junit/css/GroupsTests.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/cssTests/DivSpan.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/cssTests/DivSpanTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/cssTests/GroupType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/cssTests/GroupsTest.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/junit/css/DivSpanTests.java" afterPath="$PROJECT_DIR$/src/junit/css/UniqueElementTests.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/junit/css/GroupsTests.java" afterPath="$PROJECT_DIR$/src/junit/css/SelectorTests.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/cssTests/DivSpan.java" afterPath="$PROJECT_DIR$/src/model/cssTests/UniqueElement.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/cssTests/DivSpanTest.java" afterPath="$PROJECT_DIR$/src/model/cssTests/UniqueElementTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/cssTests/GroupType.java" afterPath="$PROJECT_DIR$/src/model/cssTests/SelectorType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/cssTests/GroupsTest.java" afterPath="$PROJECT_DIR$/src/model/cssTests/SelectorTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HtmlMarker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,48 +46,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="UniqueElementTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/cssTests/UniqueElementTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UniqueElementTests.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/junit/css/UniqueElementTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-481">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ElementSelectorTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/cssTests/ElementSelectorTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-151">
+              <caret line="14" column="100" selection-start-line="14" selection-start-column="100" selection-end-line="14" selection-end-column="100" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#526#527#0" expanded="true" />
+                <element signature="e#553#554#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="PropertyTester.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/cssTests/PropertyTester.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="238">
               <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#235#236#0" expanded="true" />
-                <element signature="e#262#263#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DivSpanTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/cssTests/DivSpanTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="36" column="86" selection-start-line="36" selection-start-column="86" selection-end-line="36" selection-end-column="86" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DivSpanTests.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/junit/css/DivSpanTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="123" column="62" selection-start-line="123" selection-start-column="62" selection-end-line="123" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Assert.class" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/JavaLibraries/junit-4.12.jar!/org/junit/Assert.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="322" column="0" selection-start-line="322" selection-start-column="0" selection-end-line="322" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -93,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MiscellaneousTests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/junit/html/MiscellaneousTests.java">
+      <file leaf-file-name="SelectorTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/cssTests/SelectorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="36" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -105,32 +118,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupsTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/cssTests/GroupsTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="34" column="64" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="64" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DivSpan.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/cssTests/DivSpan.java">
+      <file leaf-file-name="UniqueElement.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/cssTests/UniqueElement.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+              <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
               <folding>
-                <element signature="e#193#194#0" expanded="true" />
+                <element signature="e#205#206#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/cssTests/GroupType.java">
+      <file leaf-file-name="SelectorType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/cssTests/SelectorType.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
               <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="12" selection-end-column="5" />
@@ -139,14 +140,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupsTests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/junit/css/GroupsTests.java">
+      <file leaf-file-name="SelectorTests.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/junit/css/SelectorTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+            <state relative-caret-position="1124">
+              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ElementSelectorTests.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/junit/css/ElementSelectorTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="33" column="78" selection-start-line="33" selection-start-column="78" selection-end-line="33" selection-end-column="78" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -173,8 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/developmentTests/MiscellaneousTests.java" />
-        <option value="$PROJECT_DIR$/src/model/WebsiteTests/NonEmptyListTest.java" />
         <option value="$PROJECT_DIR$/src/model/WebsiteTests/HtmlStructureTest.java" />
         <option value="$PROJECT_DIR$/src/model/WebsiteTests/IndexTest.java" />
         <option value="$PROJECT_DIR$/src/model/WebsiteTests/PageCountTest.java" />
@@ -224,6 +233,8 @@
         <option value="$PROJECT_DIR$/src/junit/html/MiscellaneousTests.java" />
         <option value="$PROJECT_DIR$/src/model/cssTests/DivSpanTest.java" />
         <option value="$PROJECT_DIR$/src/junit/css/DivSpanTests.java" />
+        <option value="$PROJECT_DIR$/src/model/cssTests/ElementSelectorTest.java" />
+        <option value="$PROJECT_DIR$/src/junit/css/ElementSelectorTests.java" />
       </list>
     </option>
   </component>
@@ -307,10 +318,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="testFiles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -371,20 +378,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cssTests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HtmlMarker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HtmlMarker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -494,33 +487,7 @@
       <recent name="view" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DivSpanTests">
-    <configuration default="false" name="TagTypeTests.Image_2_2Return" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="tests.htmlTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="HtmlMarker" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="tests.htmlTests" />
-      <option name="MAIN_CLASS_NAME" value="tests.htmlTests.TagTypeTests" />
-      <option name="METHOD_NAME" value="Image_2_2Return" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.ElementSelectorTests">
     <configuration default="false" name="MiscellaneousTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -573,7 +540,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="GroupsTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="SelectorTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="junit.css.*" />
@@ -584,7 +551,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="junit.css" />
-      <option name="MAIN_CLASS_NAME" value="junit.css.GroupsTests" />
+      <option name="MAIN_CLASS_NAME" value="junit.css.SelectorTests" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -599,7 +566,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="DivSpanTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="UniqueElementTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="junit.css.*" />
@@ -610,7 +577,33 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="junit.css" />
-      <option name="MAIN_CLASS_NAME" value="junit.css.DivSpanTests" />
+      <option name="MAIN_CLASS_NAME" value="junit.css.UniqueElementTests" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ElementSelectorTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="junit.css.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="HtmlMarker" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="junit.css" />
+      <option name="MAIN_CLASS_NAME" value="junit.css.ElementSelectorTests" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -948,18 +941,19 @@
       <item index="0" class="java.lang.String" itemvalue="JUnit.MiscellaneousTests" />
       <item index="1" class="java.lang.String" itemvalue="Application.Main" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.TagTypeTests" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TagTypeTests.Image_2_2Return" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.MiscellaneousTests (1)" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.TagTypeTests (1)" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.GroupsTests" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.DivSpanTests" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.MiscellaneousTests (1)" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TagTypeTests (1)" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.SelectorTests" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.UniqueElementTests" />
+      <item index="7" class="java.lang.String" itemvalue="JUnit.ElementSelectorTests" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.DivSpanTests" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.MiscellaneousTests (1)" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.GroupsTests" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TagTypeTests (1)" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ElementSelectorTests" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.UniqueElementTests" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.SelectorTests" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.MiscellaneousTests (1)" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TagTypeTests (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -980,35 +974,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DivSpanTests - 2018.02.21 at 15h 49m 43s.xml">
-      <configuration name="DivSpanTests" configurationId="JUnit" />
+    <history-entry file="ElementSelectorTests - 2018.02.22 at 08h 52m 23s.xml">
+      <configuration name="ElementSelectorTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DivSpanTests - 2018.02.21 at 15h 50m 44s.xml">
-      <configuration name="DivSpanTests" configurationId="JUnit" />
+    <history-entry file="ElementSelectorTests - 2018.02.22 at 08h 52m 33s.xml">
+      <configuration name="ElementSelectorTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DivSpanTests - 2018.02.21 at 15h 52m 37s.xml">
-      <configuration name="DivSpanTests" configurationId="JUnit" />
+    <history-entry file="ElementSelectorTests - 2018.02.22 at 08h 54m 43s.xml">
+      <configuration name="ElementSelectorTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DivSpanTests - 2018.02.21 at 15h 53m 13s.xml">
-      <configuration name="DivSpanTests" configurationId="JUnit" />
+    <history-entry file="ElementSelectorTests - 2018.02.22 at 08h 58m 47s.xml">
+      <configuration name="ElementSelectorTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DivSpanTests - 2018.02.21 at 15h 55m 14s.xml">
-      <configuration name="DivSpanTests" configurationId="JUnit" />
+    <history-entry file="ElementSelectorTests - 2018.02.22 at 09h 15m 08s.xml">
+      <configuration name="ElementSelectorTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DivSpanTests - 2018.02.21 at 15h 58m 45s.xml">
-      <configuration name="DivSpanTests" configurationId="JUnit" />
+    <history-entry file="ElementSelectorTests - 2018.02.22 at 09h 17m 44s.xml">
+      <configuration name="ElementSelectorTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DivSpanTests - 2018.02.21 at 15h 59m 03s.xml">
-      <configuration name="DivSpanTests" configurationId="JUnit" />
+    <history-entry file="ElementSelectorTests - 2018.02.22 at 09h 19m 34s.xml">
+      <configuration name="ElementSelectorTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DivSpanTests - 2018.02.21 at 15h 59m 50s.xml">
-      <configuration name="DivSpanTests" configurationId="JUnit" />
+    <history-entry file="ElementSelectorTests - 2018.02.22 at 09h 19m 48s.xml">
+      <configuration name="ElementSelectorTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DivSpanTests - 2018.02.21 at 16h 00m 01s.xml">
-      <configuration name="DivSpanTests" configurationId="JUnit" />
+    <history-entry file="SelectorTests - 2018.02.22 at 08h 26m 19s.xml">
+      <configuration name="SelectorTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DivSpanTests - 2018.02.21 at 16h 00m 08s.xml">
-      <configuration name="DivSpanTests" configurationId="JUnit" />
+    <history-entry file="UniqueElementTests - 2018.02.22 at 08h 26m 22s.xml">
+      <configuration name="UniqueElementTests" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -1098,20 +1092,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/testFiles/a1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testFiles/linkedPages1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/testFiles/f1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-341">
@@ -1421,18 +1401,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cssTests/PropertyTester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#235#236#0" expanded="true" />
-            <element signature="e#262#263#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/junit/html/TagTypeTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2159">
@@ -1454,30 +1422,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/junit/css/GroupsTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cssTests/GroupType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="12" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cssTests/DivSpan.java">
+    <entry file="file://$PROJECT_DIR$/src/model/cssTests/UniqueElement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
           <folding>
-            <element signature="e#193#194#0" expanded="true" />
+            <element signature="e#205#206#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1500,26 +1450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cssTests/GroupsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="34" column="64" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/cssTests/DivSpanTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="36" column="86" selection-start-line="36" selection-start-column="86" selection-end-line="36" selection-end-column="86" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/JavaLibraries/junit-4.12.jar!/org/junit/Assert.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
@@ -1528,10 +1458,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/junit/css/DivSpanTests.java">
+    <entry file="file://$PROJECT_DIR$/src/model/cssTests/PropertyTester.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="123" column="62" selection-start-line="123" selection-start-column="62" selection-end-line="123" selection-end-column="62" />
+        <state relative-caret-position="238">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/cssTests/SelectorType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="12" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/cssTests/UniqueElementTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/cssTests/SelectorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="36" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/junit/css/UniqueElementTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-481">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/junit/css/SelectorTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1124">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/cssTests/ElementSelectorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-151">
+          <caret line="14" column="100" selection-start-line="14" selection-start-column="100" selection-end-line="14" selection-end-column="100" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#526#527#0" expanded="true" />
+            <element signature="e#553#554#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/junit/css/ElementSelectorTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="33" column="78" selection-start-line="33" selection-start-column="78" selection-end-line="33" selection-end-column="78" />
           <folding />
         </state>
       </provider>

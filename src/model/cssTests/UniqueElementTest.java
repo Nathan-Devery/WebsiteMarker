@@ -11,11 +11,11 @@ import org.w3c.dom.css.CSSStyleSheet;
 
 import java.util.ArrayList;
 
-public class DivSpanTest extends Testable {
+public class UniqueElementTest extends Testable {
 
-    DivSpan divSpan;    //Div or span depending on enum argument
+    UniqueElement divSpan;    //Div or span depending on enum argument
 
-    public DivSpanTest(String name, DivSpan divSpan) {
+    public UniqueElementTest(String name, UniqueElement divSpan) {
         super(name);
         this.divSpan = divSpan;
     }

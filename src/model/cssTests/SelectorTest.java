@@ -7,11 +7,11 @@ import org.jsoup.select.Elements;
 import org.w3c.dom.css.*;
 import java.util.ArrayList;
 
-public class GroupsTest extends Testable {
+public class SelectorTest extends Testable {
 
-    GroupType groupType;
+    SelectorType groupType;
 
-    public GroupsTest(String name, GroupType groupType) {
+    public SelectorTest(String name, SelectorType groupType) {
         super(name);
         this.groupType = groupType;
     }
