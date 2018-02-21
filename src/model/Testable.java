@@ -32,7 +32,7 @@ public abstract class Testable {
         return report;
     }
 
-    public abstract void runTest(ArrayList<Document> documents, ArrayList<CSSStyleSheet> sheets);
+    public abstract void runTest(ArrayList<Document> documents, CSSStyleSheet sheet);
 
     public void clear(){
         result = false;

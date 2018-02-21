@@ -21,7 +21,7 @@ public class TagSearchTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, ArrayList<CSSStyleSheet> sheets) {
+    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
         clear();
 
         for(Document document: documents){

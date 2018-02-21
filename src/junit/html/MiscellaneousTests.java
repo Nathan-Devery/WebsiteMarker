@@ -20,12 +20,12 @@ import static org.junit.Assert.assertEquals;
  */
 public class MiscellaneousTests {
 
-    ArrayList<CSSStyleSheet> cssDocs = new ArrayList<>();   //Empty, just for testing sake
+    CSSStyleSheet cssDoc = null;   //Not used, just for testing sake
 
     @Test
     public void StructureTest_correctStructure_ReturnTrue() {
         HtmlStructureTest structureTest = new HtmlStructureTest();
-        structureTest.runTest(getDocument("structure1"), cssDocs);
+        structureTest.runTest(getDocument("structure1"), cssDoc);
         assertEquals(true, structureTest.getResult());
     }
 
@@ -36,7 +36,7 @@ public class MiscellaneousTests {
         documents.add(getDocument("linkedPages1").get(0));
         documents.add(getDocument("linkedPages2").get(0));
 
-        pagesTest.runTest(documents, cssDocs);
+        pagesTest.runTest(documents, cssDoc);
         assertEquals(true, pagesTest.getResult());
     }
 
@@ -49,7 +49,7 @@ public class MiscellaneousTests {
         documents.add(getDocument("linkedPages5").get(0));
         documents.add(getDocument("linkedPages6").get(0));
 
-        pagesTest.runTest(documents, cssDocs);
+        pagesTest.runTest(documents, cssDoc);
         assertEquals(true, pagesTest.getResult());
     }
 
@@ -61,7 +61,7 @@ public class MiscellaneousTests {
         documents.add(getDocument("linkedPages4").get(0));
         documents.add(getDocument("linkedPages6").get(0));
 
-        pagesTest.runTest(documents, cssDocs);
+        pagesTest.runTest(documents, cssDoc);
         assertEquals(false, pagesTest.getResult());
     }
 
@@ -73,7 +73,7 @@ public class MiscellaneousTests {
         documents.add(getDocument("linkedPages4").get(0));
         documents.add(getDocument("linkedPages6").get(0));
 
-        pagesTest.runTest(documents, cssDocs);
+        pagesTest.runTest(documents, cssDoc);
         assertEquals(true, pagesTest.getResult());
     }
 
@@ -85,7 +85,7 @@ public class MiscellaneousTests {
         documents.add(getDocument("linkedPages4").get(0));
         documents.add(getDocument("linkedPages6").get(0));
 
-        pagesTest.runTest(documents, cssDocs);
+        pagesTest.runTest(documents, cssDoc);
         assertEquals(false, pagesTest.getResult());
     }
 
@@ -97,14 +97,14 @@ public class MiscellaneousTests {
         documents.add(getDocument("linkedPages4").get(0));
         documents.add(getDocument("linkedPages6").get(0));
 
-        pagesTest.runTest(documents, cssDocs);
+        pagesTest.runTest(documents, cssDoc);
         assertEquals(true, pagesTest.getResult());
     }
 
     @Test
     public void IndexPage_IndexPresent_ReturnTrue() {
         IndexTest indexTest = new IndexTest();
-        indexTest.runTest(getDocument("index"), cssDocs);
+        indexTest.runTest(getDocument("index"), cssDoc);
         assertEquals(true, indexTest.getResult());
     }
 

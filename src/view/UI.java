@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
-
+import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 /**
  * Created by Nathan on 22/11/2017.
  */
@@ -25,7 +25,7 @@ public class UI implements Observer{
     //Swing related
     public static final int WIDTH = 600;
     public static final int HEIGHT = 400;
-    JFrame frame = new JFrame();
+    JFrame frame = new JFrame();;
 
     //Panes
     OptionsPane optionsPane;
@@ -33,6 +33,8 @@ public class UI implements Observer{
     LogPane logPane;
 
     public UI(Model model) {
+
+
         this.model = model;
         model.addObserver(this);
         controller = new Controller(model);

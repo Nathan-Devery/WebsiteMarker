@@ -17,7 +17,9 @@ public class HtmlStructureTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, ArrayList<CSSStyleSheet> sheets) {
+    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+        //TODO redo but call the getChild() methods in the element
+
         clear();
 
         int correct = 0;

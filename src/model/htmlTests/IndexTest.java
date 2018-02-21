@@ -17,7 +17,7 @@ public class IndexTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, ArrayList<CSSStyleSheet> sheets) {
+    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
         clear();
 
         String path = documents.get(0).location();

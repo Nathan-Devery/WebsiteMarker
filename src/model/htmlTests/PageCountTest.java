@@ -19,7 +19,7 @@ public class PageCountTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, ArrayList<CSSStyleSheet> sheets) {
+    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
         clear();
 
         if(documents.size() >= requirePageNumber){

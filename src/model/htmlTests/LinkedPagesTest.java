@@ -27,7 +27,7 @@ public class LinkedPagesTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, ArrayList<CSSStyleSheet> sheets) {
+    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
         clear();
         visited = new ArrayList<>();
         path = "";

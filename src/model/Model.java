@@ -23,8 +23,8 @@ import org.w3c.dom.css.CSSStyleDeclaration;
 public class Model extends java.util.Observable {
 
     ArrayList<Document> htmlDocs = new ArrayList<>();
-    ArrayList<CSSStyleSheet> cssDocs = new ArrayList<>();
-    ArrayList<Document> javaScriptDocs = new ArrayList<>();
+    CSSStyleSheet cssDocs;
+    Document javaScriptDocs;
 
     //TODO make into 1
     List<Testable> currentTests = new ArrayList<>();
@@ -54,7 +54,8 @@ public class Model extends java.util.Observable {
                     if (fileName.endsWith(".html")) {
                         htmlDocs.add(Jsoup.parse(file, "UTF-8", file.getName()));
                     } else if (fileName.endsWith(".css")) {
-                        cssDocs.add(parseCss(file));
+                        if(cssDocs != null) //TODO throw some bad structure error/log
+                        cssDocs = parseCss(file);
                     } else if (fileName.endsWith(".js")) {
 
                     }
@@ -63,6 +64,7 @@ public class Model extends java.util.Observable {
                     //TODO add something to log
                 }
             }
+            //TODO add some error/log info if there is > 1 css file, bad structure error
         }
 
         /*
@@ -99,7 +101,7 @@ public class Model extends java.util.Observable {
 
     public void runTests(List<Testable> tests) throws Exception {
         this.setToTest(tests);
-        if (htmlDocs.isEmpty() && cssDocs.isEmpty() && javaScriptDocs.isEmpty()) throw new Exception("No files open");
+        if (htmlDocs.isEmpty() && cssDocs == null && javaScriptDocs == null) throw new Exception("No files open");  //TODO double check if appropriate
 
         for (Testable test : tests) {
             test.runTest(htmlDocs, cssDocs);

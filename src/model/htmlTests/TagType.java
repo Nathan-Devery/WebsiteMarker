@@ -3,7 +3,7 @@ package model.htmlTests;
 /**
  * Created by Nathan on 22/11/2017.
  */
-public enum TagType {
+public enum  TagType {
 
     PARAGRAPH("p"),
     LINK("a[href]"),
