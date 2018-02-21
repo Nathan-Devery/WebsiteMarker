@@ -12,6 +12,7 @@ import org.w3c.dom.css.CSSStyleSheet;
 import java.io.File;
 import java.util.ArrayList;
 
+import static junit.TestUtility.getDocument;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -108,18 +109,6 @@ public class MiscellaneousTests {
         assertEquals(true, indexTest.getResult());
     }
 
-    private ArrayList<Document> getDocument(String testFileName){
-        File input = new File("src/testFiles/" + testFileName + ".html");
-        try {
-            String currentDirectory = input.getAbsolutePath().substring(0, input.getAbsolutePath().length() - input.getName().length());
-            Document doc = Jsoup.parse(input, "UTF-8", currentDirectory);
-            ArrayList toReturn = new ArrayList();
-            toReturn.add(doc);
-            return toReturn;
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 
 }

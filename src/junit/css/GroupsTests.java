@@ -12,6 +12,8 @@ import org.w3c.dom.css.CSSStyleSheet;
 import java.io.*;
 import java.util.ArrayList;
 
+import static junit.TestUtility.getCss;
+import static junit.TestUtility.getDocument;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -81,33 +83,5 @@ public class GroupsTests {
         GroupsTest test = new GroupsTest("ID" ,GroupType.ID);
         test.runTest(getDocument("IDD4"), getCss("IDD4"));
         assertEquals(true, test.getResult());
-    }
-
-    private ArrayList<Document> getDocument(String fileName){   //Duplicated method, create a utility class?
-        File file = new File("src/testFiles/" + fileName + ".html");
-        try {
-            String currentDirectory = file.getAbsolutePath().substring(0, file.getAbsolutePath().length() - file.getName().length());
-            Document doc = Jsoup.parse(file, "UTF-8", currentDirectory);
-            ArrayList toReturn = new ArrayList();
-            toReturn.add(doc);
-            return toReturn;
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private CSSStyleSheet getCss(String fileName){
-        File file = new File("src/testFiles/" + fileName + ".css");
-        try {
-            InputStream stream = new FileInputStream(file);
-            InputSource source = new InputSource(new InputStreamReader(stream));
-            CSSOMParser parser = new CSSOMParser();
-            CSSStyleSheet stylesheet = parser.parseStyleSheet(source, null, null);  //These can be stored
-            return stylesheet;
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-        return null;
     }
 }
