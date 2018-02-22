@@ -4,6 +4,8 @@ import model.Testable;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.jsoup.select.Selector;
+import org.w3c.css.sac.CSSParseException;
 import org.w3c.dom.css.CSSRule;
 import org.w3c.dom.css.CSSRuleList;
 import org.w3c.dom.css.CSSStyleRule;
@@ -31,12 +33,16 @@ public class ElementSelectorTest extends Testable {
                 String prefix = styleRule.getSelectorText();
                 if(!(prefix.startsWith(".") || prefix.startsWith("#")) && styleRule.getStyle().getLength() != 0){   //Check css isn't empty
                     for (Document document : documents) {
-                        Elements affectedElements = document.select(styleRule.getSelectorText());
-                        for(Element element: affectedElements){
-                            if(!(element.childNodes().isEmpty())){
-                                result = true;  //Check if corresponding html element actually holds something for the css to apply to
-                                return;
+                        try {
+                            Elements affectedElements = document.select(styleRule.getSelectorText());
+                            for (Element element : affectedElements) {
+                                if (!(element.childNodes().isEmpty())) {
+                                    result = true;  //Check if corresponding html element actually holds something for the css to apply to
+                                    return;
+                                }
                             }
+                        }catch(Selector.SelectorParseException e){
+                            e.printStackTrace();
                         }
                     }
                 }

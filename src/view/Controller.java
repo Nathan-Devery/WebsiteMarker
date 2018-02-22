@@ -22,10 +22,6 @@ public class Controller {
         model.runTests(tests);
     }
 
-    public void setToTest(List<Testable> tests){
-        model.setToTest(tests);
-    }
-
     public void loadFolders(File[] folders){
         model.loadFiles(folders);
     }

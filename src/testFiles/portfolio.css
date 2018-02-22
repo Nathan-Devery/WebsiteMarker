@@ -1,0 +1,73 @@
+body {
+	background-image:url ("images.jpg") ;
+	background-size: 100%;
+	background-color: #c23d6d
+}
+
+#heading {
+	color:#051C60
+}
+
+h1 {
+	text-align: center;
+	background-color: #c23d6d
+}
+h2 {
+	text-align: left;
+	background-color: #c23d6d
+}
+
+h3 {
+	font-weight: 600
+}
+
+#r1 {
+	color: white
+}
+
+#example {
+	font-style: italic;
+	color: #051C60;
+	font-size: x-large
+}
+
+#Purpose {
+	font-style: italic;
+}
+
+/* unvisited link */
+a:link {
+	color: #FFFFFF;
+	background-color: #000000
+}
+/* visited link */
+a:visited {
+	color: #FFFFFF;
+}
+/* mouse over link */
+a:hover {
+	color:#000000;
+	background-color: #FFFFFF
+}
+#navigation a {
+	display: block;
+	width: 60px ;
+	background-color: #c23d6d ;
+}
+#navigation li {
+	float: left ;
+}
+
+#navigation {
+	list-style-type: none;
+	margin: 0px ;
+	padding: 0px ;
+	text-align: center ;
+}
+
+#navigation a {
+	display: block ;
+	width: 240px ;
+	text-decoration: none ;
+	padding: 25px 15px;
+}

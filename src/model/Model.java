@@ -44,6 +44,10 @@ public class Model extends java.util.Observable {
 
     }
 
+    /***
+     * Parses the html, css and javascript. Invalid sections are ignored ie: invalid values for css properties.
+     * @param folders
+     */
     public void loadFiles(File[] folders) {
         for (int i = 0; i < folders.length; i++) {
             for (final File file : folders[i].listFiles()) {
@@ -54,7 +58,7 @@ public class Model extends java.util.Observable {
                     if (fileName.endsWith(".html")) {
                         htmlDocs.add(Jsoup.parse(file, "UTF-8", file.getName()));
                     } else if (fileName.endsWith(".css")) {
-                        if(cssDocs != null) //TODO throw some bad structure error/log
+                        if(cssDocs != null){} //TODO throw some bad structure error/log should only b 1 css
                         cssDocs = parseCss(file);
                     } else if (fileName.endsWith(".js")) {
 
@@ -64,7 +68,7 @@ public class Model extends java.util.Observable {
                     //TODO add something to log
                 }
             }
-            //TODO add some error/log info if there is > 1 css file, bad structure error
+            //TODO add some error/log info if there is > 1 css file, bad structure error, new tab for assignments to mark manually
         }
 
         /*
