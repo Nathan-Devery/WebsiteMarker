@@ -1,5 +1,6 @@
 package model.htmlTests;
 
+import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
 import org.w3c.dom.css.CSSStyleSheet;
@@ -19,9 +20,9 @@ public class PageCountTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
-        clear();
-
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+        boolean result = false;
+        String report = "";
         if(documents.size() >= requirePageNumber){
             result = true;
             report += "Correct";
@@ -29,5 +30,7 @@ public class PageCountTest extends Testable {
             report += "Incorrect";
         }
         report += "- expected >=" + requirePageNumber + ", actual: " + documents.size();
+
+        return new TestResult(toString(), result, report);
     }
 }

@@ -1,5 +1,6 @@
 package model.cssTests;
 
+import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -20,7 +21,10 @@ public class PropertyTester extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+        boolean result = false;
+        String report = "";
+
         CSSRuleList ruleList = sheet.getCssRules();
 
         //TODO consider breaking this up, excessively large method
@@ -40,8 +44,7 @@ public class PropertyTester extends Testable {
                                     Elements affectedElements = document.select(styleRule.getSelectorText());   //Jsoup allows the searching of classes as divs directly; ie: .myClass, #myDiv
                                     for (Element element : affectedElements) {
                                         if (!(element.childNodes().isEmpty())) {
-                                            result = true;  //Check if corresponding html element actually holds something for the css to apply to
-                                            return;
+                                            result = true;  //Check if corresponding html element actually holds something for the css to apply to;
                                         }
                                     }
                                 }catch(Selector.SelectorParseException e){
@@ -53,5 +56,6 @@ public class PropertyTester extends Testable {
                 }
             }
         }
+        return new TestResult(toString(), result, report);
     }
 }

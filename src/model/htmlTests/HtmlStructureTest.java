@@ -1,5 +1,6 @@
 package model.htmlTests;
 
+import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,10 +18,10 @@ public class HtmlStructureTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
         //TODO redo but call the getChild() methods in the element
-
-        clear();
+        boolean result = false;
+        String report = "";
 
         int correct = 0;
         for (Document document : documents) {
@@ -37,5 +38,7 @@ public class HtmlStructureTest extends Testable {
         } else {
             report += "Wrong html structure for " + (documents.size() - correct) + "pages";
         }
+
+        return new TestResult(toString(), result, report);
     }
 }

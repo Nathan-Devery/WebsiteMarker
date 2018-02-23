@@ -18,36 +18,31 @@ public class ElementSelectorTests {
     @Test
     public void elementTest_1ElementCorrect_true() {
         ElementSelectorTest test = new ElementSelectorTest("ElementSelector");
-        test.runTest(getDocument("element1"), getCss("element1"));
-        assertEquals(true, test.getResult());
+        assertEquals(true, test.runTest(getDocument("element1"), getCss("element1")).getResult());
     }
 
     @Test
     public void elementTest_1ElementCssEmpty_false() {
         ElementSelectorTest test = new ElementSelectorTest("ElementSelector");
-        test.runTest(getDocument("element2"), getCss("element2"));
-        assertEquals(false, test.getResult());
+        assertEquals(false, test.runTest(getDocument("element2"), getCss("element2")).getResult());
     }
 
     @Test
     public void elementTest_h3CssUnclosedParagraphNoCss_true() {
         ElementSelectorTest test = new ElementSelectorTest("ElementSelector");
-        test.runTest(getDocument("element4"), getCss("element4"));
-        assertEquals(true, test.getResult());
+        assertEquals(true, test.runTest(getDocument("element4"), getCss("element4")).getResult());
     }
 
     @Test
     public void elementTest_h3CssNoClosingBracketsRedundantCssRule_true() {
         ElementSelectorTest test = new ElementSelectorTest("ElementSelector");
-        test.runTest(getDocument("element5"), getCss("element5"));
-        assertEquals(true, test.getResult());
+        assertEquals(true, test.runTest(getDocument("element5"), getCss("element5")).getResult());
     }
 
     @Test
     public void elementTest_h3NoCssNoClosingBracketsRedundantCssRule_false() {
         ElementSelectorTest test = new ElementSelectorTest("ElementSelector");
-        test.runTest(getDocument("element6"), getCss("element6"));
-        assertEquals(false, test.getResult());
+        assertEquals(false, test.runTest(getDocument("element6"), getCss("element6")).getResult());
     }
 
 }

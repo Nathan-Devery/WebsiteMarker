@@ -1,5 +1,6 @@
 package model.cssTests;
 
+import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,7 +18,10 @@ public class SelectorTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+        boolean result = false;
+        String report = "";
+
         CSSRuleList ruleList = sheet.getCssRules();
 
         for (int i = 0; i < ruleList.getLength(); i++) {
@@ -38,5 +42,6 @@ public class SelectorTest extends Testable {
                 }
             }
         }
+        return new TestResult(toString(), result, report);
     }
 }

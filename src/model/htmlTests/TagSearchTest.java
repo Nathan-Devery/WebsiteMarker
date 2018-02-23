@@ -1,5 +1,6 @@
 package model.htmlTests;
 
+import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -21,18 +22,19 @@ public class TagSearchTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
-        clear();
-
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+        String report = "";
+        boolean result = false;
         for(Document document: documents){
             Elements elements = document.select(tagType.searchString);
             if(!elements.isEmpty()){
-                this.result = true;
+                result = true;
                 for(Element element: elements){
                     report += element;
                     report += "\n";
                 }
             }
         }
+        return new TestResult(this.toString(), result, report);
     }
 }

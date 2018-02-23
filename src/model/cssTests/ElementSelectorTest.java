@@ -1,5 +1,6 @@
 package model.cssTests;
 
+import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -23,7 +24,10 @@ public class ElementSelectorTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+        boolean result = false;
+        String report = "";
+
         CSSRuleList ruleList = sheet.getCssRules();
 
         for (int i = 0; i < ruleList.getLength(); i++) {
@@ -36,9 +40,8 @@ public class ElementSelectorTest extends Testable {
                         try {
                             Elements affectedElements = document.select(styleRule.getSelectorText());
                             for (Element element : affectedElements) {
-                                if (!(element.childNodes().isEmpty())) {
-                                    result = true;  //Check if corresponding html element actually holds something for the css to apply to
-                                    return;
+                                if (!(element.childNodes().isEmpty())) {    //Check if corresponding html element actually holds something for the css to apply to
+                                    result = true;
                                 }
                             }
                         }catch(Selector.SelectorParseException e){
@@ -48,5 +51,6 @@ public class ElementSelectorTest extends Testable {
                 }
             }
         }
+        return new TestResult(toString(), result, report);
     }
 }

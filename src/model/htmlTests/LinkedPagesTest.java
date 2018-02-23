@@ -1,5 +1,6 @@
 package model.htmlTests;
 
+import model.TestResult;
 import model.Testable;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -27,8 +28,10 @@ public class LinkedPagesTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
-        clear();
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+        boolean result = false;
+        String report = "";
+
         visited = new ArrayList<>();
         path = "";
 
@@ -43,6 +46,7 @@ public class LinkedPagesTest extends Testable {
         }else{
             report += documents.size() - visited.size() + "pages cannot be visited from all possible entry points";
         }
+        return new TestResult(toString(), result, report);
     }
 
     private void visit(Document document){

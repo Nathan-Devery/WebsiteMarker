@@ -3,7 +3,6 @@ package model;
 import javafx.beans.Observable;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.junit.Test;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -22,12 +21,15 @@ import org.w3c.dom.css.CSSStyleDeclaration;
  */
 public class Model extends java.util.Observable {
 
+    ArrayList<Assignment> assignments = new ArrayList<>();
+    List<Testable> currentTests = new ArrayList<>();
+
+    /*
     ArrayList<Document> htmlDocs = new ArrayList<>();
     CSSStyleSheet cssDocs;
     Document javaScriptDocs;
+    */
 
-    //TODO make into 1
-    List<Testable> currentTests = new ArrayList<>();
     /*
     ArrayList<Testable> currentHtmlTests = new ArrayList<Testable>();
     ArrayList<Testable> currentJavascriptTests = new ArrayList<Testable>();
@@ -40,37 +42,37 @@ public class Model extends java.util.Observable {
 
     String currentDirectory = "";
 
-    public Model() {
-
-    }
-
     /***
      * Parses the html, css and javascript. Invalid sections are ignored ie: invalid values for css properties.
      * @param folders
      */
     public void loadFiles(File[] folders) {
         for (int i = 0; i < folders.length; i++) {
+            ArrayList<Document> htmlDocs = new ArrayList<>();
+            CSSStyleSheet cssDocs = null;
+            Document javascriptDocs = null;
             for (final File file : folders[i].listFiles()) {
+                //String currentDirectory = file.getAbsolutePath().substring(0, file.getAbsolutePath().length() - file.getName().length());
                 String fileName = file.getName().toLowerCase();
-                String currentDirectory = file.getAbsolutePath().substring(0, file.getAbsolutePath().length() - file.getName().length());
-
                 try {
                     if (fileName.endsWith(".html")) {
                         htmlDocs.add(Jsoup.parse(file, "UTF-8", file.getName()));
                     } else if (fileName.endsWith(".css")) {
-                        if(cssDocs != null){} //TODO throw some bad structure error/log should only b 1 css
+                        if (cssDocs != null) {
+                        } //TODO throw some bad structure error/log should only b 1 css
                         cssDocs = parseCss(file);
                     } else if (fileName.endsWith(".js")) {
 
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    //TODO add something to log
+                    //TODO add something to log, maybe just print to a visible console
                 }
+                //TODO add some error/log info if there css/html/javascript is null;
             }
-            //TODO add some error/log info if there is > 1 css file, bad structure error, new tab for assignments to mark manually
+            if(cssDocs == null || htmlDocs.isEmpty()) continue; //TODO make a better fix
+            assignments.add(new Assignment(folders[i].getName(), htmlDocs, cssDocs, javascriptDocs));
         }
-
         /*
         currentDirectory = files[0].getParent();
 
@@ -94,16 +96,23 @@ public class Model extends java.util.Observable {
      * Removes the currently loaded in files/documents
      */
     public void closeFiles() {
-        this.currentDirectory = "";
-        this.htmlDocs = new ArrayList<>();
-
+        this.assignments = new ArrayList<>();
         this.currentTests = new ArrayList<>();
-
         setChanged();
         notifyObservers();
     }
 
     public void runTests(List<Testable> tests) throws Exception {
+        currentTests = tests;
+        for(Assignment assignment: assignments){
+            for(Testable test: tests){
+                assignment.addResults(test.runTest(assignment.getHtmlDocs(), assignment.getCssDocs()));
+            }
+        }
+        setChanged();
+        notifyObservers();
+
+        /*
         this.setToTest(tests);
         if (htmlDocs.isEmpty() && cssDocs == null && javaScriptDocs == null) throw new Exception("No files open");  //TODO double check if appropriate
 
@@ -112,6 +121,7 @@ public class Model extends java.util.Observable {
         }
         setChanged();
         notifyObservers();
+        */
     }
 
     public Testable[] getAvailableTests() {
@@ -123,12 +133,13 @@ public class Model extends java.util.Observable {
         return currentTests;
     }
 
-    public String getCurrentDirectory() {
-        return currentDirectory;
+    public ArrayList<Assignment> getAssignments() {
+
+        return assignments;
     }
 
-    public void setToTest(List<Testable> currentTests) {
-        this.currentTests = currentTests;
+    public String getCurrentDirectory() {
+        return currentDirectory;
     }
 
     private CSSStyleSheet parseCss(File file) throws IOException {

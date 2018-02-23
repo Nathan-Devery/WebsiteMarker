@@ -1,5 +1,6 @@
 package model.htmlTests;
 
+import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
 import org.w3c.dom.css.CSSStyleSheet;
@@ -17,8 +18,9 @@ public class IndexTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
-        clear();
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+        boolean result = false;
+        String report = "";
 
         String path = documents.get(0).location();
         File folder = new File(path);
@@ -27,9 +29,10 @@ public class IndexTest extends Testable {
             if (file.getName().equals("index.html")) {
                 result = true;
                 report += "Index present at: " + path + file.getName();
-                return;
             }
         }
         report += "No index page present in " + path;
+
+        return new TestResult(toString(), result, report);
     }
 }

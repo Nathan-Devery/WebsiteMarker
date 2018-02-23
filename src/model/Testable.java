@@ -11,9 +11,6 @@ import java.util.ArrayList;
 public abstract class Testable {
 
     private String name = "n/a";
-    protected boolean result;
-    protected String report = "";
-
 
     public Testable(String name){
         this.name = name;
@@ -24,18 +21,6 @@ public abstract class Testable {
         return name;
     }
 
-    public boolean getResult(){
-        return result;
-    }
+    public abstract TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet);
 
-    public String getReport() {
-        return report;
-    }
-
-    public abstract void runTest(ArrayList<Document> documents, CSSStyleSheet sheet);
-
-    public void clear(){
-        result = false;
-        report = "";
-    }
 }

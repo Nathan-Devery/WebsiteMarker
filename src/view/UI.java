@@ -23,9 +23,9 @@ public class UI implements Observer{
     JTabbedPane tabbedPane = new JTabbedPane();
 
     //Swing related
-    public static final int WIDTH = 600;
-    public static final int HEIGHT = 400;
-    JFrame frame = new JFrame();;
+    public static final int WIDTH = 700;
+    public static final int HEIGHT = 525;
+    JFrame frame = new JFrame();
 
     //Panes
     OptionsPane optionsPane;
@@ -55,14 +55,14 @@ public class UI implements Observer{
 
         tabbedPane.addTab("Options", optionsPane);
         tabbedPane.addTab("Results", resultsPane);
-        tabbedPane.addTab("Log", logPane);
+        //tabbedPane.addTab("Log", logPane);
         frame.add(tabbedPane);
     }
 
     private void initializeFrame(){
         frame = new JFrame("INFO101: Website Marker");
         frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        frame.setResizable(false);
+        //frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         ImageIcon img = new ImageIcon("src/assets/tick.png");
         frame.setIconImage(img.getImage());

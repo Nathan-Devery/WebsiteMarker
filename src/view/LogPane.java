@@ -1,10 +1,13 @@
 package view;
 
+import model.Assignment;
 import model.Model;
+import model.TestResult;
 import model.Testable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,9 +53,24 @@ public class LogPane extends JPanel {
         JTextPane textPane = new JTextPane();
         textPane.setEditable(false);
 
-        List<Testable> currentTests = model.getCurrentTests();
+        //List<Testable> currentTests = model.getCurrentTests();
+        ArrayList<Assignment> assignments = model.getAssignments();
 
         String report = "";
+        for(Assignment assignment: assignments){
+            report += assignment.getNameID() + "\n";
+            for(TestResult result: assignment.getResults()){
+                report += "**" + result.getTestName() + "**";
+                report += "\n";
+                report += "\n";
+                report += result.getEvidenceLog();
+                report += "\n";
+                report += "------------------------------------------------------------------------------------------------";
+                report += "\n";
+                report += "\n";
+            }
+        }
+        /*
         for(Testable test: currentTests){
             report += "**" + test.toString() + "**";
             report += "\n";
@@ -63,8 +81,8 @@ public class LogPane extends JPanel {
             report += "\n";
             report += "\n";
         }
+        */
         textPane.setText(report);
-
         return textPane;
     }
 }

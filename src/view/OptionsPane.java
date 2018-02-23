@@ -4,7 +4,10 @@ import model.Model;
 import model.Testable;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.*;
 
 /**
  * Created by Nathan on 23/11/2017.
@@ -13,37 +16,25 @@ public class OptionsPane extends JPanel {
 
     Model model;
     Controller controller;
-    JList<Testable> list;
+    JTable table;
     JFrame frame;
     JLabel directoryLabel = new JLabel("");
+    Testable[] availableTests;
 
     public OptionsPane(Model model, Controller controller, JFrame frame){
         this.model = model;
         this.controller = controller;
+        this.table = createTable();
         this.frame = frame;
-
-        list = new JList<>(model.getAvailableTests());
-
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         redraw();
     }
 
-    public void redrawList(){
-        drawList();
-    }
-
     public void redraw(){
         removeAll();
-        //Add gap
-        this.add(Box.createRigidArea(new Dimension(0, UI.HEIGHT/20)));
+
         drawList();
-
-        //Add gap
-        this.add(Box.createRigidArea(new Dimension(0, UI.HEIGHT/20)));
         drawButton();
-
-        this.add(Box.createRigidArea(new Dimension(0, UI.HEIGHT/20)));
-
         drawDirectory();
 
         revalidate();
@@ -51,29 +42,30 @@ public class OptionsPane extends JPanel {
     }
 
     private void drawList(){
-        int cellWidth = UI.WIDTH * 4/5;
-        int cellHeight = UI.HEIGHT / 2;
-
-        list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-        list.setVisibleRowCount(-1);
-        list.setFixedCellWidth(cellWidth);
-
-        //Center text
-        DefaultListCellRenderer renderer = (DefaultListCellRenderer) list.getCellRenderer();
-        renderer.setHorizontalAlignment(SwingConstants.CENTER);
-
-        //Create scrollPane
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setViewportView(list);
-        scrollPane.setBounds(UI.WIDTH/24, UI.HEIGHT/3, cellWidth, cellHeight);
-
-        scrollPane.setPreferredSize(new Dimension(cellWidth, 200)); //The scroll bars appear when preferred size <
-        scrollPane.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        scrollPane.setMaximumSize(new Dimension(cellWidth, cellHeight));    //BoxLayout only honors max and min siz -,-
-
+        scrollPane.setViewportView(table);
+        scrollPane.setPreferredSize(new Dimension(UI.WIDTH * 2/3, 200));
         this.add(scrollPane);
+    }
+
+    private JTable createTable(){
+        availableTests = model.getAvailableTests();
+
+        Testable[] data = new Testable[availableTests.length];
+
+        for(int i = 0; i < availableTests.length; i++){
+            data[i] = availableTests[i];    //get name
+        }
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Tests", data);
+        JTable table = new JTable(model);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        table.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+
+        return table;
     }
 
     private void drawButton(){
@@ -81,13 +73,13 @@ public class OptionsPane extends JPanel {
         button.addActionListener(k -> {
             //controller.setToTest(list.getSelectedValuesList());
             try {
-                controller.runTests(list.getSelectedValuesList());  //This possibly breaks MVC philosophy
+                int[] selectedRows = table.getSelectedRows();
+                ArrayList<Testable> selectedTests = new ArrayList<>();
+                for(int i = 0; i < selectedRows.length; i++){
+                    selectedTests.add(availableTests[selectedRows[i]]);
+                }
+                controller.runTests(selectedTests);  //This possibly breaks MVC philosophy
             }catch (Exception e){
-                /*
-                JOptionPane.showMessageDialog(frame, k.getMessage(),
-                        "Operation Error",
-                        JOptionPane.WARNING_MESSAGE);
-                        */
                 UI.displayError(frame, e);
             }
         });

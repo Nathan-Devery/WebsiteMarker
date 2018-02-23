@@ -1,5 +1,6 @@
 package model.cssTests;
 
+import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -21,7 +22,10 @@ public class UniqueElementTest extends Testable {
     }
 
     @Override
-    public void runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+        boolean result = false;
+        String report = "";
+
         for (Document document : documents) {
             Elements elements = document.select(divSpan.htmlAttribute);
             for (Element element : elements) {
@@ -38,6 +42,7 @@ public class UniqueElementTest extends Testable {
                 }
             }
         }
+        return new TestResult(toString(), result, report);
     }
 
     /***
