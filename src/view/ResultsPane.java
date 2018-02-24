@@ -79,7 +79,7 @@ public class ResultsPane extends JPanel {
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         ListSelectionModel selectionModel = table.getSelectionModel();
         selectionModel.addListSelectionListener(e -> {
-            selectedStudent = e.getFirstIndex();
+            selectedStudent = table.getSelectedRow();
             DefaultTableModel model = getResultData();
             resultsTable.setModel(model);
             evidencePane.setText(getEvidenceString());
@@ -107,8 +107,8 @@ public class ResultsPane extends JPanel {
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         ListSelectionModel selectionModel = table.getSelectionModel();
         selectionModel.addListSelectionListener(e -> {
-            System.out.println(e.getFirstIndex());
-            selectedTestResult = e.getFirstIndex();
+            if(table.getSelectedRow() == -1) return;
+            selectedTestResult =  table.getSelectedRow();
             evidencePane.setText(getEvidenceString());
         });
 
@@ -161,7 +161,7 @@ public class ResultsPane extends JPanel {
     }
 
     private String getEvidenceString(){
-        if(model.getAssignments().isEmpty()) return "";
+        if(model.getAssignments().isEmpty() || studentTable.getSelectedRow() == -1 || resultsTable.getSelectedRow() == -1) return "";  //Second condition stops log display of pre-row selection value of 0.
         TestResult result = model.getAssignments().get(selectedStudent).getResults().get(selectedTestResult);
 
         String evidence = "";

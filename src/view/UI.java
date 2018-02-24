@@ -128,7 +128,7 @@ public class UI implements Observer{
         menuItem = new JMenuItem("About");
         menuItem.addActionListener(e -> {
             JOptionPane.showMessageDialog(frame,
-                    "Build 1.1\nCreated by Nathan Devery",
+                    "Build 1.1\nAuthor: Nathan Devery",
                     "About",
                     JOptionPane.INFORMATION_MESSAGE,
                     new ImageIcon("src/assets/victoriaLogo.png"));
