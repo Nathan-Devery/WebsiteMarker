@@ -33,8 +33,6 @@ public class UI implements Observer{
     LogPane logPane;
 
     public UI(Model model) {
-
-
         this.model = model;
         model.addObserver(this);
         controller = new Controller(model);
@@ -74,14 +72,15 @@ public class UI implements Observer{
         JMenuBar menuBar;
         JMenu menu1;
         JMenu menu2;
+        JMenu menu3;
         JMenuItem menuItem;
-        JMenuItem menuItem1;
-        JMenuItem menuItem2;
         menuBar = new JMenuBar();
 
         menu1 = new JMenu("File");
         menu2 = new JMenu("Help");
+        menu3 = new JMenu("Generate");
         menuBar.add(menu1);
+        menuBar.add(menu3);
         menuBar.add(menu2);
 
         frame.setJMenuBar(menuBar);
@@ -106,16 +105,19 @@ public class UI implements Observer{
             model.closeFiles();
             chooser.showOpenDialog(frame);
             controller.loadFolders(chooser.getSelectedFiles());
+        });
+        menu1.add(menuItem);
+
+        menuItem = new JMenuItem("Upload");
+        menuItem.addActionListener(e -> {
+            //TODO complete upload
             /*
-            if (returnValue == JFileChooser.APPROVE_OPTION) {
-                File[] files = chooser.getSelectedFiles();
-                System.out.println("Opening files");
-                //controller.loadFiles(files);
-            }
+            model.closeFiles();
+            chooser.showOpenDialog(frame);
+            controller.loadFolders(chooser.getSelectedFiles());
             */
         });
         menu1.add(menuItem);
-        //Temp end
 
         menuItem = new JMenuItem("Close");
         menuItem.addActionListener(e -> {
@@ -141,6 +143,18 @@ public class UI implements Observer{
                     JOptionPane.INFORMATION_MESSAGE);
         });
         menu2.add(menuItem);
+
+        menuItem = new JMenuItem("log.txt");
+        menuItem.addActionListener(e -> {
+                    //TODO: implement
+                });
+        menu3.add(menuItem);
+
+        menuItem = new JMenuItem("config.tst");
+        menuItem.addActionListener(e -> {
+            //TODO: implement
+        });
+        menu3.add(menuItem);
     }
 
     public static void displayError(JFrame frame, Exception e){

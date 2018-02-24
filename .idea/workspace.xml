@@ -7,45 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="040e1581-03de-45d4-ba83-d2589d306abf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/junit/css/ElementSelectorTests.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/junit/css/ElementSelectorTests.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/junit/css/PropertyTests.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/junit/css/PropertyTests.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/junit/css/SelectorTests.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/junit/css/SelectorTests.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/junit/css/UniqueElementTests.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/junit/css/UniqueElementTests.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/junit/html/MiscellaneousTests.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/junit/html/MiscellaneousTests.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/Model.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/model/Model.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/Testable.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/model/Testable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/cssTests/ElementSelectorTest.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/model/cssTests/ElementSelectorTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/cssTests/PropertyTester.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/model/cssTests/PropertyTester.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/cssTests/SelectorTest.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/model/cssTests/SelectorTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/cssTests/UniqueElementTest.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/model/cssTests/UniqueElementTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/htmlTests/HtmlStructureTest.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/model/htmlTests/HtmlStructureTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/htmlTests/IndexTest.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/model/htmlTests/IndexTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/htmlTests/LinkedPagesTest.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/model/htmlTests/LinkedPagesTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/htmlTests/PageCountTest.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/model/htmlTests/PageCountTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/htmlTests/TagSearchTest.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/model/htmlTests/TagSearchTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/view/LogPane.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/view/LogPane.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/view/OptionsPane.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/view/OptionsPane.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/view/ResultsPane.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/view/ResultsPane.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HtmlMarker/view/UI.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/view/UI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/junit/css/ElementSelectorTests.java" afterPath="$PROJECT_DIR$/src/junit/css/ElementSelectorTests.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/junit/css/PropertyTests.java" afterPath="$PROJECT_DIR$/src/junit/css/PropertyTests.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/junit/css/SelectorTests.java" afterPath="$PROJECT_DIR$/src/junit/css/SelectorTests.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/junit/css/UniqueElementTests.java" afterPath="$PROJECT_DIR$/src/junit/css/UniqueElementTests.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/junit/html/MiscellaneousTests.java" afterPath="$PROJECT_DIR$/src/junit/html/MiscellaneousTests.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Model.java" afterPath="$PROJECT_DIR$/src/model/Model.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Testable.java" afterPath="$PROJECT_DIR$/src/model/Testable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/cssTests/ElementSelectorTest.java" afterPath="$PROJECT_DIR$/src/model/cssTests/ElementSelectorTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/cssTests/PropertyTester.java" afterPath="$PROJECT_DIR$/src/model/cssTests/PropertyTester.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/cssTests/SelectorTest.java" afterPath="$PROJECT_DIR$/src/model/cssTests/SelectorTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/cssTests/UniqueElementTest.java" afterPath="$PROJECT_DIR$/src/model/cssTests/UniqueElementTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/htmlTests/HtmlStructureTest.java" afterPath="$PROJECT_DIR$/src/model/htmlTests/HtmlStructureTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/htmlTests/IndexTest.java" afterPath="$PROJECT_DIR$/src/model/htmlTests/IndexTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/htmlTests/LinkedPagesTest.java" afterPath="$PROJECT_DIR$/src/model/htmlTests/LinkedPagesTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/htmlTests/PageCountTest.java" afterPath="$PROJECT_DIR$/src/model/htmlTests/PageCountTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/htmlTests/TagSearchTest.java" afterPath="$PROJECT_DIR$/src/model/htmlTests/TagSearchTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/LogPane.java" afterPath="$PROJECT_DIR$/src/view/LogPane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/OptionsPane.java" afterPath="$PROJECT_DIR$/src/view/OptionsPane.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Assignment.java" afterPath="$PROJECT_DIR$/src/model/Assignment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/TestManager.java" afterPath="$PROJECT_DIR$/src/model/TestManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/ResultsPane.java" afterPath="$PROJECT_DIR$/src/view/ResultsPane.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/UI.java" afterPath="$PROJECT_DIR$/src/view/UI.java" />
     </list>
@@ -74,11 +37,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="TestManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/TestManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="OptionsPane.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/OptionsPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
+            <state relative-caret-position="67">
               <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HtmlStructureTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/htmlTests/HtmlStructureTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="41" column="58" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -87,22 +70,11 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/launch/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
+            <state relative-caret-position="153">
+              <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
               <folding>
+                <element signature="e#184#185#0" expanded="true" />
                 <element signature="e#251#252#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PropertyTester.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/cssTests/PropertyTester.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,8 +83,8 @@
       <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+            <state relative-caret-position="132">
+              <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4576#4577#0" expanded="true" />
@@ -125,8 +97,8 @@
       <file leaf-file-name="LogPane.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/LogPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="65" column="50" selection-start-line="65" selection-start-column="50" selection-end-line="65" selection-end-column="50" />
+            <state relative-caret-position="748">
+              <caret line="85" column="24" selection-start-line="84" selection-start-column="8" selection-end-line="85" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -135,8 +107,8 @@
       <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/UI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+            <state relative-caret-position="327">
+              <caret line="83" column="25" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -145,43 +117,32 @@
       <file leaf-file-name="ResultsPane.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/ResultsPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102">
-              <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+            <state relative-caret-position="939">
+              <caret line="139" column="55" selection-start-line="139" selection-start-column="55" selection-end-line="139" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SelectorTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/cssTests/SelectorTest.java">
+      <file leaf-file-name="Assignment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Assignment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="44" column="58" selection-start-line="44" selection-start-column="58" selection-end-line="44" selection-end-column="58" />
+            <state relative-caret-position="272">
+              <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#832#833#0" expanded="true" />
+                <element signature="e#862#863#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UniqueElement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/cssTests/UniqueElement.java">
+      <file leaf-file-name="TestResult.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/TestResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-              <folding>
-                <element signature="e#155#156#0" expanded="true" />
-                <element signature="e#205#206#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UniqueElementTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/cssTests/UniqueElementTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="44" column="58" selection-start-line="44" selection-start-column="58" selection-end-line="44" selection-end-column="58" />
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -235,10 +196,8 @@
         <option value="$PROJECT_DIR$/src/model/cssTests/Properties.java" />
         <option value="$PROJECT_DIR$/src/junit/TestUtility.java" />
         <option value="$PROJECT_DIR$/src/model/htmlTests/TagType.java" />
-        <option value="$PROJECT_DIR$/src/model/TestManager.java" />
         <option value="$PROJECT_DIR$/src/view/Controller.java" />
         <option value="$PROJECT_DIR$/src/model/TestResult.java" />
-        <option value="$PROJECT_DIR$/src/model/Assignment.java" />
         <option value="$PROJECT_DIR$/src/view/LogPane.java" />
         <option value="$PROJECT_DIR$/src/model/Testable.java" />
         <option value="$PROJECT_DIR$/src/model/htmlTests/TagSearchTest.java" />
@@ -256,9 +215,11 @@
         <option value="$PROJECT_DIR$/src/junit/css/PropertyTests.java" />
         <option value="$PROJECT_DIR$/src/junit/css/ElementSelectorTests.java" />
         <option value="$PROJECT_DIR$/src/model/Model.java" />
-        <option value="$PROJECT_DIR$/src/view/UI.java" />
         <option value="$PROJECT_DIR$/src/launch/Main.java" />
         <option value="$PROJECT_DIR$/src/view/OptionsPane.java" />
+        <option value="$PROJECT_DIR$/src/model/Assignment.java" />
+        <option value="$PROJECT_DIR$/src/model/TestManager.java" />
+        <option value="$PROJECT_DIR$/src/view/UI.java" />
         <option value="$PROJECT_DIR$/src/view/ResultsPane.java" />
       </list>
     </option>
@@ -266,8 +227,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1616" />
+    <option name="height" value="1176" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -1040,7 +1001,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1050,17 +1011,17 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23659305" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14071295" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21156661" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.180625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280757" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1108,7 +1069,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="94" />
+      <option name="time" value="102" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1117,13 +1078,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/testFiles/i2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/testFiles/d2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -1322,14 +1276,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/TestManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="39" column="84" selection-start-line="39" selection-start-column="84" selection-end-line="39" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Testable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
@@ -1370,14 +1316,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/htmlTests/HtmlStructureTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="41" column="58" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/junit/html/TagTypeTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -1402,7 +1340,7 @@
         <state relative-caret-position="1235">
           <caret line="83" column="64" selection-start-line="83" selection-start-column="64" selection-end-line="83" selection-end-column="64" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1412,7 +1350,7 @@
         <state relative-caret-position="676">
           <caret line="67" column="76" selection-start-line="67" selection-start-column="76" selection-end-line="67" selection-end-column="76" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1429,24 +1367,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Assignment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/TestResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -1498,26 +1418,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/LogPane.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_51/src.zip!/javax/swing/plaf/basic/BasicButtonListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="65" column="50" selection-start-line="65" selection-start-column="50" selection-end-line="65" selection-end-column="50" />
+        <state relative-caret-position="152">
+          <caret line="251" column="0" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/UI.java">
+    <entry file="file://$PROJECT_DIR$/src/model/htmlTests/HtmlStructureTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+        <state relative-caret-position="303">
+          <caret line="41" column="58" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/launch/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+          <folding>
+            <element signature="e#184#185#0" expanded="true" />
+            <element signature="e#251#252#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+        <state relative-caret-position="132">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4576#4577#0" expanded="true" />
@@ -1526,28 +1457,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/launch/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/model/TestResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Assignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
           <folding>
-            <element signature="e#251#252#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#862#863#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/LogPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="85" column="24" selection-start-line="84" selection-start-column="8" selection-end-line="85" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/TestManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/OptionsPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
+        <state relative-caret-position="67">
           <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/UI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="83" column="25" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/ResultsPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+        <state relative-caret-position="939">
+          <caret line="139" column="55" selection-start-line="139" selection-start-column="55" selection-end-line="139" selection-end-column="55" />
           <folding />
         </state>
       </provider>

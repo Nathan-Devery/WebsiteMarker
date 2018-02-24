@@ -15,7 +15,6 @@ public class Assignment {
 
     public Assignment(String nameID, ArrayList<Document> htmlDocs, CSSStyleSheet cssDocs, Document javaScriptDocs) {
         this.nameID = nameID;
-
         this.htmlDocs = htmlDocs;
         this.cssDocs = cssDocs;
         this.javaScriptDocs = javaScriptDocs;
