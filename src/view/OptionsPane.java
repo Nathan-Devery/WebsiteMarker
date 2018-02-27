@@ -35,7 +35,6 @@ public class OptionsPane extends JPanel {
 
         drawList();
         drawButton();
-        drawDirectory();
 
         revalidate();
         repaint();
@@ -71,30 +70,19 @@ public class OptionsPane extends JPanel {
     private void drawButton(){
         JButton button = new JButton("Test");
         button.addActionListener(k -> {
-            //controller.setToTest(list.getSelectedValuesList());
             try {
                 int[] selectedRows = table.getSelectedRows();
                 ArrayList<Testable> selectedTests = new ArrayList<>();
                 for(int i = 0; i < selectedRows.length; i++){
                     selectedTests.add(availableTests[selectedRows[i]]);
                 }
-                controller.runTests(selectedTests);  //This possibly breaks MVC philosophy
+                controller.runTests(selectedTests);  //TODO fix to MVC paradigm?
             }catch (Exception e){
                 UI.displayError(frame, e);
             }
         });
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(button);
-    }
-
-    public void drawDirectory(){
-        this.remove(this.directoryLabel);
-        directoryLabel = new JLabel(model.getCurrentDirectory());
-        directoryLabel.setForeground(Color.green.darker());
-        directoryLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.add(directoryLabel);
-        revalidate();
-        repaint();
     }
 
 }

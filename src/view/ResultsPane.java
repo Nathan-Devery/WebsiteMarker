@@ -135,7 +135,9 @@ public class ResultsPane extends JPanel {
     private DefaultTableModel getResultData() {
         ArrayList<Assignment> assignments = model.getAssignments();
         ArrayList<TestResult> testResults = new ArrayList<>();
-        if (!assignments.isEmpty()) testResults = assignments.get(selectedStudent).getResults();
+        if (!assignments.isEmpty() && !assignments.get(0).getResults().isEmpty()){
+            testResults = assignments.get(selectedStudent).getResults();
+        }
 
         String[][] data = new String[testResults.size()][2];
 
@@ -161,7 +163,7 @@ public class ResultsPane extends JPanel {
     }
 
     private String getEvidenceString(){
-        if(model.getAssignments().isEmpty() || studentTable.getSelectedRow() == -1 || resultsTable.getSelectedRow() == -1) return "";  //Second condition stops log display of pre-row selection value of 0.
+        if(model.getAssignments().isEmpty() || model.getAssignments().get(selectedStudent).getResults().isEmpty()) return "";
         TestResult result = model.getAssignments().get(selectedStudent).getResults().get(selectedTestResult);
 
         String evidence = "";

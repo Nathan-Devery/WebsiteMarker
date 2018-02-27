@@ -1,17 +1,12 @@
 package view;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import model.Model;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
-import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
+
 /**
  * Created by Nathan on 22/11/2017.
  */
@@ -30,7 +25,7 @@ public class UI implements Observer{
     //Panes
     OptionsPane optionsPane;
     ResultsPane resultsPane;
-    LogPane logPane;
+    UnmarkablePane unmarkablePane;
 
     public UI(Model model) {
         this.model = model;
@@ -40,20 +35,16 @@ public class UI implements Observer{
         initializeFrame();
         initializeMenu();
 
-        /*
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("HTML FILES", "junit.html.junit.html");
-        chooser.setFileFilter(filter);
-        */
         chooser.setMultiSelectionEnabled(true);
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
         optionsPane = new OptionsPane(model, controller, frame);
         resultsPane = new ResultsPane(model, frame, controller);
-        logPane = new LogPane(model, frame, controller);
+        unmarkablePane = new UnmarkablePane(model);
 
         tabbedPane.addTab("Options", optionsPane);
         tabbedPane.addTab("Results", resultsPane);
-        //tabbedPane.addTab("Log", logPane);
+        tabbedPane.add("ManualCheck", unmarkablePane);
         frame.add(tabbedPane);
     }
 
@@ -84,21 +75,6 @@ public class UI implements Observer{
         menuBar.add(menu2);
 
         frame.setJMenuBar(menuBar);
-
-        /*
-        menuItem = new JMenuItem("Open");
-        menuItem.addActionListener(e -> {
-            model.closeFiles();
-            int returnValue = chooser.showOpenDialog(frame);
-
-            if (returnValue == JFileChooser.APPROVE_OPTION) {
-                File[] files = chooser.getSelectedFiles();
-                System.out.println("Opening files");
-                controller.loadFiles(files);
-            }
-        });
-        menu1.add(menuItem);
-        */
 
         menuItem = new JMenuItem("Open");
         menuItem.addActionListener(e -> {
@@ -166,8 +142,7 @@ public class UI implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        optionsPane.drawDirectory();     //Doesn't require update at this point
         resultsPane.redraw();
-        logPane.redraw();
+        unmarkablePane.redraw();
     }
 }

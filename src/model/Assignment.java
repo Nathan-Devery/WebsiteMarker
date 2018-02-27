@@ -43,4 +43,8 @@ public class Assignment {
     public Document getJavaScriptDocs() {
         return javaScriptDocs;
     }
+
+    public void clearResults(){
+        results = new ArrayList<>();
+    }
 }

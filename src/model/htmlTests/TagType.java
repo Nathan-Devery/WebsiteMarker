@@ -10,7 +10,7 @@ public enum  TagType {
     IMAGE("img"),
     UNORDEREDLIST("ul"),
     ORDEREDLIST("ol"),
-    IMAGEALT("img[alt]"),
+    IMAGEALT("img[alt]"),   //TODO remove and create an image search class that checks whether file exists, all will need to be in same directory
     YOUTUBE("iframe[src*=youtube]"),
     FORM("form"),
     TEXTINPUT("input[type=text]"),

@@ -175,12 +175,12 @@ public class TagTypeTests {
     }
 
     /**
-     * Returns junit.html.junit.html document under the given name. Root directory 'testFiles'
+     * Returns junit.html.junit.html document under the given name. Root directory 'conditionTestFiles'
      * @param testFileName
      * @return junit.html.junit.html Document
      */
     private Document getDocument(String testFileName){
-        File input = new File("src/testFiles/" + testFileName + ".html");
+        File input = new File("src/conditionTestFiles/" + testFileName + ".html");
         try {
             Document doc = Jsoup.parse(input, "UTF-8", "http://example.com/");
             return doc;

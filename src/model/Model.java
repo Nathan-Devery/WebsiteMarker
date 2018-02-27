@@ -1,6 +1,6 @@
 package model;
 
-import javafx.beans.Observable;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -11,10 +11,7 @@ import java.util.List;
 import com.steadystate.css.parser.CSSOMParser;
 import org.w3c.css.sac.InputSource;
 import org.w3c.dom.css.CSSStyleSheet;
-import org.w3c.dom.css.CSSRuleList;
-import org.w3c.dom.css.CSSRule;
-import org.w3c.dom.css.CSSStyleRule;
-import org.w3c.dom.css.CSSStyleDeclaration;
+
 
 /**
  * Created by Nathan on 22/11/2017.
@@ -22,47 +19,29 @@ import org.w3c.dom.css.CSSStyleDeclaration;
 public class Model extends java.util.Observable {
 
     ArrayList<Assignment> assignments = new ArrayList<>();
+    ArrayList<Unmarkable> unmarkables = new ArrayList<>();
     List<Testable> currentTests = new ArrayList<>();
-
-    /*
-    ArrayList<Document> htmlDocs = new ArrayList<>();
-    CSSStyleSheet cssDocs;
-    Document javaScriptDocs;
-    */
-
-    /*
-    ArrayList<Testable> currentHtmlTests = new ArrayList<Testable>();
-    ArrayList<Testable> currentJavascriptTests = new ArrayList<Testable>();
-    ArrayList<Testable> currentCssTests = new ArrayList<Testable>();
-    */
-
-
-    //ArrayList<Testable> availableTests;
-    //List<Testable> currentTests = new ArrayList<>();
-
-    String currentDirectory = "";
 
     /***
      * Parses the html, css and javascript. Invalid sections are ignored ie: invalid values for css properties.
      * @param folders
      */
     public void loadFiles(File[] folders) {
+        closeFiles();
         for (int i = 0; i < folders.length; i++) {
             ArrayList<Document> htmlDocs = new ArrayList<>();
-            CSSStyleSheet cssDocs = null;
-            Document javascriptDocs = null;
+            ArrayList<CSSStyleSheet> cssDocs = new ArrayList<>();
+            ArrayList<Document> javascriptDocs = new ArrayList();
+
             for (final File file : folders[i].listFiles()) {
-                //String currentDirectory = file.getAbsolutePath().substring(0, file.getAbsolutePath().length() - file.getName().length());
                 String fileName = file.getName().toLowerCase();
                 try {
                     if (fileName.endsWith(".html")) {
                         htmlDocs.add(Jsoup.parse(file, "UTF-8", file.getName()));
                     } else if (fileName.endsWith(".css")) {
-                        if (cssDocs != null) {
-                        } //TODO throw some bad structure error/log should only b 1 css
-                        cssDocs = parseCss(file);
+                        cssDocs.add(parseCss(file));
                     } else if (fileName.endsWith(".js")) {
-
+                        //add to javascriptdocs
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -70,26 +49,19 @@ public class Model extends java.util.Observable {
                 }
                 //TODO add some error/log info if there css/html/javascript is null;
             }
-            if(cssDocs == null || htmlDocs.isEmpty()) continue; //TODO make a better fix
-            assignments.add(new Assignment(folders[i].getName(), htmlDocs, cssDocs, javascriptDocs));
-        }
-        /*
-        currentDirectory = files[0].getParent();
 
-        //Could replace with enhanced for loop
-        for (int i = 0; i < files.length; i++) {
-            try {
-                String currentDirectory = files[i].getAbsolutePath().substring(0, files[i].getAbsolutePath().length()
-                        - files[i].getName().length());
-                documents.add(Jsoup.parse(files[i], "UTF-8", currentDirectory));
-            } catch (Exception e) {
-                e.printStackTrace();
+            String unmarkableString = checkValid(htmlDocs, cssDocs, javascriptDocs);
+            if(unmarkableString.equals("")){
+                //Only one css doc and js file for each assignment
+                assignments.add(new Assignment(folders[i].getName(), htmlDocs, cssDocs.get(0), htmlDocs.get(0))); //TODO replace last argument with the javascript argument
+            }else{
+                unmarkables.add(new Unmarkable(folders[i].getName(), unmarkableString));
             }
         }
 
         setChanged();
         notifyObservers();
-        */
+
     }
 
     /**
@@ -98,11 +70,13 @@ public class Model extends java.util.Observable {
     public void closeFiles() {
         this.assignments = new ArrayList<>();
         this.currentTests = new ArrayList<>();
+        this.unmarkables = new ArrayList<>();
         setChanged();
         notifyObservers();
     }
 
     public void runTests(List<Testable> tests) throws Exception {
+        clearResults();
         currentTests = tests;
         for(Assignment assignment: assignments){
             for(Testable test: tests){
@@ -111,17 +85,6 @@ public class Model extends java.util.Observable {
         }
         setChanged();
         notifyObservers();
-
-        /*
-        this.setToTest(tests);
-        if (htmlDocs.isEmpty() && cssDocs == null && javaScriptDocs == null) throw new Exception("No files open");  //TODO double check if appropriate
-
-        for (Testable test : tests) {
-            test.runTest(htmlDocs, cssDocs);
-        }
-        setChanged();
-        notifyObservers();
-        */
     }
 
     public Testable[] getAvailableTests() {
@@ -134,12 +97,11 @@ public class Model extends java.util.Observable {
     }
 
     public ArrayList<Assignment> getAssignments() {
-
         return assignments;
     }
 
-    public String getCurrentDirectory() {
-        return currentDirectory;
+    public ArrayList<Unmarkable> getUnmarkables() {
+        return unmarkables;
     }
 
     private CSSStyleSheet parseCss(File file) throws IOException {
@@ -148,5 +110,31 @@ public class Model extends java.util.Observable {
         CSSOMParser parser = new CSSOMParser();
         CSSStyleSheet stylesheet = parser.parseStyleSheet(source, null, null);  //These can be stored
         return stylesheet;
+    }
+
+    /***
+     * Checks whether a assignment is valid
+     * @param htmlDocs
+     * @param cssDocs
+     * @param javascriptDocs
+     * @return A string containing the reason why the assignment is invalid based on documents. An empty string will return otherwise
+     */
+    private String checkValid(ArrayList<Document> htmlDocs, ArrayList<CSSStyleSheet> cssDocs, ArrayList<Document> javascriptDocs){
+        String reason = "";
+        if(htmlDocs.isEmpty()) reason += "No html found, ";
+        if(cssDocs.isEmpty()) reason += "No css found ,";
+        if(cssDocs.size() > 1) reason += ">1 css document found";
+        //if(javascriptDocs.isEmpty()) reason += "No javascript file found ,";
+        //if(javascriptDocs.size() > 1) reason += ">1 javascript file found";
+        return reason;
+    }
+
+    /***
+     * Clears the test results for all held assignments.
+     */
+    private void clearResults(){
+        for(Assignment assignment: assignments){
+            assignment.clearResults();
+        }
     }
 }

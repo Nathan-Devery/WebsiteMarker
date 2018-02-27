@@ -4,7 +4,6 @@ import model.htmlTests.HtmlStructureTest;
 import model.htmlTests.IndexTest;
 import model.htmlTests.LinkedPagesTest;
 import model.htmlTests.PageCountTest;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Test;
 import org.w3c.dom.css.CSSStyleSheet;

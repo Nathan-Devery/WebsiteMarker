@@ -11,8 +11,10 @@ import java.util.ArrayList;
 
 public class TestUtility {
 
+    //TODO make all other tests (including the ones in other packages) make use of the 'throws' keyword.
+
     public static ArrayList<Document> getDocument(String fileName){   //Duplicated method, create a utility class?
-        File file = new File("src/testFiles/" + fileName + ".html");
+        File file = new File("src/conditionTestFiles/" + fileName + ".html");
         try {
             String currentDirectory = file.getAbsolutePath().substring(0, file.getAbsolutePath().length() - file.getName().length());
             Document doc = Jsoup.parse(file, "UTF-8", currentDirectory);
@@ -26,7 +28,7 @@ public class TestUtility {
     }
 
     public static CSSStyleSheet getCss(String fileName){
-        File file = new File("src/testFiles/" + fileName + ".css");
+        File file = new File("src/conditionTestFiles/" + fileName + ".css");
         try {
             InputStream stream = new FileInputStream(file);
             InputSource source = new InputSource(new InputStreamReader(stream));
