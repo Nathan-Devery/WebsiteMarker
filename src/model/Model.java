@@ -11,6 +11,7 @@ import java.util.List;
 import com.steadystate.css.parser.CSSOMParser;
 import org.w3c.css.sac.InputSource;
 import org.w3c.dom.css.CSSStyleSheet;
+import jdk.nashorn.api.tree.*;
 
 
 /**
@@ -31,7 +32,7 @@ public class Model extends java.util.Observable {
         for (int i = 0; i < folders.length; i++) {
             ArrayList<Document> htmlDocs = new ArrayList<>();
             ArrayList<CSSStyleSheet> cssDocs = new ArrayList<>();
-            ArrayList<Document> javascriptDocs = new ArrayList();
+            ArrayList<CompilationUnitTree> javascriptDocs = new ArrayList();
 
             for (final File file : folders[i].listFiles()) {
                 String fileName = file.getName().toLowerCase();
@@ -41,7 +42,9 @@ public class Model extends java.util.Observable {
                     } else if (fileName.endsWith(".css")) {
                         cssDocs.add(parseCss(file));
                     } else if (fileName.endsWith(".js")) {
-                        //add to javascriptdocs
+                        Parser parser = Parser.create();
+                        CompilationUnitTree tree = parser.parse(file,null);
+                        javascriptDocs.add(tree);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -53,7 +56,13 @@ public class Model extends java.util.Observable {
             String unmarkableString = checkValid(htmlDocs, cssDocs, javascriptDocs);
             if(unmarkableString.equals("")){
                 //Only one css doc and js file for each assignment
-                assignments.add(new Assignment(folders[i].getName(), htmlDocs, cssDocs.get(0), htmlDocs.get(0))); //TODO replace last argument with the javascript argument
+                if(!javascriptDocs.isEmpty()) {
+                    assignments.add(new Assignment(folders[i].getName(), htmlDocs, cssDocs.get(0), javascriptDocs.get(0)));
+                }else{
+                    Parser parser = Parser.create();
+                    CompilationUnitTree nullTree = parser.parse("emptyFile", "" ,null);
+                    assignments.add(new Assignment(folders[i].getName(), htmlDocs, cssDocs.get(0), nullTree));
+                }
             }else{
                 unmarkables.add(new Unmarkable(folders[i].getName(), unmarkableString));
             }
@@ -119,7 +128,7 @@ public class Model extends java.util.Observable {
      * @param javascriptDocs
      * @return A string containing the reason why the assignment is invalid based on documents. An empty string will return otherwise
      */
-    private String checkValid(ArrayList<Document> htmlDocs, ArrayList<CSSStyleSheet> cssDocs, ArrayList<Document> javascriptDocs){
+    private String checkValid(ArrayList<Document> htmlDocs, ArrayList<CSSStyleSheet> cssDocs, ArrayList<CompilationUnitTree> javascriptDocs){
         String reason = "";
         if(htmlDocs.isEmpty()) reason += "No html found, ";
         if(cssDocs.isEmpty()) reason += "No css found ,";

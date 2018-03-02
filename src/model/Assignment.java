@@ -1,5 +1,6 @@
 package model;
 
+import jdk.nashorn.api.tree.CompilationUnitTree;
 import org.jsoup.nodes.Document;
 import org.w3c.dom.css.CSSStyleSheet;
 
@@ -9,11 +10,11 @@ public class Assignment {
 
     private String nameID;
     private ArrayList<TestResult> results = new ArrayList<>();
-    private ArrayList<Document> htmlDocs = new ArrayList<>();
+    private ArrayList<Document> htmlDocs;
     private CSSStyleSheet cssDocs;
-    private Document javaScriptDocs;
+    private CompilationUnitTree javaScriptDocs;
 
-    public Assignment(String nameID, ArrayList<Document> htmlDocs, CSSStyleSheet cssDocs, Document javaScriptDocs) {
+    public Assignment(String nameID, ArrayList<Document> htmlDocs, CSSStyleSheet cssDocs, CompilationUnitTree javaScriptDocs) {
         this.nameID = nameID;
         this.htmlDocs = htmlDocs;
         this.cssDocs = cssDocs;
@@ -40,7 +41,7 @@ public class Assignment {
         return cssDocs;
     }
 
-    public Document getJavaScriptDocs() {
+    public CompilationUnitTree getJavaScriptDocs() {
         return javaScriptDocs;
     }
 
