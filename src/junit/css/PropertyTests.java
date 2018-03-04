@@ -14,6 +14,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class PropertyTests {
 
+    /*
     @Test
     public void elementTest_1ElementFontFamilyCorrect_true() {
         PropertyTester test = new PropertyTester("PropertyTests", Property.FONTFAMILY);
@@ -61,13 +62,19 @@ public class PropertyTests {
         PropertyTester test = new PropertyTester("PropertyTests", Property.COLOR);
         assertEquals(true, test.runTest(getDocument("property8"), getCss("property8")).getResult());
     }
+    */
+
 
     /***
      * The invalid values must be prefixed with a hash, extremely invalid are let through; however, they are unlikely.
      */
+
+    /*
     @Test
     public void elementTest_1ElementColorIncorrectValue_false() {
         PropertyTester test = new PropertyTester("PropertyTests", Property.COLOR);
         assertEquals(false, test.runTest(getDocument("property9"), getCss("property9")).getResult());
     }
+    */
+
 }

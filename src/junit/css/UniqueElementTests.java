@@ -16,6 +16,7 @@ public class UniqueElementTests {
 
     //TODO add log checking to the tests. Possibly mention whether class/id/element found?
 
+    /*
     @Test
     public void spanTest_elementCorrect_true() {
         UniqueElementTest test = new UniqueElementTest("Span", UniqueElement.SPAN);
@@ -101,5 +102,6 @@ public class UniqueElementTests {
         UniqueElementTest test = new UniqueElementTest("Div", UniqueElement.SPAN);
         assertEquals(true, test.runTest(getDocument("spanDiv"), getCss("spanDiv")).getResult());
     }
+    */
 
 }

@@ -1,5 +1,6 @@
 package model.cssTests;
 
+import jdk.nashorn.api.tree.CompilationUnitTree;
 import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
@@ -12,14 +13,14 @@ public class SelectorTest extends Testable {
 
     SelectorType groupType;
 
-    public SelectorTest(String name, SelectorType groupType) {
-        super(name);
+    public SelectorTest(SelectorType groupType) {
+        super(groupType.name());
         this.groupType = groupType;
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
-        boolean result = false;
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+        double result = 0;
         String report = "";
 
         CSSRuleList ruleList = sheet.getCssRules();
@@ -36,7 +37,7 @@ public class SelectorTest extends Testable {
                     for (Document document : documents) {
                         Elements affectedElements = document.select("[" + groupType.htmlAttribute + "=" + htmlAttributeValue + "]");
                         for(Element element: affectedElements){
-                            if(!(element.childNodes().isEmpty())) result = true;    //Check if corresponding html element actually holds something for the css to apply to
+                            if(!(element.childNodes().isEmpty())) result = percentage;    //Check if corresponding html element actually holds something for the css to apply to
                         }
                     }
                 }

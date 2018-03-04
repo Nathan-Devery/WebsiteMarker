@@ -22,6 +22,7 @@ public class MiscellaneousTests {
 
     CSSStyleSheet cssDoc = null;   //Not used, just for testing sake
 
+    /*
     @Test
     public void StructureTest_correctStructure_ReturnTrue() {
         HtmlStructureTest structureTest = new HtmlStructureTest();
@@ -99,7 +100,7 @@ public class MiscellaneousTests {
         IndexTest indexTest = new IndexTest();
         assertEquals(true, indexTest.runTest(getDocument("index"), cssDoc).getResult());
     }
-
+*/
 
 
 }

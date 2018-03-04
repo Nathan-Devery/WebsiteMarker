@@ -1,5 +1,6 @@
 package model.htmlTests;
 
+import jdk.nashorn.api.tree.CompilationUnitTree;
 import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
@@ -18,8 +19,8 @@ public class IndexTest extends Testable {
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
-        boolean result = false;
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+        double result = 0;
         String report = "";
 
         String path = documents.get(0).location();
@@ -27,7 +28,7 @@ public class IndexTest extends Testable {
         File[] listOfFiles = folder.listFiles();
         for (File file : listOfFiles) {
             if (file.getName().equals("index.html")) {
-                result = true;
+                result = percentage;
                 report += "Index present at: " + path + file.getName();
             }
         }

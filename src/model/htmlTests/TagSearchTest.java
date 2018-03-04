@@ -1,5 +1,6 @@
 package model.htmlTests;
 
+import jdk.nashorn.api.tree.CompilationUnitTree;
 import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
@@ -15,26 +16,31 @@ import java.util.ArrayList;
 public class TagSearchTest extends Testable {
 
     TagType tagType;
+    int numberRequired;
 
-    public TagSearchTest(String name, TagType tagType) {
-        super(name);
+    public TagSearchTest(TagType tagType, int numberRequired) {
+        super(tagType.name());
         this.tagType = tagType;
+        this.numberRequired = numberRequired;
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
         String report = "";
-        boolean result = false;
+        double result = 0;
+        int elementCount = 0;
         for(Document document: documents){
             Elements elements = document.select(tagType.searchString);
             if(!elements.isEmpty()){
-                result = true;
+                elementCount += elements.size();
                 for(Element element: elements){
                     report += element;
                     report += "\n";
                 }
             }
         }
+
+        if(elementCount >= numberRequired) result = percentage;
         return new TestResult(this.toString(), result, report);
     }
 }

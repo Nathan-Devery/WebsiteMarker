@@ -33,6 +33,18 @@ public class Assignment {
         return results;
     }
 
+    /***
+     * Gets the total grade percentage.
+     * @return
+     */
+    public double getTotalPercentage(){
+        double total = 0;
+        for(TestResult result: results){
+            total += result.getResult();
+        }
+        return total;
+    }
+
     public ArrayList<Document> getHtmlDocs() {
         return htmlDocs;
     }

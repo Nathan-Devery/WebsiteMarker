@@ -1,5 +1,6 @@
 package model.cssTests;
 
+import jdk.nashorn.api.tree.CompilationUnitTree;
 import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
@@ -24,8 +25,8 @@ public class ElementSelectorTest extends Testable {
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
-        boolean result = false;
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+        double result = 0;
         String report = "";
 
         CSSRuleList ruleList = sheet.getCssRules();
@@ -41,7 +42,7 @@ public class ElementSelectorTest extends Testable {
                             Elements affectedElements = document.select(styleRule.getSelectorText());
                             for (Element element : affectedElements) {
                                 if (!(element.childNodes().isEmpty())) {    //Check if corresponding html element actually holds something for the css to apply to
-                                    result = true;
+                                    result = percentage;
                                 }
                             }
                         }catch(Selector.SelectorParseException e){

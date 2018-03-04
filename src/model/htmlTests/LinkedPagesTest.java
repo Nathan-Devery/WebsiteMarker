@@ -1,5 +1,6 @@
 package model.htmlTests;
 
+import jdk.nashorn.api.tree.CompilationUnitTree;
 import model.TestResult;
 import model.Testable;
 import org.jsoup.Jsoup;
@@ -28,8 +29,8 @@ public class LinkedPagesTest extends Testable {
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
-        boolean result = false;
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+        double result = 0;
         String report = "";
 
         visited = new ArrayList<>();
@@ -41,7 +42,7 @@ public class LinkedPagesTest extends Testable {
             visit(document);
         }
         if(visited.size() == documents.size()){
-            result = true;
+            result = percentage;
             report += documents.size() + " pages can be navigated from some entry point";
         }else{
             report += documents.size() - visited.size() + "pages cannot be visited from all possible entry points";

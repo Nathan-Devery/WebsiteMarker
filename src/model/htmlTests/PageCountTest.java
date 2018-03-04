@@ -1,5 +1,6 @@
 package model.htmlTests;
 
+import jdk.nashorn.api.tree.CompilationUnitTree;
 import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
@@ -20,11 +21,11 @@ public class PageCountTest extends Testable {
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
-        boolean result = false;
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+        double result = 0;
         String report = "";
         if(documents.size() >= requirePageNumber){
-            result = true;
+            result = percentage;
             report += "Correct";
         }else{
             report += "Incorrect";

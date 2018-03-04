@@ -1,5 +1,6 @@
 package model.cssTests;
 
+import jdk.nashorn.api.tree.CompilationUnitTree;
 import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
@@ -15,14 +16,14 @@ public class PropertyTester extends Testable {
 
     Property property;
 
-    public PropertyTester(String name, Property property) {
-        super(name);
+    public PropertyTester(Property property) {
+        super(property.name());
         this.property = property;
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
-        boolean result = false;
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+        double result = 0;
         String report = "";
 
         CSSRuleList ruleList = sheet.getCssRules();
@@ -44,7 +45,7 @@ public class PropertyTester extends Testable {
                                     Elements affectedElements = document.select(styleRule.getSelectorText());   //Jsoup allows the searching of classes as divs directly; ie: .myClass, #myDiv
                                     for (Element element : affectedElements) {
                                         if (!(element.childNodes().isEmpty())) {
-                                            result = true;  //Check if corresponding html element actually holds something for the css to apply to;
+                                            result = percentage;  //Check if corresponding html element actually holds something for the css to apply to;
                                         }
                                     }
                                 }catch(Selector.SelectorParseException e){

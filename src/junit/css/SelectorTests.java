@@ -14,6 +14,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class SelectorTests {
 
+    /*
     @Test
     public void classTest_1Class_true() {
         SelectorTest test = new SelectorTest("CLASS" , SelectorType.CLASS);
@@ -67,4 +68,5 @@ public class SelectorTests {
         SelectorTest test = new SelectorTest("ID" , SelectorType.ID);
         assertEquals(true, test.runTest(getDocument("IDD4"), getCss("IDD4")).getResult());
     }
+    */
 }

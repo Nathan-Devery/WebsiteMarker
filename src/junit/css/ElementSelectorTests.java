@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class ElementSelectorTests {
 
+    /*
     @Test
     public void elementTest_1ElementCorrect_true() {
         ElementSelectorTest test = new ElementSelectorTest("ElementSelector");
@@ -44,5 +45,6 @@ public class ElementSelectorTests {
         ElementSelectorTest test = new ElementSelectorTest("ElementSelector");
         assertEquals(false, test.runTest(getDocument("element6"), getCss("element6")).getResult());
     }
+    */
 
 }

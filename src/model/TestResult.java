@@ -3,11 +3,10 @@ package model;
 public class TestResult {
 
     private String testName;
-    //private int result;
-    private boolean result;   //TODO create numerical result system
+    private double result;
     private String evidenceLog;
 
-    public TestResult(String testName, boolean result, String evidenceLog) {
+    public TestResult(String testName, double result, String evidenceLog) {
         this.testName = testName;
         this.result = result;
         this.evidenceLog = evidenceLog;
@@ -17,7 +16,7 @@ public class TestResult {
         return testName;
     }
 
-    public boolean getResult() {
+    public double getResult() {
         return result;
     }
 

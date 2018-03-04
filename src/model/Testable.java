@@ -1,5 +1,6 @@
 package model;
 
+import jdk.nashorn.api.tree.CompilationUnitTree;
 import org.jsoup.nodes.Document;
 import org.w3c.dom.css.CSSStyleSheet;
 
@@ -21,6 +22,6 @@ public abstract class Testable {
         return name;
     }
 
-    public abstract TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet);
+    public abstract TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage);
 
 }

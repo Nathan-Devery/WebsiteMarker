@@ -1,5 +1,6 @@
 package model.htmlTests;
 
+import jdk.nashorn.api.tree.CompilationUnitTree;
 import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
@@ -18,9 +19,9 @@ public class HtmlStructureTest extends Testable {
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
         //TODO redo but call the getChild() methods in the element
-        boolean result = false;
+        double result = 0;
         String report = "";
 
         int correct = 0;
@@ -33,7 +34,7 @@ public class HtmlStructureTest extends Testable {
             }
         }
         if (correct == documents.size()) {
-            result = true;
+            result = percentage;
             report += "Html structure correct for all " + documents.size() + " pages: (html, head, title, body)";
         } else {
             report += "Wrong html structure for " + (documents.size() - correct) + "pages";

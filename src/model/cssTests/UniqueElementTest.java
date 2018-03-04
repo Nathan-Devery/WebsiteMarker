@@ -1,5 +1,6 @@
 package model.cssTests;
 
+import jdk.nashorn.api.tree.CompilationUnitTree;
 import model.TestResult;
 import model.Testable;
 import org.jsoup.nodes.Document;
@@ -16,14 +17,14 @@ public class UniqueElementTest extends Testable {
 
     UniqueElement divSpan;    //Div or span depending on enum argument
 
-    public UniqueElementTest(String name, UniqueElement divSpan) {
-        super(name);
+    public UniqueElementTest(UniqueElement divSpan) {
+        super(divSpan.name());
         this.divSpan = divSpan;
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet) {
-        boolean result = false;
+    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+        double result = 0;
         String report = "";
 
         for (Document document : documents) {
@@ -32,13 +33,13 @@ public class UniqueElementTest extends Testable {
                 CSSStyleRule rule;
                 if (element.attr("class").length() > 0) {
                     rule = searchCss("." + element.attr("class"), sheet);
-                    if(rule != null && rule.getStyle().getLength() != 0) result = true;   //Check that the css rule isn't empty
+                    if(rule != null && rule.getStyle().getLength() != 0) result = percentage;   //Check that the css rule isn't empty
                 } else if (element.attr("id").length() > 0) {
                     rule = searchCss("#" + element.attr("id"), sheet);
-                    if(rule != null && rule.getStyle().getLength() != 0) result = true;
+                    if(rule != null && rule.getStyle().getLength() != 0) result = percentage;
                 } else {
                     rule = searchCss(divSpan.htmlAttribute, sheet);
-                    if(rule != null) result = true && rule.getStyle().getLength() != 0;
+                    if(rule != null && rule.getStyle().getLength() != 0) result = percentage;
                 }
             }
         }

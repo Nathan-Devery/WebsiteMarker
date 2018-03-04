@@ -18,8 +18,8 @@ public class OptionsPane extends JPanel {
     Controller controller;
     JTable table;
     JFrame frame;
-    JLabel directoryLabel = new JLabel("");
     Testable[] availableTests;
+
 
     public OptionsPane(Model model, Controller controller, JFrame frame){
         this.model = model;
@@ -48,21 +48,26 @@ public class OptionsPane extends JPanel {
     }
 
     private JTable createTable(){
+
         availableTests = model.getAvailableTests();
 
         Testable[] data = new Testable[availableTests.length];
+        String[] data2 = new String[availableTests.length];
 
         for(int i = 0; i < availableTests.length; i++){
             data[i] = availableTests[i];    //get name
+            data2[i] = "1.0"; //TODO create arraylist with default values
         }
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Tests", data);
+        model.addColumn("Percentage", data2);
         JTable table = new JTable(model);
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         table.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        table.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
 
         return table;
     }
@@ -72,13 +77,17 @@ public class OptionsPane extends JPanel {
         button.addActionListener(k -> {
             try {
                 int[] selectedRows = table.getSelectedRows();
+
                 ArrayList<Testable> selectedTests = new ArrayList<>();
+                ArrayList<Double> percentages = new ArrayList<>();
                 for(int i = 0; i < selectedRows.length; i++){
                     selectedTests.add(availableTests[selectedRows[i]]);
+                    percentages.add( Double.valueOf((String)(table.getModel().getValueAt(i, 1))));
                 }
-                controller.runTests(selectedTests);  //TODO fix to MVC paradigm?
+                controller.runTests(selectedTests, percentages);  //TODO fix to MVC paradigm?
             }catch (Exception e){
-                UI.displayError(frame, e);
+                e.printStackTrace();
+                //UI.displayError(frame, e);
             }
         });
         button.setAlignmentX(Component.CENTER_ALIGNMENT);

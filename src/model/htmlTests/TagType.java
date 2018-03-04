@@ -19,7 +19,8 @@ public enum  TagType {
     CLASS("[class]"),
     ID("[id]"),
     SPAN("span"),
-    DIV("div");
+    DIV("div"),
+    TITLE("title");
 
     public String searchString;
 

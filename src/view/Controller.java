@@ -18,8 +18,8 @@ public class Controller {
         this.model = model;
     }
 
-    public void runTests(List<Testable> tests) throws Exception{
-        model.runTests(tests);
+    public void runTests(List<Testable> tests, ArrayList<Double> percentages) throws Exception{
+        model.runTests(tests, percentages);
     }
 
     public void loadFolders(File[] folders){

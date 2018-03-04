@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.steadystate.css.parser.CSSOMParser;
+import org.junit.Test;
 import org.w3c.css.sac.InputSource;
 import org.w3c.dom.css.CSSStyleSheet;
 import jdk.nashorn.api.tree.*;
@@ -84,12 +85,18 @@ public class Model extends java.util.Observable {
         notifyObservers();
     }
 
-    public void runTests(List<Testable> tests) throws Exception {
+    /**
+     * Runs the tests, updating the assignments.
+     * @param tests
+     * @param percentages Each percentage corresponds to a test.
+     * @throws Exception
+     */
+    public void runTests(List<Testable> tests, ArrayList<Double> percentages) throws Exception {
         clearResults();
         currentTests = tests;
         for(Assignment assignment: assignments){
-            for(Testable test: tests){
-                assignment.addResults(test.runTest(assignment.getHtmlDocs(), assignment.getCssDocs()));
+            for(int i = 0; i < tests.size(); i++){
+                assignment.addResults(currentTests.get(i).runTest(assignment.getHtmlDocs(), assignment.getCssDocs(), assignment.getJavaScriptDocs(), percentages.get(i)));
             }
         }
         setChanged();
