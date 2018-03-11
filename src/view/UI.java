@@ -84,6 +84,7 @@ public class UI implements Observer{
         });
         menu1.add(menuItem);
 
+        
         menuItem = new JMenuItem("Upload");
         menuItem.addActionListener(e -> {
             //TODO complete upload

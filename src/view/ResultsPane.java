@@ -139,13 +139,13 @@ public class ResultsPane extends JPanel {
             testResults = assignments.get(selectedStudent).getResults();
         }
 
-        String[][] data = new String[testResults.size()][2];
+        String[][] data = new String[testResults.size() + 2][2];
         for (int i = 0; i < testResults.size(); i++) {
             data[i][0] = testResults.get(i).getTestName();    //get name
             data[i][1] = String.valueOf(testResults.get(i).getResult());   //get result
         }
-        //data[testResults.size() + 1][0] = "TOTAL";
-        //if(!assignments.isEmpty()) data[testResults.size() + 1][1] = String.valueOf(assignments.get(selectedStudent).getTotalPercentage());
+        data[testResults.size() + 1][0] = "TOTAL";
+        if(!assignments.isEmpty()) data[testResults.size() + 1][1] = String.valueOf(assignments.get(selectedStudent).getTotalPercentage());
 
         String[] columns = new String[]{"Test", "Result"};
         return new DefaultTableModel(data, columns);
@@ -166,6 +166,7 @@ public class ResultsPane extends JPanel {
 
     private String getEvidenceString(){
         if(model.getAssignments().isEmpty() || model.getAssignments().get(selectedStudent).getResults().isEmpty()) return "";
+
         TestResult result = model.getAssignments().get(selectedStudent).getResults().get(selectedTestResult);
 
         String evidence = "";
