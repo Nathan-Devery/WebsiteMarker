@@ -29,4 +29,12 @@ public class Controller {
     public void closeFiles(){
         model.closeFiles();
     }
+
+    public void loadCSV(File file){
+        model.loadCSV(file);
+    }
+
+    public void createCSV(){
+        model.createCSV();
+    }
 }

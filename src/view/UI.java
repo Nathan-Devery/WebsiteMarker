@@ -22,10 +22,11 @@ public class UI implements Observer{
     public static final int HEIGHT = 525;
     JFrame frame = new JFrame();
 
-    //Panes
+    //Panes & frames
     OptionsPane optionsPane;
     ResultsPane resultsPane;
     UnmarkablePane unmarkablePane;
+    CSVJframe csvJframe;
 
     public UI(Model model) {
         this.model = model;
@@ -51,10 +52,14 @@ public class UI implements Observer{
     private void initializeFrame(){
         frame = new JFrame("INFO101: Website Marker");
         frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        //frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         ImageIcon img = new ImageIcon("src/assets/tick.png");
         frame.setIconImage(img.getImage());
+
+        //Position in middle
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setLocation(dim.width/2-WIDTH/2, dim.height/2-HEIGHT/2);
+
         frame.pack();
         frame.setVisible(true);
     }
@@ -84,18 +89,6 @@ public class UI implements Observer{
         });
         menu1.add(menuItem);
 
-        
-        menuItem = new JMenuItem("Upload");
-        menuItem.addActionListener(e -> {
-            //TODO complete upload
-            /*
-            model.closeFiles();
-            chooser.showOpenDialog(frame);
-            controller.loadFolders(chooser.getSelectedFiles());
-            */
-        });
-        menu1.add(menuItem);
-
         menuItem = new JMenuItem("Close");
         menuItem.addActionListener(e -> {
             controller.closeFiles();
@@ -121,13 +114,13 @@ public class UI implements Observer{
         });
         menu2.add(menuItem);
 
-        menuItem = new JMenuItem("log.txt");
+        menuItem = new JMenuItem("CSV");
         menuItem.addActionListener(e -> {
-                    //TODO: implement
+                    this.csvJframe = new CSVJframe(model, controller);
                 });
         menu3.add(menuItem);
 
-        menuItem = new JMenuItem("config.tst");
+        menuItem = new JMenuItem("Config File");
         menuItem.addActionListener(e -> {
             //TODO: implement
         });
@@ -145,5 +138,6 @@ public class UI implements Observer{
     public void update(Observable o, Object arg) {
         resultsPane.redraw();
         unmarkablePane.redraw();
+        csvJframe.redraw();
     }
 }

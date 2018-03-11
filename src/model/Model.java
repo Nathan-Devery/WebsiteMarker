@@ -20,9 +20,11 @@ import jdk.nashorn.api.tree.*;
  */
 public class Model extends java.util.Observable {
 
-    ArrayList<Assignment> assignments = new ArrayList<>();
-    ArrayList<Unmarkable> unmarkables = new ArrayList<>();
-    List<Testable> currentTests = new ArrayList<>();
+    private CSVManager csvManager = new CSVManager();
+
+    private ArrayList<Assignment> assignments = new ArrayList<>();
+    private ArrayList<Unmarkable> unmarkables = new ArrayList<>();
+    private List<Testable> currentTests = new ArrayList<>();
 
     /***
      * Parses the html, css and javascript. Invalid sections are ignored ie: invalid values for css properties.
@@ -118,6 +120,20 @@ public class Model extends java.util.Observable {
 
     public ArrayList<Unmarkable> getUnmarkables() {
         return unmarkables;
+    }
+
+    public void loadCSV(File file){
+        csvManager.loadCsv(file);
+        setChanged();
+        notifyObservers();
+    }
+
+    public String[] getColumns(){
+        return csvManager.getColumns();
+    }
+
+    public void createCSV(){
+        csvManager.createCSV();
     }
 
     private CSSStyleSheet parseCss(File file) throws IOException {
