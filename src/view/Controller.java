@@ -1,5 +1,6 @@
 package view;
 
+import model.IllegalOperationException;
 import model.Model;
 import model.Testable;
 
@@ -18,11 +19,11 @@ public class Controller {
         this.model = model;
     }
 
-    public void runTests(List<Testable> tests, ArrayList<Double> percentages) throws Exception{
+    public void runTests(List<Testable> tests, ArrayList<Double> percentages) throws IllegalOperationException{
         model.runTests(tests, percentages);
     }
 
-    public void loadFolders(File[] folders){
+    public void loadFolders(File[] folders) throws IllegalOperationException{
         model.loadFiles(folders);
     }
 
@@ -30,11 +31,11 @@ public class Controller {
         model.closeFiles();
     }
 
-    public void loadCSV(File file){
+    public void loadCSV(File file) throws IllegalOperationException{
         model.loadCSV(file);
     }
 
-    public void createCSV(){
-        model.createCSV();
+    public void createCSV(int usernameCol, int studentIdCol, int gradeCol) throws IllegalOperationException{
+        model.createCSV(usernameCol, studentIdCol, gradeCol);
     }
 }

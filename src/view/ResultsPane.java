@@ -65,6 +65,8 @@ public class ResultsPane extends JPanel {
         scrollPane.setPreferredSize(new Dimension(UI.WIDTH * 2 / 3, UI.HEIGHT * 1/2));
         this.add(scrollPane);
 
+        //this.add(this.createOverallGradePane());
+
         revalidate();
         repaint();
     }
@@ -132,20 +134,34 @@ public class ResultsPane extends JPanel {
         return pane;
     }
 
+    private JTextPane createOverallGradePane(){
+        JTextPane pane = new JTextPane();
+        pane.setEditable(false);
+        pane.setText("grade: 0");
+
+        //gradeLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        return pane;
+    }
+
     private DefaultTableModel getResultData() {
         ArrayList<Assignment> assignments = model.getAssignments();
         ArrayList<TestResult> testResults = new ArrayList<>();
+
+        if(selectedStudent == -1) selectedStudent = 0;  //Ensures at least one student is always open
+
         if (!assignments.isEmpty() && !assignments.get(0).getResults().isEmpty()){
             testResults = assignments.get(selectedStudent).getResults();
         }
 
-        String[][] data = new String[testResults.size() + 2][2];
+        String[][] data = new String[testResults.size()][2];
         for (int i = 0; i < testResults.size(); i++) {
             data[i][0] = testResults.get(i).getTestName();    //get name
             data[i][1] = String.valueOf(testResults.get(i).getResult());   //get result
         }
+        /*
         data[testResults.size() + 1][0] = "TOTAL";
         if(!assignments.isEmpty()) data[testResults.size() + 1][1] = String.valueOf(assignments.get(selectedStudent).getTotalPercentage());
+        */
 
         String[] columns = new String[]{"Test", "Result"};
         return new DefaultTableModel(data, columns);
@@ -165,7 +181,7 @@ public class ResultsPane extends JPanel {
     }
 
     private String getEvidenceString(){
-        if(model.getAssignments().isEmpty() || model.getAssignments().get(selectedStudent).getResults().isEmpty()) return "";
+        if(model.getAssignments().isEmpty() || selectedStudent == -1 || model.getAssignments().get(selectedStudent).getResults().isEmpty()) return "";
 
         TestResult result = model.getAssignments().get(selectedStudent).getResults().get(selectedTestResult);
 

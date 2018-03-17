@@ -6,7 +6,11 @@ import org.jsoup.nodes.Document;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.steadystate.css.parser.CSSOMParser;
 import org.junit.Test;
@@ -22,7 +26,7 @@ public class Model extends java.util.Observable {
 
     private CSVManager csvManager = new CSVManager();
 
-    private ArrayList<Assignment> assignments = new ArrayList<>();
+    private Map<String, Assignment> assignments = new HashMap<>();
     private ArrayList<Unmarkable> unmarkables = new ArrayList<>();
     private List<Testable> currentTests = new ArrayList<>();
 
@@ -60,11 +64,11 @@ public class Model extends java.util.Observable {
             if(unmarkableString.equals("")){
                 //Only one css doc and js file for each assignment
                 if(!javascriptDocs.isEmpty()) {
-                    assignments.add(new Assignment(folders[i].getName(), htmlDocs, cssDocs.get(0), javascriptDocs.get(0)));
+                    assignments.put(this.getID(folders[i].getName()), new Assignment(folders[i].getName(), htmlDocs, cssDocs.get(0), javascriptDocs.get(0)));
                 }else{
                     Parser parser = Parser.create();
                     CompilationUnitTree nullTree = parser.parse("emptyFile", "" ,null);
-                    assignments.add(new Assignment(folders[i].getName(), htmlDocs, cssDocs.get(0), nullTree));
+                    assignments.put(this.getID(folders[i].getName()), new Assignment(folders[i].getName(), htmlDocs, cssDocs.get(0), nullTree));
                 }
             }else{
                 unmarkables.add(new Unmarkable(folders[i].getName(), unmarkableString));
@@ -80,7 +84,7 @@ public class Model extends java.util.Observable {
      * Removes the currently loaded in files/documents
      */
     public void closeFiles() {
-        this.assignments = new ArrayList<>();
+        this.assignments = new HashMap<>();
         this.currentTests = new ArrayList<>();
         this.unmarkables = new ArrayList<>();
         setChanged();
@@ -93,10 +97,13 @@ public class Model extends java.util.Observable {
      * @param percentages Each percentage corresponds to a test.
      * @throws Exception
      */
-    public void runTests(List<Testable> tests, ArrayList<Double> percentages) throws Exception {
+    public void runTests(List<Testable> tests, ArrayList<Double> percentages) throws IllegalOperationException{
+        if(assignments.isEmpty()) throw new IllegalOperationException("No assignments open");
+        if(tests.isEmpty())throw new IllegalOperationException("No tests selected");
+
         clearResults();
         currentTests = tests;
-        for(Assignment assignment: assignments){
+        for(Assignment assignment: assignments.values()){
             for(int i = 0; i < tests.size(); i++){
                 assignment.addResults(currentTests.get(i).runTest(assignment.getHtmlDocs(), assignment.getCssDocs(), assignment.getJavaScriptDocs(), percentages.get(i)));
             }
@@ -110,19 +117,16 @@ public class Model extends java.util.Observable {
         return availableTests.toArray(new Testable[availableTests.size()]);
     }
 
-    public List<Testable> getCurrentTests() {
-        return currentTests;
-    }
-
     public ArrayList<Assignment> getAssignments() {
-        return assignments;
+        ArrayList<Assignment> justAssignments = new ArrayList<>(this.assignments.values());
+        return justAssignments;
     }
 
     public ArrayList<Unmarkable> getUnmarkables() {
         return unmarkables;
     }
 
-    public void loadCSV(File file){
+    public void loadCSV(File file) throws IllegalOperationException{
         csvManager.loadCsv(file);
         setChanged();
         notifyObservers();
@@ -132,8 +136,8 @@ public class Model extends java.util.Observable {
         return csvManager.getColumns();
     }
 
-    public void createCSV(){
-        csvManager.createCSV();
+    public void createCSV(int usernameCol,int studentIdCol, int gradeCol) throws IllegalOperationException{
+        csvManager.createCSV(usernameCol, studentIdCol, gradeCol, assignments);
     }
 
     private CSSStyleSheet parseCss(File file) throws IOException {
@@ -165,8 +169,20 @@ public class Model extends java.util.Observable {
      * Clears the test results for all held assignments.
      */
     private void clearResults(){
-        for(Assignment assignment: assignments){
+        for(Assignment assignment: assignments.values()){
             assignment.clearResults();
         }
+    }
+
+    /***
+     * Get student ID from submission name
+     * @param fileName
+     * @return
+     */
+    private String getID(String fileName){
+        Pattern p = Pattern.compile("[0-9]+");
+        Matcher m = p.matcher(fileName);
+        m.find();
+        return "\"" + m.group() + "\""; //TODO: this adds the speech marks, possibly can remove if blackboard is just cvs
     }
 }

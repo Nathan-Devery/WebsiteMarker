@@ -1,5 +1,6 @@
 package view;
 
+import model.IllegalOperationException;
 import model.Model;
 import model.Testable;
 
@@ -19,13 +20,16 @@ public class CSVJframe extends JFrame {
     private Controller controller;
 
     private JFileChooser chooser;
+    private JComboBox<String> userNameCol;
     private JComboBox<String> studentIdCol;
     private JComboBox<String> gradeCol;
 
     private File file;
 
-    public CSVJframe(Model model, Controller controller){
+    public CSVJframe(Model model, Controller controller) throws IllegalOperationException{
         super("CSV Appender");
+        if(model.getAssignments().isEmpty()) throw new IllegalOperationException("No assignments are currently loaded");
+
         this.model = model;
         this.controller = controller;
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
@@ -64,7 +68,11 @@ public class CSVJframe extends JFrame {
         menuItem.addActionListener(e -> {
             chooser.showOpenDialog(this);
             file = chooser.getSelectedFile();
-            controller.loadCSV(file);
+            try {
+                controller.loadCSV(file);
+            }catch(IllegalOperationException exception){
+                UI.displayError(this, exception);
+            }
         });
         menu1.add(menuItem);
 
@@ -76,6 +84,12 @@ public class CSVJframe extends JFrame {
      */
     public void redraw(){
         this.getContentPane().removeAll();
+
+        JLabel usernameLabel = new JLabel("Username Column");
+        usernameLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        add(usernameLabel);
+        userNameCol = createColSelection();
+        add(userNameCol);
 
         JLabel studentLabel = new JLabel("Student ID Column");
         studentLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
@@ -91,7 +105,16 @@ public class CSVJframe extends JFrame {
 
         JButton button = new JButton("Create CSV");
         button.addActionListener(k -> {
-            controller.createCSV();
+            try {
+                controller.createCSV(userNameCol.getSelectedIndex(), studentIdCol.getSelectedIndex(), gradeCol.getSelectedIndex());
+                JOptionPane.showMessageDialog(this, ".CVS created, grades appended.",
+                        "CVS created",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }catch(IllegalOperationException exception){
+                UI.displayError(this, exception);
+            }
+            setVisible(false);
+            dispose();
         });
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(button);

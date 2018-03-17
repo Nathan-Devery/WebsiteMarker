@@ -1,5 +1,6 @@
 package view;
 
+import model.IllegalOperationException;
 import model.Model;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ import java.util.Observer;
 /**
  * Created by Nathan on 22/11/2017.
  */
-public class UI implements Observer{
+public class UI implements Observer {
 
     Model model;
     Controller controller;
@@ -49,7 +50,7 @@ public class UI implements Observer{
         frame.add(tabbedPane);
     }
 
-    private void initializeFrame(){
+    private void initializeFrame() {
         frame = new JFrame("INFO101: Website Marker");
         frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -58,13 +59,13 @@ public class UI implements Observer{
 
         //Position in middle
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setLocation(dim.width/2-WIDTH/2, dim.height/2-HEIGHT/2);
+        frame.setLocation(dim.width / 2 - WIDTH / 2, dim.height / 2 - HEIGHT / 2);
 
         frame.pack();
         frame.setVisible(true);
     }
 
-    private void initializeMenu(){
+    private void initializeMenu() {
         JMenuBar menuBar;
         JMenu menu1;
         JMenu menu2;
@@ -85,7 +86,11 @@ public class UI implements Observer{
         menuItem.addActionListener(e -> {
             model.closeFiles();
             chooser.showOpenDialog(frame);
-            controller.loadFolders(chooser.getSelectedFiles());
+            try {
+                controller.loadFolders(chooser.getSelectedFiles());
+            } catch (IllegalOperationException exception) {
+                displayError(this.frame, exception);
+            }
         });
         menu1.add(menuItem);
 
@@ -116,8 +121,12 @@ public class UI implements Observer{
 
         menuItem = new JMenuItem("CSV");
         menuItem.addActionListener(e -> {
-                    this.csvJframe = new CSVJframe(model, controller);
-                });
+            try {
+                this.csvJframe = new CSVJframe(model, controller);
+            } catch (IllegalOperationException exception) {
+                displayError(frame, exception);
+            }
+        });
         menu3.add(menuItem);
 
         menuItem = new JMenuItem("Config File");
@@ -127,17 +136,14 @@ public class UI implements Observer{
         menu3.add(menuItem);
     }
 
-    public static void displayError(JFrame frame, Exception e){
-        JOptionPane.showMessageDialog(frame, e.getMessage(),
-                "Operation Error",
-                JOptionPane.WARNING_MESSAGE);
-        e.printStackTrace();
+    public static void displayError(JFrame frame, Exception e) {
+        JOptionPane.showMessageDialog(frame, e.getMessage(), "Operation Error", JOptionPane.WARNING_MESSAGE);
     }
 
     @Override
     public void update(Observable o, Object arg) {
         resultsPane.redraw();
         unmarkablePane.redraw();
-        csvJframe.redraw();
+        if (csvJframe != null) csvJframe.redraw();
     }
 }

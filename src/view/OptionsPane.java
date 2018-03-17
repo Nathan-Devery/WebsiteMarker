@@ -1,5 +1,6 @@
 package view;
 
+import model.IllegalOperationException;
 import model.Model;
 import model.Testable;
 
@@ -80,14 +81,15 @@ public class OptionsPane extends JPanel {
 
                 ArrayList<Testable> selectedTests = new ArrayList<>();
                 ArrayList<Double> percentages = new ArrayList<>();
-                for(int i = 0; i < selectedRows.length; i++){
+                for (int i = 0; i < selectedRows.length; i++) {
                     selectedTests.add(availableTests[selectedRows[i]]);
-                    percentages.add( Double.valueOf((String)(table.getModel().getValueAt(i, 1))));
+                    percentages.add(Double.valueOf((String) (table.getModel().getValueAt(i, 1))));
                 }
                 controller.runTests(selectedTests, percentages);  //TODO fix to MVC paradigm?
+            }catch(IllegalOperationException exception){
+                UI.displayError(frame, exception);
             }catch (Exception e){
                 e.printStackTrace();
-                //UI.displayError(frame, e);
             }
         });
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
