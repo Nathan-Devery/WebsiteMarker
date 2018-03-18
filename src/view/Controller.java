@@ -38,4 +38,8 @@ public class Controller {
     public void createCSV(int usernameCol, int studentIdCol, int gradeCol) throws IllegalOperationException{
         model.createCSV(usernameCol, studentIdCol, gradeCol);
     }
+
+    public void loadConfig(File file) throws IllegalOperationException{
+        model.loadConfig(file);
+    }
 }

@@ -144,7 +144,17 @@ public class Model extends java.util.Observable {
         return csvManager.getColumns();
     }
 
-    public void createCSV(int usernameCol,int studentIdCol, int gradeCol) throws IllegalOperationException{
+    public Config getConfig() {
+        return config;
+    }
+
+    public void loadConfig(File file) throws IllegalOperationException{
+        config.loadConfig(file);
+        setChanged();
+        notifyObservers();
+    }
+
+    public void createCSV(int usernameCol, int studentIdCol, int gradeCol) throws IllegalOperationException{
         csvManager.createCSV(usernameCol, studentIdCol, gradeCol, assignments);
         setChanged();
         notifyObservers();

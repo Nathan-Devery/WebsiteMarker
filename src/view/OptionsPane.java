@@ -1,5 +1,6 @@
 package view;
 
+import model.Config;
 import model.IllegalOperationException;
 import model.Model;
 import model.Testable;
@@ -9,6 +10,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 /**
  * Created by Nathan on 23/11/2017.
@@ -28,6 +30,7 @@ public class OptionsPane extends JPanel {
         this.table = createTable();
         this.frame = frame;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
         redraw();
     }
 
@@ -36,6 +39,8 @@ public class OptionsPane extends JPanel {
 
         drawList();
         drawButton();
+
+        applyConfig(this.table, availableTests);
 
         revalidate();
         repaint();
@@ -73,7 +78,30 @@ public class OptionsPane extends JPanel {
         return table;
     }
 
-    
+    /***
+     * Applies the configuration to the options table. This specifying which tests are selected to run and their
+     * corresponding weighting (percent).
+     * @param table
+     * @param availableTests
+     */
+    private void applyConfig(JTable table, Testable[] availableTests){
+        Config config = model.getConfig();
+
+        List<String> selectedTestsNames = config.getSelectedTestsNames();
+        List<Double> testPercentages = config.getSelectedTestPercentages();
+
+
+        for(int i = 0; i < selectedTestsNames.size(); i++){
+            String testName = selectedTestsNames.get(i);
+            for(int j = 0; j < availableTests.length; j++){
+                if(availableTests[j].toString().equals(testName)){
+                    table.getModel().setValueAt(String.valueOf(testPercentages.get(i)), j, 1);
+                    table.changeSelection(j, 0, true, false);
+                }
+            }
+        }
+
+    }
 
     private void drawButton(){
         JButton button = new JButton("Test");
@@ -85,7 +113,7 @@ public class OptionsPane extends JPanel {
                 ArrayList<Double> percentages = new ArrayList<>();
                 for (int i = 0; i < selectedRows.length; i++) {
                     selectedTests.add(availableTests[selectedRows[i]]);
-                    percentages.add(Double.valueOf((String) (table.getModel().getValueAt(i, 1))));
+                    percentages.add(Double.valueOf((String) (table.getModel().getValueAt(selectedRows[i], 1))));
                 }
                 controller.runTests(selectedTests, percentages);  //TODO fix to MVC paradigm?
             }catch(IllegalOperationException exception){

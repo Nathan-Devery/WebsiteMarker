@@ -4,6 +4,7 @@ import model.IllegalOperationException;
 import model.Model;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
@@ -96,10 +97,13 @@ public class UI implements Observer {
 
         menuItem = new JMenuItem("Load Config");
         menuItem.addActionListener(e -> {
-            model.closeFiles();
-            chooser.showOpenDialog(frame);
+            JFileChooser configChooser = new JFileChooser();
+            configChooser.setMultiSelectionEnabled(false);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Config File", "ini");
+            configChooser.setFileFilter(filter);
+            configChooser.showOpenDialog(frame);
             try {
-                controller.loadFolders(chooser.getSelectedFiles());
+                controller.loadConfig(configChooser.getSelectedFile());
             } catch (IllegalOperationException exception) {
                 displayError(this.frame, exception);
             }
