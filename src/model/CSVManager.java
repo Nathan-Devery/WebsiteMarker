@@ -2,14 +2,21 @@ package model;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CSVManager {
 
+    Model model;
     ArrayList<String[]> csvArray = new ArrayList<>();
     ArrayList<String[]> outputCSV = new ArrayList<>();
-
     File filepath;
+
+    private ArrayList<Malformed> unpairables = new ArrayList<>();
+
+    public CSVManager(Model model) {
+        this.model = model;
+    }
 
     public void loadCsv(File file) throws IllegalOperationException{
         this.emptyFields();
@@ -48,52 +55,57 @@ public class CSVManager {
         return new String[0];
     }
 
-    /*
-    public void createCSV(int studentIdCol, int gradeCol, Map<String, Assignment> assignmentMap){
-        for(int i = 1; i < csvArray.size(); i++){   //Starts from one as the first row in CVS is the column declarations
-            String[] row = csvArray.get(i);
-            Assignment assignment = assignmentMap.get(row[studentIdCol]);
-            if(assignment != null) {
-                row[gradeCol] = String.valueOf(assignment.getTotalPercentage());
-                row[gradeCol] = String.valueOf(assignment.getTotalPercentage());
-            }
-        }
-        outputCSV();
-    }
-    */
-
-    public void createCSV(int usernameCol, int studentIdCol, int gradeCol,Map<String, Assignment> assignmentMap) throws IllegalOperationException{
+    public void createCSV(int usernameCol, int studentIdCol, int gradeCol, Map<String, Assignment> assignmentMap) throws IllegalOperationException{
         if(usernameCol == studentIdCol || usernameCol == gradeCol || studentIdCol == gradeCol)
             throw new IllegalOperationException("Chosen columns are not distinct");
 
+        addColumnsToCSV(usernameCol, studentIdCol, gradeCol);
+
+        Map<String, Assignment> assignmentMapClone = new HashMap<>(assignmentMap);
+        for(int i = 1; i < csvArray.size(); i++){   //Starts from one as the first row in CVS is the column declarations
+            String[] row = csvArray.get(i);
+            String rowStudentID = row[studentIdCol];
+            Assignment assignment = assignmentMapClone.get(rowStudentID);
+            if(assignment != null) {
+                //Username, studentID, Grade
+                String[] outputRow = new String[3];
+                outputRow[0] = csvArray.get(i)[usernameCol];
+                outputRow[1] = csvArray.get(i)[studentIdCol];
+                outputRow[2] = "\""  + String.valueOf(assignment.getTotalPercentage() + "\"");
+                outputCSV.add(outputRow);
+                assignmentMapClone.remove(rowStudentID); //Remove assignment, so only the non-found assignments are left.
+            }
+        }
+        addUnpairables(assignmentMapClone);
+        outputCSV();
+    }
+
+    public ArrayList<Malformed> getUnpairables() {
+        return unpairables;
+    }
+
+    private void addColumnsToCSV(int usernameCol, int studentIdCol, int gradeCol){
         String[] columnNames = new String[3];
         columnNames[0] = csvArray.get(0)[usernameCol];
         columnNames[1] = csvArray.get(0)[studentIdCol];
         columnNames[2] = csvArray.get(0)[gradeCol];
 
         outputCSV.add(columnNames);
+    }
 
-        for(int i = 1; i < csvArray.size(); i++){   //Starts from one as the first row in CVS is the column declarations
-            String[] row = csvArray.get(i);
-            Assignment assignment = assignmentMap.get(row[studentIdCol]);
-            if(assignment != null) {
-                //row[gradeCol] = String.valueOf(assignment.getTotalPercentage());
-                //outputCSV.get(i)[gradeCol] = String.valueOf(assignment.getTotalPercentage());
-
-                //Username studentID Grade
-                String[] outputRow = new String[3];
-                outputRow[0] = csvArray.get(i)[usernameCol];
-                outputRow[1] = csvArray.get(i)[studentIdCol];
-                outputRow[2] = "\""  + String.valueOf(assignment.getTotalPercentage() + "\"");
-                outputCSV.add(outputRow);
-            }
+    private void addUnpairables(Map<String, Assignment> assignmentMap){
+        ArrayList<Malformed> unpairables = new ArrayList<>();
+        for(Assignment assignment: assignmentMap.values()){
+            unpairables.add(new Malformed(assignment.getNameID(),
+                    "StudentID not in CSV"));
         }
-        outputCSV();
+        this.unpairables = unpairables;
     }
 
     private void outputCSV(){
         try {
-            String path = filepath.getParentFile().getAbsolutePath() + "/" + "GRADED.csv";
+            String fileNameNoExt = filepath.getName().replaceFirst("[.][^.]+$", "");
+            String path = filepath.getParentFile().getAbsolutePath() + "/" + fileNameNoExt + "Graded.csv";
             PrintWriter writer = new PrintWriter(path, "UTF-8");
 
             for(int i = 0; i < outputCSV.size(); i++){
@@ -112,6 +124,8 @@ public class CSVManager {
     private void emptyFields(){
         this.csvArray = new ArrayList<>();
         this.outputCSV = new ArrayList<>();
+        this.filepath = null;
+        this.unpairables = new ArrayList<>();
     }
 
 }

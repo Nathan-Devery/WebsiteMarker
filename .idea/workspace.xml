@@ -10,20 +10,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/CSVManager.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/model/CSVManager.class" />
       <change beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/Model.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/model/Model.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/HtmlMarker/model/Unmarkable.class" afterPath="" />
       <change beforePath="$PROJECT_DIR$/out/production/HtmlMarker/view/CSVJframe.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/view/CSVJframe.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/HtmlMarker/view/Controller.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/view/Controller.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/HtmlMarker/view/OptionsPane.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/view/OptionsPane.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/HtmlMarker/view/ResultsPane$1.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/view/ResultsPane$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/HtmlMarker/view/ResultsPane$2.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/view/ResultsPane$2.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/HtmlMarker/view/ResultsPane.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/view/ResultsPane.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/HtmlMarker/view/UI.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/HtmlMarker/view/UI.class" afterPath="$PROJECT_DIR$/out/production/HtmlMarker/view/UI.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/HtmlMarker/view/UnmarkablePane.class" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/model/CSVManager.java" afterPath="$PROJECT_DIR$/src/model/CSVManager.java" />
       <change beforePath="$PROJECT_DIR$/src/model/Model.java" afterPath="$PROJECT_DIR$/src/model/Model.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/Unmarkable.java" afterPath="$PROJECT_DIR$/src/model/Malformed.java" />
       <change beforePath="$PROJECT_DIR$/src/view/CSVJframe.java" afterPath="$PROJECT_DIR$/src/view/CSVJframe.java" />
-      <change beforePath="$PROJECT_DIR$/src/view/Controller.java" afterPath="$PROJECT_DIR$/src/view/Controller.java" />
-      <change beforePath="$PROJECT_DIR$/src/view/OptionsPane.java" afterPath="$PROJECT_DIR$/src/view/OptionsPane.java" />
-      <change beforePath="$PROJECT_DIR$/src/view/ResultsPane.java" afterPath="$PROJECT_DIR$/src/view/ResultsPane.java" />
       <change beforePath="$PROJECT_DIR$/src/view/UI.java" afterPath="$PROJECT_DIR$/src/view/UI.java" />
+      <change beforePath="$PROJECT_DIR$/src/view/UnmarkablePane.java" afterPath="$PROJECT_DIR$/src/view/NeedsAttentionPane.java" />
     </list>
     <ignored path="HtmlMarker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,13 +57,15 @@
       <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+            <state relative-caret-position="113">
+              <caret line="25" column="19" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
               <folding>
-                <element signature="e#4725#4726#0" expanded="true" />
-                <element signature="e#4759#4760#0" expanded="true" />
-                <element signature="e#4953#4954#0" expanded="true" />
-                <element signature="e#4999#5000#0" expanded="true" />
+                <element signature="e#4751#4752#0" expanded="true" />
+                <element signature="e#4785#4786#0" expanded="true" />
+                <element signature="e#4836#4837#0" expanded="true" />
+                <element signature="e#4886#4887#0" expanded="true" />
+                <element signature="e#5080#5081#0" expanded="true" />
+                <element signature="e#5126#5127#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,8 +74,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+            <state relative-caret-position="205">
+              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding>
                 <element signature="e#296#297#0" expanded="true" />
                 <element signature="e#330#331#0" expanded="true" />
@@ -101,30 +99,34 @@
       <file leaf-file-name="CSVManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/CSVManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="66" column="80" lean-forward="false" selection-start-line="66" selection-start-column="80" selection-end-line="66" selection-end-column="80" />
+            <state relative-caret-position="153">
+              <caret line="107" column="94" lean-forward="false" selection-start-line="107" selection-start-column="94" selection-end-line="107" selection-end-column="94" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#386#387#0" expanded="true" />
+                <element signature="e#420#421#0" expanded="true" />
+                <element signature="e#2793#2794#0" expanded="true" />
+                <element signature="e#2827#2828#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UnmarkablePane.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/UnmarkablePane.java">
+      <file leaf-file-name="Assignment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Assignment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="45" column="66" lean-forward="false" selection-start-line="45" selection-start-column="66" selection-end-line="45" selection-end-column="66" />
+            <state relative-caret-position="143">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OptionsPane.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/OptionsPane.java">
+      <file leaf-file-name="NeedsAttentionPane.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/NeedsAttentionPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="817">
-              <caret line="91" column="36" lean-forward="false" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
+            <state relative-caret-position="323">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -133,8 +135,8 @@
       <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/UI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="133" column="29" lean-forward="true" selection-start-line="133" selection-start-column="29" selection-end-line="133" selection-end-column="29" />
+            <state relative-caret-position="714">
+              <caret line="48" column="42" lean-forward="false" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -143,21 +145,11 @@
       <file leaf-file-name="CSVJframe.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/CSVJframe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="222">
+              <caret line="110" column="44" lean-forward="false" selection-start-line="110" selection-start-column="44" selection-end-line="110" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/TestManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="41" column="47" lean-forward="false" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -166,7 +158,7 @@
         <entry file="file://$PROJECT_DIR$/src/model/Testable.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -195,6 +187,10 @@
       <find>model</find>
       <find>e</find>
       <find>selectedStudent</find>
+      <find>getUnpair</find>
+      <find>label</find>
+      <find>unPair</find>
+      <find>unMarkable</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -208,7 +204,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/model/TestType.java" />
         <option value="$PROJECT_DIR$/src/model/htmlTests/HtmlTest.java" />
         <option value="$PROJECT_DIR$/src/model/cssTests/Prefix.java" />
         <option value="$PROJECT_DIR$/src/model/cssTests/IDClassTest.java" />
@@ -254,11 +249,12 @@
         <option value="$PROJECT_DIR$/src/model/javascript/OperatorTest.java" />
         <option value="$PROJECT_DIR$/src/view/Controller.java" />
         <option value="$PROJECT_DIR$/src/view/OptionsPane.java" />
-        <option value="$PROJECT_DIR$/src/model/Model.java" />
-        <option value="$PROJECT_DIR$/src/view/CSVJframe.java" />
-        <option value="$PROJECT_DIR$/src/view/UI.java" />
-        <option value="$PROJECT_DIR$/src/model/CSVManager.java" />
         <option value="$PROJECT_DIR$/src/view/ResultsPane.java" />
+        <option value="$PROJECT_DIR$/src/view/NeedsAttentionPane.java" />
+        <option value="$PROJECT_DIR$/src/view/UI.java" />
+        <option value="$PROJECT_DIR$/src/view/CSVJframe.java" />
+        <option value="$PROJECT_DIR$/src/model/Model.java" />
+        <option value="$PROJECT_DIR$/src/model/CSVManager.java" />
       </list>
     </option>
   </component>
@@ -285,7 +281,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -342,6 +337,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -721,6 +717,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -729,7 +726,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27099842" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27099842" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -790,7 +787,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="180" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/model/CSVManager.java</url>
+          <line>96</line>
+          <properties />
+          <option name="timeStamp" value="187" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="190" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -799,13 +804,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/JavaLibraries/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="226" column="43" lean-forward="false" selection-start-line="226" selection-start-column="43" selection-end-line="226" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/JavaLibraries/junit-4.12.jar!/org/junit/runner/JUnitCore.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -839,7 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,14 +1036,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Unmarkable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.desktop/java/awt/image/ImageObserver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
@@ -1069,10 +1058,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Assignment.java">
+    <entry file="file://$PROJECT_DIR$/src/model/TestManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="59" column="16" lean-forward="false" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+        <state relative-caret-position="374">
+          <caret line="41" column="47" lean-forward="false" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Malformed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/ResultsPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2193">
+          <caret line="149" column="101" lean-forward="false" selection-start-line="149" selection-start-column="101" selection-end-line="149" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/OptionsPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Testable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/UI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="48" column="42" lean-forward="false" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/NeedsAttentionPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1085,26 +1122,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/UnmarkablePane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="45" column="66" lean-forward="false" selection-start-line="45" selection-start-column="66" selection-end-line="45" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/UI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="133" column="29" lean-forward="true" selection-start-line="133" selection-start-column="29" selection-end-line="133" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="205">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
             <element signature="e#296#297#0" expanded="true" />
             <element signature="e#330#331#0" expanded="true" />
@@ -1114,67 +1135,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/OptionsPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="817">
-          <caret line="91" column="36" lean-forward="false" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/ResultsPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="149" column="101" lean-forward="false" selection-start-line="149" selection-start-column="101" selection-end-line="149" selection-end-column="101" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/CSVJframe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="222">
+          <caret line="110" column="44" lean-forward="false" selection-start-line="110" selection-start-column="44" selection-end-line="110" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/TestManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="41" column="47" lean-forward="false" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Testable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+        <state relative-caret-position="113">
+          <caret line="25" column="19" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
           <folding>
-            <element signature="e#4725#4726#0" expanded="true" />
-            <element signature="e#4759#4760#0" expanded="true" />
-            <element signature="e#4953#4954#0" expanded="true" />
-            <element signature="e#4999#5000#0" expanded="true" />
+            <element signature="e#4751#4752#0" expanded="true" />
+            <element signature="e#4785#4786#0" expanded="true" />
+            <element signature="e#4836#4837#0" expanded="true" />
+            <element signature="e#4886#4887#0" expanded="true" />
+            <element signature="e#5080#5081#0" expanded="true" />
+            <element signature="e#5126#5127#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Assignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="798" column="0" lean-forward="false" selection-start-line="798" selection-start-column="0" selection-end-line="798" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/CSVManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="66" column="80" lean-forward="false" selection-start-line="66" selection-start-column="80" selection-end-line="66" selection-end-column="80" />
+        <state relative-caret-position="153">
+          <caret line="107" column="94" lean-forward="false" selection-start-line="107" selection-start-column="94" selection-end-line="107" selection-end-column="94" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#386#387#0" expanded="true" />
+            <element signature="e#420#421#0" expanded="true" />
+            <element signature="e#2793#2794#0" expanded="true" />
+            <element signature="e#2827#2828#0" expanded="true" />
           </folding>
         </state>
       </provider>

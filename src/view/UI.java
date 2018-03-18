@@ -26,7 +26,7 @@ public class UI implements Observer {
     //Panes & frames
     OptionsPane optionsPane;
     ResultsPane resultsPane;
-    UnmarkablePane unmarkablePane;
+    NeedsAttentionPane unmarkablePane;
     CSVJframe csvJframe;
 
     public UI(Model model) {
@@ -42,11 +42,11 @@ public class UI implements Observer {
 
         optionsPane = new OptionsPane(model, controller, frame);
         resultsPane = new ResultsPane(model, frame, controller);
-        unmarkablePane = new UnmarkablePane(model);
+        unmarkablePane = new NeedsAttentionPane(model);
 
         tabbedPane.addTab("Options", optionsPane);
         tabbedPane.addTab("Results", resultsPane);
-        tabbedPane.add("ManualCheck", unmarkablePane);
+        tabbedPane.add("Requires Attention", unmarkablePane);
         frame.add(tabbedPane);
     }
 

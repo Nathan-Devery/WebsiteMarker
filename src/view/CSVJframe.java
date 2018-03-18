@@ -107,7 +107,8 @@ public class CSVJframe extends JFrame {
         button.addActionListener(k -> {
             try {
                 controller.createCSV(userNameCol.getSelectedIndex(), studentIdCol.getSelectedIndex(), gradeCol.getSelectedIndex());
-                JOptionPane.showMessageDialog(this, ".CVS created, grades appended.",
+                JOptionPane.showMessageDialog(this, "CSV created. \n"
+                                + model.getUnpairables().size() + " Assignments added to 'Requires Attention' tab.",
                         "CVS created",
                         JOptionPane.INFORMATION_MESSAGE);
             }catch(IllegalOperationException exception){

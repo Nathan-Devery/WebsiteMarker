@@ -5,12 +5,12 @@ import java.io.File;
 /**
  * Stores the fields for an unmarkable assignment
  */
-public class Unmarkable {
+public class Malformed {
 
     private String assignmentName;
     private String reason;
 
-    public Unmarkable(String assignmentName, String reason) {
+    public Malformed(String assignmentName, String reason) {
         this.assignmentName = assignmentName;
         this.reason = reason;
     }

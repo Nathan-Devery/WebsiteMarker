@@ -13,7 +13,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.steadystate.css.parser.CSSOMParser;
-import org.junit.Test;
 import org.w3c.css.sac.InputSource;
 import org.w3c.dom.css.CSSStyleSheet;
 import jdk.nashorn.api.tree.*;
@@ -24,10 +23,10 @@ import jdk.nashorn.api.tree.*;
  */
 public class Model extends java.util.Observable {
 
-    private CSVManager csvManager = new CSVManager();
+    private CSVManager csvManager = new CSVManager(this);
 
     private Map<String, Assignment> assignments = new HashMap<>();
-    private ArrayList<Unmarkable> unmarkables = new ArrayList<>();
+    private ArrayList<Malformed> unmarkables = new ArrayList<>();
     private List<Testable> currentTests = new ArrayList<>();
 
     /***
@@ -71,7 +70,7 @@ public class Model extends java.util.Observable {
                     assignments.put(this.getID(folders[i].getName()), new Assignment(folders[i].getName(), htmlDocs, cssDocs.get(0), nullTree));
                 }
             }else{
-                unmarkables.add(new Unmarkable(folders[i].getName(), unmarkableString));
+                unmarkables.add(new Malformed(folders[i].getName(), unmarkableString));
             }
         }
 
@@ -87,6 +86,7 @@ public class Model extends java.util.Observable {
         this.assignments = new HashMap<>();
         this.currentTests = new ArrayList<>();
         this.unmarkables = new ArrayList<>();
+        this.csvManager = new CSVManager(this);
         setChanged();
         notifyObservers();
     }
@@ -122,8 +122,12 @@ public class Model extends java.util.Observable {
         return justAssignments;
     }
 
-    public ArrayList<Unmarkable> getUnmarkables() {
+    public ArrayList<Malformed> getUnmarkables() {
         return unmarkables;
+    }
+
+    public ArrayList<Malformed> getUnpairables(){
+        return csvManager.getUnpairables();
     }
 
     public void loadCSV(File file) throws IllegalOperationException{
@@ -138,6 +142,8 @@ public class Model extends java.util.Observable {
 
     public void createCSV(int usernameCol,int studentIdCol, int gradeCol) throws IllegalOperationException{
         csvManager.createCSV(usernameCol, studentIdCol, gradeCol, assignments);
+        setChanged();
+        notifyObservers();
     }
 
     private CSSStyleSheet parseCss(File file) throws IOException {
