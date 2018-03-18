@@ -4,6 +4,8 @@ import model.htmlTests.TagSearchTest;
 import model.htmlTests.TagType;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +66,24 @@ public class Config {
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    public void createConfigFile(File path){
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd HH_mm_ss");
+            String dateFormatted = LocalDateTime.now().format(formatter);
+
+            String file = path.getAbsolutePath() + "/" + "config" +
+                    dateFormatted + ".ini";
+            PrintWriter writer = new PrintWriter(file, "UTF-8");
+
+            for(int i = 0; i < selectedTestsNames.size(); i++){
+                writer.println(selectedTestsNames.get(i) + "," + selectedTestPercentages.get(i));
+            }
+            writer.close();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 

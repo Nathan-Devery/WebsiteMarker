@@ -42,4 +42,8 @@ public class Controller {
     public void loadConfig(File file) throws IllegalOperationException{
         model.loadConfig(file);
     }
+
+    public void createConfigFile(File path){
+        model.createConfigFile(path);
+    }
 }

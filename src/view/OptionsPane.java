@@ -85,20 +85,24 @@ public class OptionsPane extends JPanel {
      * @param availableTests
      */
     private void applyConfig(JTable table, Testable[] availableTests){
-        Config config = model.getConfig();
+        try {
+            Config config = model.getConfig();
 
-        List<String> selectedTestsNames = config.getSelectedTestsNames();
-        List<Double> testPercentages = config.getSelectedTestPercentages();
+            List<String> selectedTestsNames = config.getSelectedTestsNames();
+            List<Double> testPercentages = config.getSelectedTestPercentages();
 
 
-        for(int i = 0; i < selectedTestsNames.size(); i++){
-            String testName = selectedTestsNames.get(i);
-            for(int j = 0; j < availableTests.length; j++){
-                if(availableTests[j].toString().equals(testName)){
-                    table.getModel().setValueAt(String.valueOf(testPercentages.get(i)), j, 1);
-                    table.changeSelection(j, 0, true, false);
+            for (int i = 0; i < selectedTestsNames.size(); i++) {
+                String testName = selectedTestsNames.get(i);
+                for (int j = 0; j < availableTests.length; j++) {
+                    if (availableTests[j].toString().equals(testName)) {
+                        table.getModel().setValueAt(String.valueOf(testPercentages.get(i)), j, 1);
+                        table.changeSelection(j, 0, true, false);
+                    }
                 }
             }
+        }catch(IllegalOperationException e){
+            UI.displayError(this.frame, e);
         }
 
     }

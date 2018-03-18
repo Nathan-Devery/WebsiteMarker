@@ -147,7 +147,13 @@ public class UI implements Observer {
 
         menuItem = new JMenuItem("Config File");
         menuItem.addActionListener(e -> {
-            //TODO: implement
+            JFileChooser directoryChooser = new JFileChooser();
+            directoryChooser.setMultiSelectionEnabled(false);
+            directoryChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            directoryChooser.showOpenDialog(frame);
+
+            controller.createConfigFile(chooser.getCurrentDirectory());
+
         });
         menu3.add(menuItem);
     }
@@ -159,6 +165,7 @@ public class UI implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         resultsPane.redraw();
+        optionsPane.redraw();
         unmarkablePane.redraw();
         if (csvJframe != null) csvJframe.redraw();
     }

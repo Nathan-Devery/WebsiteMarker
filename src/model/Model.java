@@ -144,7 +144,7 @@ public class Model extends java.util.Observable {
         return csvManager.getColumns();
     }
 
-    public Config getConfig() {
+    public Config getConfig() throws IllegalOperationException{
         return config;
     }
 
@@ -152,6 +152,10 @@ public class Model extends java.util.Observable {
         config.loadConfig(file);
         setChanged();
         notifyObservers();
+    }
+
+    public void createConfigFile(File path){
+        config.createConfigFile(path);
     }
 
     public void createCSV(int usernameCol, int studentIdCol, int gradeCol) throws IllegalOperationException{
