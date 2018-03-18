@@ -94,6 +94,18 @@ public class UI implements Observer {
         });
         menu1.add(menuItem);
 
+        menuItem = new JMenuItem("Load Config");
+        menuItem.addActionListener(e -> {
+            model.closeFiles();
+            chooser.showOpenDialog(frame);
+            try {
+                controller.loadFolders(chooser.getSelectedFiles());
+            } catch (IllegalOperationException exception) {
+                displayError(this.frame, exception);
+            }
+        });
+        menu1.add(menuItem);
+
         menuItem = new JMenuItem("Close");
         menuItem.addActionListener(e -> {
             controller.closeFiles();

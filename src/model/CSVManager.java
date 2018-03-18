@@ -1,6 +1,8 @@
 package model;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -105,7 +107,12 @@ public class CSVManager {
     private void outputCSV(){
         try {
             String fileNameNoExt = filepath.getName().replaceFirst("[.][^.]+$", "");
-            String path = filepath.getParentFile().getAbsolutePath() + "/" + fileNameNoExt + "Graded.csv";
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd HH_mm_ss");
+            String dateFormatted = LocalDateTime.now().format(formatter);
+
+            String path = filepath.getParentFile().getAbsolutePath() + "/" + fileNameNoExt + "Graded_" +
+                    dateFormatted + ".csv";
             PrintWriter writer = new PrintWriter(path, "UTF-8");
 
             for(int i = 0; i < outputCSV.size(); i++){

@@ -41,7 +41,6 @@ public class TestManager {
         availableTests.add(new VariableTest());
         availableTests.add(new OperatorTest());
 
-
         /*
         HtmlStructureTest test = new HtmlStructureTest();
         availableTests.add(test);    //TODO test/fix

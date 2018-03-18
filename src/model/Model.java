@@ -24,10 +24,12 @@ import jdk.nashorn.api.tree.*;
 public class Model extends java.util.Observable {
 
     private CSVManager csvManager = new CSVManager(this);
+    private Config config = new Config(new ArrayList<>(), new ArrayList<>());   //Default config is empty, none selected
 
     private Map<String, Assignment> assignments = new HashMap<>();
     private ArrayList<Malformed> unmarkables = new ArrayList<>();
     private List<Testable> currentTests = new ArrayList<>();
+
 
     /***
      * Parses the html, css and javascript. Invalid sections are ignored ie: invalid values for css properties.
@@ -100,6 +102,8 @@ public class Model extends java.util.Observable {
     public void runTests(List<Testable> tests, ArrayList<Double> percentages) throws IllegalOperationException{
         if(assignments.isEmpty()) throw new IllegalOperationException("No assignments open");
         if(tests.isEmpty())throw new IllegalOperationException("No tests selected");
+
+        config = new Config(tests, percentages);    //Stores config
 
         clearResults();
         currentTests = tests;
