@@ -30,6 +30,8 @@ public class Model extends java.util.Observable {
     private ArrayList<Malformed> unmarkables = new ArrayList<>();
     private List<Testable> currentTests = new ArrayList<>();
 
+    private String filePath;
+
 
     /***
      * Parses the html, css and javascript. Invalid sections are ignored ie: invalid values for css properties.
@@ -37,6 +39,8 @@ public class Model extends java.util.Observable {
      */
     public void loadFiles(File[] folders) {
         closeFiles();
+        filePath = folders[0].getParentFile().getAbsolutePath() + "/";
+
         for (int i = 0; i < folders.length; i++) {
             ArrayList<Document> htmlDocs = new ArrayList<>();
             ArrayList<CSSStyleSheet> cssDocs = new ArrayList<>();
@@ -75,7 +79,6 @@ public class Model extends java.util.Observable {
                 unmarkables.add(new Malformed(folders[i].getName(), unmarkableString));
             }
         }
-
         setChanged();
         notifyObservers();
 
@@ -89,6 +92,7 @@ public class Model extends java.util.Observable {
         this.currentTests = new ArrayList<>();
         this.unmarkables = new ArrayList<>();
         this.csvManager = new CSVManager(this);
+        this.filePath = null;
         setChanged();
         notifyObservers();
     }
@@ -112,6 +116,9 @@ public class Model extends java.util.Observable {
                 assignment.addResults(currentTests.get(i).runTest(assignment.getHtmlDocs(), assignment.getCssDocs(), assignment.getJavaScriptDocs(), percentages.get(i)));
             }
         }
+
+        ReportGenerator.createReports(assignments.values(), this.filePath);
+
         setChanged();
         notifyObservers();
     }
