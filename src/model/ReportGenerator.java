@@ -2,13 +2,14 @@ package model;
 
 import java.io.File;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 
 public class ReportGenerator {
 
     public static void createReports(Collection<Assignment> assignments, String parentPath){
-        String pathName = parentPath + "Report" ;
+        String pathName = parentPath + createDirectoryName();
         createDirectory(pathName);
 
         for(Assignment assignment: assignments){
@@ -16,12 +17,12 @@ public class ReportGenerator {
             File file = new File(pathName + "/" + assignment.getNameID() + "_Report.txt");
             saveToFile(report, file);
         }
-
     }
 
     private static String generateReportString(Assignment assignment){
         String report = "";
-        report += assignment.getNameID() + "\n";
+        report += "STUDENT:" + assignment.getNameID() + "\n";
+        report += "TOTAL:" + assignment.getTotalPercentage() + "\n\n";
 
         for(TestResult testResult: assignment.getResults()){
             report += formatTestString(testResult);
@@ -36,26 +37,31 @@ public class ReportGenerator {
      */
     private static String formatTestString(TestResult testResult){
         String resultString = "";
-        resultString += "----------------------------------------------------------------";
-        resultString += testResult.getTestName() + "\n";
-        resultString += testResult.getResult() + "\n";
-        resultString += testResult.getEvidenceLog() + "\n";
+        resultString += "----------------------------------------------------------------\n";
+        resultString += "TEST:" + testResult.getTestName() + "\n";
+        resultString += "AWARDED:" + testResult.getResult() + "\n\n";
+        resultString += "EVIDENCE:" + "\n" + testResult.getEvidenceLog() + "\n\n";
 
         return resultString;
+    }
+
+    private static String createDirectoryName(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd HH_mm_s");
+        String dateFormatted = LocalDateTime.now().format(formatter);
+        String pathName = "REPORT_" + dateFormatted;
+        return pathName;
     }
 
     private static void createDirectory(String pathName){
         File theDir = new File(pathName);
 
         if (!theDir.exists()) {
-
             try{
                 theDir.mkdir();
             }
             catch(SecurityException se){
                 se.printStackTrace();
             }
-
         }
 
     }
