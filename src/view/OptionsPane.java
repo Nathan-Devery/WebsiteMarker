@@ -21,8 +21,6 @@ public class OptionsPane extends JPanel {
     Controller controller;
     JTable table;
     JFrame frame;
-    Testable[] availableTests;
-
 
     public OptionsPane(Model model, Controller controller, JFrame frame){
         this.model = model;
@@ -40,7 +38,7 @@ public class OptionsPane extends JPanel {
         drawList();
         drawButton();
 
-        applyConfig(this.table, availableTests);
+        applyConfig(this.table, model.getAvailableTests());
 
         revalidate();
         repaint();
@@ -55,7 +53,7 @@ public class OptionsPane extends JPanel {
 
     private JTable createTable(){
 
-        availableTests = model.getAvailableTests();
+        Testable[] availableTests = model.getAvailableTests();
 
         Testable[] data = new Testable[availableTests.length];
         String[] data2 = new String[availableTests.length];
@@ -115,6 +113,8 @@ public class OptionsPane extends JPanel {
 
                 ArrayList<Testable> selectedTests = new ArrayList<>();
                 ArrayList<Double> percentages = new ArrayList<>();
+
+                Testable[] availableTests = model.getAvailableTests();
                 for (int i = 0; i < selectedRows.length; i++) {
                     selectedTests.add(availableTests[selectedRows[i]]);
                     percentages.add(Double.valueOf((String) (table.getModel().getValueAt(selectedRows[i], 1))));

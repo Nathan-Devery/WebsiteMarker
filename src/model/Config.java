@@ -40,6 +40,8 @@ public class Config {
     }
 
     public void loadConfig(File file) throws IllegalOperationException{
+        if(file == null) return;
+
         clearFields();
 
         BufferedReader br = null;

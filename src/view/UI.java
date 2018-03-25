@@ -85,7 +85,6 @@ public class UI implements Observer {
 
         menuItem = new JMenuItem("Open");
         menuItem.addActionListener(e -> {
-            model.closeFiles();
             chooser.showOpenDialog(frame);
             try {
                 controller.loadFolders(chooser.getSelectedFiles());

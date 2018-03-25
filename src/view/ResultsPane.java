@@ -158,10 +158,6 @@ public class ResultsPane extends JPanel {
             data[i][0] = testResults.get(i).getTestName();    //get name
             data[i][1] = String.valueOf(testResults.get(i).getResult());   //get result
         }
-        /*
-        data[testResults.size() + 1][0] = "TOTAL";
-        if(!assignments.isEmpty()) data[testResults.size() + 1][1] = String.valueOf(assignments.get(selectedStudent).getTotalPercentage());
-        */
 
         String[] columns = new String[]{"Test", "Result"};
         return new DefaultTableModel(data, columns);
@@ -169,15 +165,18 @@ public class ResultsPane extends JPanel {
 
     private DefaultTableModel getStudentData() {
         ArrayList<Assignment> assignments = model.getAssignments();
-        String[] data = new String[assignments.size()];
+        String[][] data = new String[assignments.size()][2];
 
         for (int i = 0; i < assignments.size(); i++) {
-            data[i] = assignments.get(i).getNameID();    //get name
+            data[i][0] = assignments.get(i).getNameID();    //get name
+            data[i][1] = String.valueOf(assignments.get(i).getTotalPercentage());
         }
 
-        DefaultTableModel studentData = new DefaultTableModel();
-        studentData.addColumn("Name-ID", data);
-        return studentData;
+        String[] columns = new String[]{"Student", "Total"};
+
+        //DefaultTableModel studentData = new DefaultTableModel();
+        //studentData.addColumn("Name-ID", data);
+        return new DefaultTableModel(data, columns);
     }
 
     private String getEvidenceString(){
