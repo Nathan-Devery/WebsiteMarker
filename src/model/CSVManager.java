@@ -21,6 +21,7 @@ public class CSVManager {
     }
 
     public void loadCsv(File file) throws IllegalOperationException{
+        if(file == null) return;
         this.emptyFields();
 
         filepath = file;
@@ -29,7 +30,6 @@ public class CSVManager {
         String cvsSplitBy = ",";
 
         try {
-
             br = new BufferedReader(new FileReader(file));
             while ((line = br.readLine()) != null) {
                 csvArray.add(line.split(cvsSplitBy));

@@ -73,11 +73,15 @@ public class Config {
 
     public void createConfigFile(File path){
         try {
+            /*
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd HH_mm_ss");
             String dateFormatted = LocalDateTime.now().format(formatter);
 
-            String file = path.getAbsolutePath() + "/" + "config" +
+            String file = path + "/config" +
                     dateFormatted + ".ini";
+            */
+
+            String file = path + "/config.ini";
             PrintWriter writer = new PrintWriter(file, "UTF-8");
 
             for(int i = 0; i < selectedTestsNames.size(); i++){

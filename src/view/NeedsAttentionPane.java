@@ -22,7 +22,7 @@ public class NeedsAttentionPane extends JPanel{
         removeAll();
 
         addMalformedSection("Unmarkable", model.getUnmarkables());
-        addMalformedSection("No corresponding student in CSV for assignment", model.getUnpairables());
+        addMalformedSection("Not found in CSV", model.getUnpairables());
 
         revalidate();
         repaint();

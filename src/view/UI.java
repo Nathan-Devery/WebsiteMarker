@@ -86,11 +86,23 @@ public class UI implements Observer {
         menuItem = new JMenuItem("Open");
         menuItem.addActionListener(e -> {
             chooser.showOpenDialog(frame);
-            try {
-                controller.loadFolders(chooser.getSelectedFiles());
-            } catch (IllegalOperationException exception) {
-                displayError(this.frame, exception);
-            }
+
+            //TODO FIX THIS AHH
+            optionsPane.barSetIndeterminate(true);
+            Thread thread = new Thread(() -> {
+                try {
+                    controller.loadFolders(chooser.getSelectedFiles());
+                    if(!model.getUnmarkables().isEmpty()){
+                        displayMessage(frame, model.getUnmarkables().size() + " Unmarkable assignments added to 'needs attention pane'");
+                    }
+                } catch (IllegalOperationException k) {
+                    displayError(this.frame, k);
+                }
+            });
+            thread.run();
+            //controller.loadFolders(chooser.getSelectedFiles());
+            optionsPane.barSetIndeterminate(false);
+
         });
         menu1.add(menuItem);
 
@@ -144,6 +156,7 @@ public class UI implements Observer {
         });
         menu3.add(menuItem);
 
+        /*
         menuItem = new JMenuItem("Config File");
         menuItem.addActionListener(e -> {
             JFileChooser directoryChooser = new JFileChooser();
@@ -155,10 +168,16 @@ public class UI implements Observer {
 
         });
         menu3.add(menuItem);
+        */
+
     }
 
     public static void displayError(JFrame frame, Exception e) {
         JOptionPane.showMessageDialog(frame, e.getMessage(), "Operation Error", JOptionPane.WARNING_MESSAGE);
+    }
+
+    public static void displayMessage(JFrame frame, String message) {
+        JOptionPane.showMessageDialog(frame, message, "Warning", JOptionPane.WARNING_MESSAGE);
     }
 
     @Override

@@ -21,6 +21,7 @@ public class TestResult {
     }
 
     public String getEvidenceLog() {
+        if(evidenceLog == "") return "No evidence";
         return evidenceLog;
     }
 }

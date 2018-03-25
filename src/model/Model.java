@@ -37,7 +37,9 @@ public class Model extends java.util.Observable {
      * Parses the html, css and javascript. Invalid sections are ignored ie: invalid values for css properties.
      * @param folders
      */
-    public void loadFiles(File[] folders) {
+    public void loadFiles(File[] folders){
+        if(folders.length == 0) return;
+
         closeFiles();
         filePath = folders[0].getParentFile().getAbsolutePath() + "/";
 
@@ -117,7 +119,7 @@ public class Model extends java.util.Observable {
             }
         }
 
-        ReportGenerator.createReports(assignments.values(), this.filePath);
+        ReportGenerator.createReports(this);
 
         setChanged();
         notifyObservers();
@@ -155,6 +157,10 @@ public class Model extends java.util.Observable {
         return config;
     }
 
+    public String getFilePath(){
+        return filePath;
+    }
+
     public void loadConfig(File file) throws IllegalOperationException{
         config.loadConfig(file);
         setChanged();
@@ -188,9 +194,9 @@ public class Model extends java.util.Observable {
      */
     private String checkValid(ArrayList<Document> htmlDocs, ArrayList<CSSStyleSheet> cssDocs, ArrayList<CompilationUnitTree> javascriptDocs){
         String reason = "";
-        if(htmlDocs.isEmpty()) reason += "No html found, ";
-        if(cssDocs.isEmpty()) reason += "No css found ,";
-        if(cssDocs.size() > 1) reason += ">1 css document found";
+        if(htmlDocs.isEmpty()) reason += "No html found- ";
+        if(cssDocs.isEmpty()) reason += "No css found-";
+        if(cssDocs.size() > 1) reason += ">1 css document found-";
         //if(javascriptDocs.isEmpty()) reason += "No javascript file found ,";
         //if(javascriptDocs.size() > 1) reason += ">1 javascript file found";
         return reason;
@@ -214,6 +220,6 @@ public class Model extends java.util.Observable {
         Pattern p = Pattern.compile("[0-9]+");
         Matcher m = p.matcher(fileName);
         m.find();
-        return "\"" + m.group() + "\""; //TODO: this adds the speech marks, possibly can remove if blackboard is just cvs
+        return "\"" + m.group() + "\""; //TODO: Add to unmarkable, handle this!!!!!!!!!!!!!!!!!!!1
     }
 }

@@ -2,21 +2,44 @@ package model;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class ReportGenerator {
 
-    public static void createReports(Collection<Assignment> assignments, String parentPath){
+    public static void createReports(Model model){
+        String parentPath = model.getFilePath();
         String pathName = parentPath + createDirectoryName();
-        createDirectory(pathName);
 
-        for(Assignment assignment: assignments){
+        createDirectory(pathName);
+        try{
+            model.getConfig().createConfigFile(new File(pathName));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        String attentionReport = createAttentionReport(model.getUnmarkables(), model.getFilePath());
+        saveToFile(attentionReport, new File(pathName + "/UNMARKABLE.ini"));
+
+        for(Assignment assignment: model.getAssignments()){
             String report = generateReportString(assignment);
             File file = new File(pathName + "/" + assignment.getNameID() + "_Report.txt");
             saveToFile(report, file);
         }
+    }
+
+    private static String createAttentionReport(ArrayList<Malformed> unmarkables,
+                                                 String pathName){
+
+        String report = "";
+        report += "UNMARKABLE:\n";
+        for(Malformed unmarkable: unmarkables){
+            report += unmarkable.getAssignmentName() + ", " + unmarkable.getReason() + "\n";
+        }
+        return report;
     }
 
     private static String generateReportString(Assignment assignment){
@@ -37,7 +60,7 @@ public class ReportGenerator {
      */
     private static String formatTestString(TestResult testResult){
         String resultString = "";
-        resultString += "----------------------------------------------------------------\n";
+        resultString += "----------------------------------------------------------------\n\n";
         resultString += "TEST:" + testResult.getTestName() + "\n";
         resultString += "AWARDED:" + testResult.getResult() + "\n\n";
         resultString += "EVIDENCE:" + "\n" + testResult.getEvidenceLog() + "\n\n";
