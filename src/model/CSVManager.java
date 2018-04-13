@@ -6,7 +6,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
 
+/**
+ * Manages csv.
+ * Allows input of existing csv (output from blackboard), this containing the columns in which to append grades to.
+ * The csv must contain the pupil's details for appending.
+ */
 public class CSVManager {
 
     Model model;
@@ -35,10 +41,9 @@ public class CSVManager {
                 csvArray.add(line.split(cvsSplitBy));
             }
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            emptyFields();
+            throw new IllegalOperationException("Invalid CSV");
         } finally {
             if (br != null) {
                 try {
@@ -57,6 +62,14 @@ public class CSVManager {
         return new String[0];
     }
 
+    /***
+     * Creates CSV holding the grades of the assignments, and generate a report for what users who were not found.
+     * @param usernameCol
+     * @param studentIdCol
+     * @param gradeCol
+     * @param assignmentMap
+     * @throws IllegalOperationException
+     */
     public void createCSV(int usernameCol, int studentIdCol, int gradeCol, Map<String, Assignment> assignmentMap) throws IllegalOperationException{
         if(usernameCol == studentIdCol || usernameCol == gradeCol || studentIdCol == gradeCol)
             throw new IllegalOperationException("Chosen columns are not distinct");
@@ -80,6 +93,7 @@ public class CSVManager {
         }
         addUnpairables(assignmentMapClone);
         outputCSV();
+        outputCsvReport();
     }
 
     public ArrayList<Malformed> getUnpairables() {
@@ -108,10 +122,10 @@ public class CSVManager {
         try {
             String fileNameNoExt = filepath.getName().replaceFirst("[.][^.]+$", "");
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd HH_mm_ss");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd HH_mm");
             String dateFormatted = LocalDateTime.now().format(formatter);
 
-            String path = filepath.getParentFile().getAbsolutePath() + "/" + fileNameNoExt + "Graded_" +
+            String path = filepath.getParentFile().getAbsolutePath() + "/" + fileNameNoExt + "_Graded_" +
                     dateFormatted + ".csv";
             PrintWriter writer = new PrintWriter(path, "UTF-8");
 
@@ -124,6 +138,30 @@ public class CSVManager {
             }
             writer.close();
         }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void outputCsvReport(){
+        String fileNameNoExt = filepath.getName().replaceFirst("[.][^.]+$", "");
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd HH_mm");
+        String dateFormatted = LocalDateTime.now().format(formatter);
+
+        String path = filepath.getParentFile().getAbsolutePath() + "/" + fileNameNoExt + "_CSV_NotFoundReport_" +
+                dateFormatted + ".txt";
+        try {
+            PrintWriter writer = new PrintWriter(path, "UTF-8");
+            writer.print("No matching student found in template CSV for following assignments:\n\n");
+
+            ArrayList<Malformed> unpairables = model.getUnpairables();
+            for(Malformed unpairable: unpairables){
+                writer.println(unpairable.getAssignmentName() + "\t\t" + unpairable.getReason());
+            }
+            writer.close();
+        }catch(UnsupportedEncodingException e){
+            e.printStackTrace();
+        }catch (FileNotFoundException e){
             e.printStackTrace();
         }
     }

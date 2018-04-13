@@ -1,5 +1,8 @@
 package model.cssTests;
 
+/**
+ * css properties that may be searched with.
+ */
 public enum Property {
     FONTFAMILY("font-family"),
     FONTSIZE("font-size"),

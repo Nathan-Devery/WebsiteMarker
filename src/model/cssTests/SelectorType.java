@@ -1,5 +1,8 @@
 package model.cssTests;
 
+/**
+ * Selectors
+ */
 public enum SelectorType {
     ID("#", "id"),
     CLASS(".", "class");

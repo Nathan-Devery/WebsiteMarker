@@ -8,6 +8,10 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Pane that displays assignments that could not be marked for various reasons.
+ * Displays assignments that could not be matched to a pupil in an imported csv (when attempting to export a csv).
+ */
 public class NeedsAttentionPane extends JPanel{
 
     Model model;

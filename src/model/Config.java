@@ -56,10 +56,9 @@ public class Config {
                 selectedTestPercentages.add(Double.valueOf(lineParts[1]));
             }
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            clearFields();
+           throw new IllegalOperationException("Invalid config");
         } finally {
             if (br != null) {
                 try {

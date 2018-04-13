@@ -11,13 +11,14 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Nathan on 23/11/2017.
+ * Displays the results of the tests.
  */
 public class ResultsPane extends JPanel {
 
@@ -60,12 +61,17 @@ public class ResultsPane extends JPanel {
 
         JScrollPane scrollPane = new JScrollPane();
         evidencePane = createEvidencePane();
+
+        DefaultCaret caret = (DefaultCaret) evidencePane.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+
         evidencePane.setText(getEvidenceString());
         scrollPane.setViewportView(evidencePane);
         scrollPane.setPreferredSize(new Dimension(UI.WIDTH * 2 / 3, UI.HEIGHT * 1/2));
         this.add(scrollPane);
 
         //this.add(this.createOverallGradePane());
+
 
         revalidate();
         repaint();
@@ -185,7 +191,7 @@ public class ResultsPane extends JPanel {
         TestResult result = model.getAssignments().get(selectedStudent).getResults().get(selectedTestResult);
 
         String evidence = "";
-        evidence += result.getTestName() + "\n";
+        evidence += result.getTestName() + "\n\n";
         evidence += result.getEvidenceLog();
         return evidence;
     }

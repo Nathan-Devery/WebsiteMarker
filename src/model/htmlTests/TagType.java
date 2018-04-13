@@ -5,17 +5,16 @@ package model.htmlTests;
  */
 public enum  TagType {
 
-    PARAGRAPH("p"),
     LINK("a[href]"),
     IMAGE("img"),
     UNORDEREDLIST("ul"),
     ORDEREDLIST("ol"),
-    IMAGEALT("img[alt]"),   //TODO remove and create an image search class that checks whether file exists, all will need to be in same directory
     YOUTUBE("iframe[src*=youtube]"),
+    GOOGLEMAP("iframe[src*=www.google.com/maps/embed]"),
     FORM("form"),
     TEXTINPUT("input[type=text]"),
-    RADIOBUTTON("input[type=radio]"),
-    SUBMITBUTTON("input[type=submit"),
+    SUBMITBUTTON("input[type=submit]"),
+    BUTTON("button"),
     CLASS("[class]"),
     ID("[id]"),
     SPAN("span"),

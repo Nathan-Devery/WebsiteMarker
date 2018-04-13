@@ -8,6 +8,10 @@ import org.w3c.dom.css.CSSStyleSheet;
 
 import java.util.ArrayList;
 
+/**
+ * Checks with variable present in javascript.
+ * Full marks: Variable found in javascript. (Must use the Var keyword).
+ */
 public class VariableTest extends Testable {
 
     int evidenceCount = 0;
@@ -17,7 +21,13 @@ public class VariableTest extends Testable {
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+    public String getDescription() {
+        return  "Checks with variable present in javascript.\n" +
+                "Full marks: Variable found in javascript. (Must use the Var keyword)";
+    }
+
+    @Override
+    public TestResult runTest(ArrayList<Document> documents, ArrayList<Document> xmlDocs, CSSStyleSheet sheet, String cssDocString, CompilationUnitTree tree, double percentage) {
 
         //TODO utility method to check link
 

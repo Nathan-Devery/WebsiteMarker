@@ -12,6 +12,11 @@ import org.w3c.dom.css.*;
 
 import java.util.ArrayList;
 
+
+/**
+ * Checks whether property present
+ * "Full marks if present";
+ */
 public class PropertyTester extends Testable {
 
     Property property;
@@ -22,7 +27,13 @@ public class PropertyTester extends Testable {
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+    public String getDescription() {
+        return  "Checks whether property present\n" +
+                "Full marks if present";
+    }
+
+    @Override
+    public TestResult runTest(ArrayList<Document> documents, ArrayList<Document> xmlDocs, CSSStyleSheet sheet, String cssDocString, CompilationUnitTree tree, double percentage) {
         double result = 0;
         String report = "";
 

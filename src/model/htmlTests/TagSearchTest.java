@@ -11,7 +11,10 @@ import org.w3c.dom.css.CSSStyleSheet;
 import java.util.ArrayList;
 
 /**
- * Created by Nathan on 22/11/2017.
+ * Checks whether the tagType tag is found in the html.
+ * Checks if the number required is present.
+ * Half marks: At least one found
+ * Half marks: Number found equals number required.
  */
 public class TagSearchTest extends Testable {
 
@@ -25,22 +28,41 @@ public class TagSearchTest extends Testable {
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+    public String getDescription() {
+        return  "Checks whether the" + tagType.name() + " tag is found in the html." +
+                " * Checks if the number required is present." +
+                " * Half marks: At least one found" +
+                " * Half marks: Number found equals number required.";
+    }
+
+    @Override
+    public TestResult runTest(ArrayList<Document> documents, ArrayList<Document> xmlDocs, CSSStyleSheet sheet, String cssDocString, CompilationUnitTree tree, double percentage) {
         String report = "";
-        double result = 0;
         int elementCount = 0;
-        for(Document document: documents){
+        for (Document document : documents) {
             Elements elements = document.select(tagType.searchString);
-            if(!elements.isEmpty()){
+            if (!elements.isEmpty()) {
+                report += "\n-" + document.location() + "-\n\n";
                 elementCount += elements.size();
-                for(Element element: elements){
+                for (Element element : elements) {
                     report += element;
                     report += "\n";
                 }
+
             }
         }
 
-        if(elementCount >= numberRequired) result = percentage;
+        double result = 0;
+        if(numberRequired <= elementCount){
+            report = "Element(s) present.\n\n" + report;
+            result = percentage;
+        }else if(numberRequired/2 > 0 && numberRequired/2 <= elementCount){
+            report = "Elements not present in number required.\n\n" + report;
+            result = percentage/2;
+        }else{
+            report = "Element(s) not present.\n\n" + report;
+        }
+
         return new TestResult(this.toString(), result, report);
     }
 }

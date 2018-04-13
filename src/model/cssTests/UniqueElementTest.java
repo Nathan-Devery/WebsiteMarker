@@ -13,6 +13,11 @@ import org.w3c.dom.css.CSSStyleSheet;
 
 import java.util.ArrayList;
 
+/**
+ * Checks if element exists in html.
+ * Checks if css contains a reference to that html element. This css rule must be non-empty.
+ * Full marks: present and referenced.
+ */
 public class UniqueElementTest extends Testable {
 
     UniqueElement divSpan;    //Div or span depending on enum argument
@@ -23,26 +28,53 @@ public class UniqueElementTest extends Testable {
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+    public String getDescription() {
+        return  "Checks if element exists in html.\n" +
+                "Checks if css contains a reference to that html element. This css rule must be non-empty.\n" +
+                "Full marks: present and referenced.";
+    }
+
+    @Override
+    public TestResult runTest(ArrayList<Document> documents, ArrayList<Document> xmlDocs, CSSStyleSheet sheet, String cssDocString, CompilationUnitTree tree, double percentage) {
         double result = 0;
         String report = "";
 
         for (Document document : documents) {
+            report += "\n-" + document.location() + "-\n\n";
             Elements elements = document.select(divSpan.htmlAttribute);
             for (Element element : elements) {
                 CSSStyleRule rule;
                 if (element.attr("class").length() > 0) {
                     rule = searchCss("." + element.attr("class"), sheet);
-                    if(rule != null && rule.getStyle().getLength() != 0) result = percentage;   //Check that the css rule isn't empty
+                    if(rule != null && rule.getStyle().getLength() != 0){
+                        report += "Element:\n" + element + "\n\n";
+                        report += "Corresponding CSS:\n" + rule + "\n\n";
+                        result = percentage;
+                    }
                 } else if (element.attr("id").length() > 0) {
                     rule = searchCss("#" + element.attr("id"), sheet);
-                    if(rule != null && rule.getStyle().getLength() != 0) result = percentage;
+                    if(rule != null && rule.getStyle().getLength() != 0){
+                        report += "Element:\n" + element + "\n\n";
+                        report += "Corresponding CSS\n" + rule + "\n\n";
+                        result = percentage;
+                    }
                 } else {
                     rule = searchCss(divSpan.htmlAttribute, sheet);
-                    if(rule != null && rule.getStyle().getLength() != 0) result = percentage;
+                    if(rule != null && rule.getStyle().getLength() != 0){
+                        report += "Element:\n" + element + "\n\n";
+                        report += "Corresponding CSS\n" + rule + "\n\n";
+                        result = percentage;
+                    }
                 }
             }
         }
+
+        if(result > 0){
+            report = "Present in html.\nCorresponding css present.\n\n" + report;
+        }else{
+            report = "Not present in html.\nCorresponding css not present.\n\n" + report;
+        }
+
         return new TestResult(toString(), result, report);
     }
 
@@ -65,4 +97,5 @@ public class UniqueElementTest extends Testable {
         }
         return null;
     }
+
 }

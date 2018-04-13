@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Nathan on 22/11/2017.
+ * The controller in a MVC pattern.
+ * The UI will only interact with the model through this class.
  */
 public class Controller {
 

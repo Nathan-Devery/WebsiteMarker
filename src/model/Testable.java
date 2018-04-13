@@ -7,7 +7,7 @@ import org.w3c.dom.css.CSSStyleSheet;
 import java.util.ArrayList;
 
 /**
- * Created by Nathan on 22/11/2017.
+ * The interface implemented by all condition tests.
  */
 public abstract class Testable {
 
@@ -22,6 +22,8 @@ public abstract class Testable {
         return name;
     }
 
-    public abstract TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage);
+    public abstract String getDescription();
+
+    public abstract TestResult runTest(ArrayList<Document> documents, ArrayList<Document> xmlDocuments, CSSStyleSheet sheet, String cssDocString, CompilationUnitTree tree, double percentage);
 
 }

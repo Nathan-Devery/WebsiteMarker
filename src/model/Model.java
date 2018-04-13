@@ -1,6 +1,7 @@
 package model;
 
 
+import jdk.nashorn.api.scripting.NashornException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -19,7 +20,7 @@ import jdk.nashorn.api.tree.*;
 
 
 /**
- * Created by Nathan on 22/11/2017.
+ * Acts as the model in an MVC pattern. Also works as a facade for utility classes.
  */
 public class Model extends java.util.Observable {
 
@@ -45,19 +46,26 @@ public class Model extends java.util.Observable {
 
         for (int i = 0; i < folders.length; i++) {
             ArrayList<Document> htmlDocs = new ArrayList<>();
+            ArrayList<Document> xmlHtmlDocs = new ArrayList<>();
             ArrayList<CSSStyleSheet> cssDocs = new ArrayList<>();
+            String cssDocString = "";
             ArrayList<CompilationUnitTree> javascriptDocs = new ArrayList();
 
             for (final File file : folders[i].listFiles()) {
                 String fileName = file.getName().toLowerCase();
                 try {
                     if (fileName.endsWith(".html")) {
+                        //both the html parser and xml parser must be used; so that, that a non aut-complete version is stored.
+                        String html = fileToString(file);
+                        xmlHtmlDocs.add(Jsoup.parse(html, file.getName(), org.jsoup.parser.Parser.xmlParser()));
                         htmlDocs.add(Jsoup.parse(file, "UTF-8", file.getName()));
                     } else if (fileName.endsWith(".css")) {
                         cssDocs.add(parseCss(file));
+                        cssDocString = fileToString(file);
                     } else if (fileName.endsWith(".js")) {
                         Parser parser = Parser.create();
-                        CompilationUnitTree tree = parser.parse(file,null);
+                        CompilationUnitTree tree;
+                        tree = parser.parse(file, null);
                         javascriptDocs.add(tree);
                     }
                 } catch (Exception e) {
@@ -67,15 +75,14 @@ public class Model extends java.util.Observable {
                 //TODO add some error/log info if there css/html/javascript is null;
             }
 
+            String id = getID(folders[i].getName());
+
             String unmarkableString = checkValid(htmlDocs, cssDocs, javascriptDocs);
             if(unmarkableString.equals("")){
-                //Only one css doc and js file for each assignment
                 if(!javascriptDocs.isEmpty()) {
-                    assignments.put(this.getID(folders[i].getName()), new Assignment(folders[i].getName(), htmlDocs, cssDocs.get(0), javascriptDocs.get(0)));
+                    assignments.put(id, new Assignment(folders[i].getName(), htmlDocs, xmlHtmlDocs, cssDocs.get(0), cssDocString, javascriptDocs.get(0)));
                 }else{
-                    Parser parser = Parser.create();
-                    CompilationUnitTree nullTree = parser.parse("emptyFile", "" ,null);
-                    assignments.put(this.getID(folders[i].getName()), new Assignment(folders[i].getName(), htmlDocs, cssDocs.get(0), nullTree));
+                    assignments.put(id, new Assignment(folders[i].getName(), htmlDocs, xmlHtmlDocs, cssDocs.get(0), cssDocString, null));
                 }
             }else{
                 unmarkables.add(new Malformed(folders[i].getName(), unmarkableString));
@@ -115,7 +122,7 @@ public class Model extends java.util.Observable {
         currentTests = tests;
         for(Assignment assignment: assignments.values()){
             for(int i = 0; i < tests.size(); i++){
-                assignment.addResults(currentTests.get(i).runTest(assignment.getHtmlDocs(), assignment.getCssDocs(), assignment.getJavaScriptDocs(), percentages.get(i)));
+                assignment.addResults(currentTests.get(i).runTest(assignment.getHtmlDocs(), assignment.getXmlDocs(),assignment.getCssDocs(), assignment.getCssDocString(), assignment.getJavaScriptDocs(), percentages.get(i)));
             }
         }
 
@@ -220,6 +227,44 @@ public class Model extends java.util.Observable {
         Pattern p = Pattern.compile("[0-9]+");
         Matcher m = p.matcher(fileName);
         m.find();
-        return "\"" + m.group() + "\""; //TODO: Add to unmarkable, handle this!!!!!!!!!!!!!!!!!!!1
+        try{
+            String id = "\"" + m.group() + "\"";
+            return id;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        //return "\"" + m.group() + "\""; //TODO: Add to unmarkable, handle this!!!!!!!!!!!!!!!!!!!1
+        return "";
     }
+
+    private String fileToString(File file){
+        String result = "";
+
+        // This will reference one line at a time
+        String line = null;
+
+        try {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader = new FileReader(file);
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader =
+                    new BufferedReader(fileReader);
+
+            while((line = bufferedReader.readLine()) != null) {
+                result += line.toLowerCase() + "\n";
+            }
+
+            // Always close files.
+            bufferedReader.close();
+        }
+        catch(FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        catch(IOException ex) {
+            ex.printStackTrace();
+        }
+        return result;
+    }
+
 }

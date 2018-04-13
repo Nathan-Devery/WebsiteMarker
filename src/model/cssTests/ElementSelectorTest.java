@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 /**
  * Tests there is the use of an element selector. Tests the html element and css rule are not empty.
+ * Full marks: Present
  */
 public class ElementSelectorTest extends Testable {
 
@@ -25,7 +26,13 @@ public class ElementSelectorTest extends Testable {
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+    public String getDescription() {
+        return  "Tests there is the use of an element selector. Tests the html element and css rule are not empty.\n" +
+                " * Full marks: Present";
+    }
+
+    @Override
+    public TestResult runTest(ArrayList<Document> documents, ArrayList<Document> xmlDocs, CSSStyleSheet sheet, String cssDocString, CompilationUnitTree tree, double percentage) {
         double result = 0;
         String report = "";
 

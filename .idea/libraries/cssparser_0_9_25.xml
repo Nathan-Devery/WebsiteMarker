@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="cssparser-0.9.25">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../Javalibraries/cssparser-0.9.25.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Javalibraries/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Javalibraries/jsoup-1.11.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Javalibraries/junit-4.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Javalibraries/sac.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

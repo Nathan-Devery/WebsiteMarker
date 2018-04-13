@@ -11,6 +11,9 @@ import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * Encompasses all the functionality of the csv generator popup.
+ */
 public class CSVJframe extends JFrame {
 
     private static int WIDTH = 462;
@@ -107,7 +110,7 @@ public class CSVJframe extends JFrame {
         button.addActionListener(k -> {
             try {
                 controller.createCSV(userNameCol.getSelectedIndex(), studentIdCol.getSelectedIndex(), gradeCol.getSelectedIndex());
-                JOptionPane.showMessageDialog(this, "CSV created. \n"
+                JOptionPane.showMessageDialog(this, "CSV created, CSV NotFound report created. \n"
                                 + model.getUnpairables().size() + " Assignments added to 'Requires Attention' tab.",
                         "CVS created",
                         JOptionPane.INFORMATION_MESSAGE);

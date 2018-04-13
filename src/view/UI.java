@@ -10,7 +10,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Created by Nathan on 22/11/2017.
+ * A composite class.
+ * Manages the whole UI. Acts as the entry point.
+ * Implements observer, updates the internal panes upon an update call from the model (observable).
  */
 public class UI implements Observer {
 
@@ -20,8 +22,8 @@ public class UI implements Observer {
     JTabbedPane tabbedPane = new JTabbedPane();
 
     //Swing related
-    public static final int WIDTH = 700;
-    public static final int HEIGHT = 525;
+    public static final int WIDTH = 900;    //Golden ratio, yum.
+    public static final int HEIGHT = 560;
     JFrame frame = new JFrame();
 
     //Panes & frames
@@ -86,22 +88,16 @@ public class UI implements Observer {
         menuItem = new JMenuItem("Open");
         menuItem.addActionListener(e -> {
             chooser.showOpenDialog(frame);
-
-            //TODO FIX THIS AHH
-            optionsPane.barSetIndeterminate(true);
-            Thread thread = new Thread(() -> {
                 try {
                     controller.loadFolders(chooser.getSelectedFiles());
                     if(!model.getUnmarkables().isEmpty()){
-                        displayMessage(frame, model.getUnmarkables().size() + " Unmarkable assignments added to 'needs attention pane'");
+                        displayMessage(frame, "Loading complete\n" +
+                                model.getUnmarkables().size() + " Unmarkable assignments added to 'needs attention pane'");
                     }
                 } catch (IllegalOperationException k) {
                     displayError(this.frame, k);
                 }
-            });
-            thread.run();
             //controller.loadFolders(chooser.getSelectedFiles());
-            optionsPane.barSetIndeterminate(false);
 
         });
         menu1.add(menuItem);
@@ -127,6 +123,12 @@ public class UI implements Observer {
         });
         menu1.add(menuItem);
 
+        menuItem = new JMenuItem("Test Descriptions");
+        menuItem.addActionListener(e -> {
+            new TestDetailFrame(model);
+        });
+        menu2.add(menuItem);
+
         menuItem = new JMenuItem("About");
         menuItem.addActionListener(e -> {
             JOptionPane.showMessageDialog(frame,
@@ -137,6 +139,7 @@ public class UI implements Observer {
         });
         menu2.add(menuItem);
 
+        /*
         menuItem = new JMenuItem("Support");
         menuItem.addActionListener(e -> {
             JOptionPane.showMessageDialog(frame,
@@ -145,6 +148,7 @@ public class UI implements Observer {
                     JOptionPane.INFORMATION_MESSAGE);
         });
         menu2.add(menuItem);
+        */
 
         menuItem = new JMenuItem("CSV");
         menuItem.addActionListener(e -> {
@@ -177,7 +181,7 @@ public class UI implements Observer {
     }
 
     public static void displayMessage(JFrame frame, String message) {
-        JOptionPane.showMessageDialog(frame, message, "Warning", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(frame, message, "Information", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override

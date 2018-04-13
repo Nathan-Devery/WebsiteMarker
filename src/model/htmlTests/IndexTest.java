@@ -10,7 +10,8 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * Created by Nathan on 25/11/2017.
+ * Checks whether html files contain a file name 'index.html'
+ * Full marks: index.html present
  */
 public class IndexTest extends Testable {
 
@@ -19,7 +20,13 @@ public class IndexTest extends Testable {
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+    public String getDescription() {
+        return  "Checks whether html files contain a file name 'index.html'\n" +
+                "Full marks: index.html present";
+    }
+
+    @Override
+    public TestResult runTest(ArrayList<Document> documents, ArrayList<Document> xmlDocs, CSSStyleSheet sheet, String cssDocString, CompilationUnitTree tree, double percentage) {
         double result = 0;
         String report = "";
 
@@ -36,4 +43,7 @@ public class IndexTest extends Testable {
 
         return new TestResult(toString(), result, report);
     }
+
+
+
 }

@@ -9,6 +9,11 @@ import org.jsoup.select.Elements;
 import org.w3c.dom.css.*;
 import java.util.ArrayList;
 
+/**
+ * Checks the html file contains the groupType enum.
+ * Checks the groupType exists in the css (direct tag reference, id or class).
+ * Full marks: Selector exists in html and css.
+ */
 public class SelectorTest extends Testable {
 
     SelectorType groupType;
@@ -19,7 +24,14 @@ public class SelectorTest extends Testable {
     }
 
     @Override
-    public TestResult runTest(ArrayList<Document> documents, CSSStyleSheet sheet, CompilationUnitTree tree, double percentage) {
+    public String getDescription() {
+        return  "Checks the html file contains " + groupType.name() + ".\n" +
+                "Checks if it exists in the css (direct tag reference, id or class)." +
+                "\nFull marks: Selector exists in html and css. ";
+    }
+
+    @Override
+    public TestResult runTest(ArrayList<Document> documents, ArrayList<Document> xmlDocs, CSSStyleSheet sheet, String cssDocString, CompilationUnitTree tree, double percentage) {
         double result = 0;
         String report = "";
 
@@ -36,13 +48,23 @@ public class SelectorTest extends Testable {
                     //Check there is a groupType.html attribute paired with the attribute value
                     for (Document document : documents) {
                         Elements affectedElements = document.select("[" + groupType.htmlAttribute + "=" + htmlAttributeValue + "]");
+                        if(!affectedElements.isEmpty()) report += "\n-" + document.location() + "-\n\n";
                         for(Element element: affectedElements){
-                            if(!(element.childNodes().isEmpty())) result = percentage;    //Check if corresponding html element actually holds something for the css to apply to
+                            report += "CSS:\n" + rule.getCssText() + "\n\n";
+                            report += "Corresponding HTML element:\n" +element + "\n";
+                            result = percentage;
                         }
                     }
                 }
             }
         }
+
+        if(result == percentage){
+            report = "Present in css.\nCorresponding element(s) present in html.\n\n" + report;
+        }else{
+            report = "Not present in css.\nCorresponding element(s) not present in html.\n\n" + report;
+        }
+
         return new TestResult(toString(), result, report);
     }
 }

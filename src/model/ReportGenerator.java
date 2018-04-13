@@ -8,11 +8,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/***
+ * Creates a report folder filled with the .txt report for each student.
+ * This report details their grades.
+ */
 public class ReportGenerator {
 
     public static void createReports(Model model){
+        String date = getdate();
         String parentPath = model.getFilePath();
-        String pathName = parentPath + createDirectoryName();
+        String pathName = parentPath + createDirectoryName(date);
 
         createDirectory(pathName);
         try{
@@ -26,7 +31,7 @@ public class ReportGenerator {
 
         for(Assignment assignment: model.getAssignments()){
             String report = generateReportString(assignment);
-            File file = new File(pathName + "/" + assignment.getNameID() + "_Report.txt");
+            File file = new File(pathName + "/" + assignment.getNameID() + "_Report_" + date + ".txt");
             saveToFile(report, file);
         }
     }
@@ -63,15 +68,13 @@ public class ReportGenerator {
         resultString += "----------------------------------------------------------------\n\n";
         resultString += "TEST:" + testResult.getTestName() + "\n";
         resultString += "AWARDED:" + testResult.getResult() + "\n\n";
-        resultString += "EVIDENCE:" + "\n" + testResult.getEvidenceLog() + "\n\n";
+        resultString += "EVIDENCE:" + "\n\n" + testResult.getEvidenceLog() + "\n\n";
 
         return resultString;
     }
 
-    private static String createDirectoryName(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd HH_mm_s");
-        String dateFormatted = LocalDateTime.now().format(formatter);
-        String pathName = "REPORT_" + dateFormatted;
+    private static String createDirectoryName(String date){
+        String pathName = "REPORT_" + date;
         return pathName;
     }
 
@@ -99,5 +102,9 @@ public class ReportGenerator {
         }
     }
 
+    private static String getdate(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd HH_mm_s");
+        return LocalDateTime.now().format(formatter);
+    }
 
 }

@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Data structure which encompasses the results of a single test.
+ */
 public class TestResult {
 
     private String testName;

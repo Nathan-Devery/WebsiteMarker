@@ -13,14 +13,14 @@ import java.util.*;
 import java.util.List;
 
 /**
- * Created by Nathan on 23/11/2017.
+ * Displays the conditional tests that may be selected.
+ * Interactions fowarded to the controller.
  */
 public class OptionsPane extends JPanel {
 
     Model model;
     Controller controller;
     JTable table;
-    JProgressBar bar = new JProgressBar();
     JFrame frame;
 
     public OptionsPane(Model model, Controller controller, JFrame frame){
@@ -39,8 +39,6 @@ public class OptionsPane extends JPanel {
         drawList();
 
         drawButton();
-
-        this.add(bar);
 
         applyConfig(this.table, model.getAvailableTests());
 
@@ -112,7 +110,6 @@ public class OptionsPane extends JPanel {
     private void drawButton(){
         JButton button = new JButton("Test");
         button.addActionListener(k -> {
-            barSetIndeterminate(true);
             try {
                 int[] selectedRows = table.getSelectedRows();
 
@@ -125,19 +122,15 @@ public class OptionsPane extends JPanel {
                     percentages.add(Double.valueOf((String) (table.getModel().getValueAt(selectedRows[i], 1))));
                 }
                 controller.runTests(selectedTests, percentages);  //TODO fix to MVC paradigm?
+                UI.displayMessage(frame, "Tests Complete");
             }catch(IllegalOperationException exception){
                 UI.displayError(frame, exception);
             }catch (Exception e){
                 e.printStackTrace();
             }
-            barSetIndeterminate(false);
         });
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(button);
-    }
-
-    public void barSetIndeterminate(boolean newValue){
-        bar.setIndeterminate(newValue);
     }
 
 }
