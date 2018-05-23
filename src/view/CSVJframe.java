@@ -47,6 +47,7 @@ public class CSVJframe extends JFrame {
         //frame.setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ImageIcon img = new ImageIcon("src/assets/tick.png");
+        //ImageIcon img = new ImageIcon(getClass().getResource("src/assets/tick.png"));
         setIconImage(img.getImage());
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-WIDTH/2, dim.height/2-HEIGHT/2);

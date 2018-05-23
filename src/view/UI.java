@@ -54,10 +54,11 @@ public class UI implements Observer {
     }
 
     private void initializeFrame() {
-        frame = new JFrame("INFO101: Website Marker");
+        frame = new JFrame("Website Marker 1.2 - INFO101");
         frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        ImageIcon img = new ImageIcon("src/assets/tick.png");
+        //ImageIcon img = new ImageIcon("src/assets/tick.png");
+        ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("assets/tick.png"));
         frame.setIconImage(img.getImage());
 
         //Position in middle
@@ -132,10 +133,11 @@ public class UI implements Observer {
         menuItem = new JMenuItem("About");
         menuItem.addActionListener(e -> {
             JOptionPane.showMessageDialog(frame,
-                    "Build 1.1\nAuthor: Nathan Devery",
+                    "Build 1.2\nAuthor: Nathan Devery",
                     "About",
                     JOptionPane.INFORMATION_MESSAGE,
-                    new ImageIcon("src/assets/victoriaLogo.png"));
+                    //new ImageIcon("src/assets/victoriaLogo.png"));
+                    new ImageIcon(getClass().getClassLoader().getResource("assets/victoriaLogo.png")));
         });
         menu2.add(menuItem);
 

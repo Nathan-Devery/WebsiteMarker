@@ -32,8 +32,9 @@ public class CSVManager {
 
         filepath = file;
         BufferedReader br = null;
-        String line = "";
-        String cvsSplitBy = ",";
+        String line;
+        //String cvsSplitBy = ",";
+        String cvsSplitBy = "\t";
 
         try {
             br = new BufferedReader(new FileReader(file));

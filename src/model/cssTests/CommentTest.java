@@ -27,8 +27,8 @@ public class CommentTest extends Testable {
     @Override
     public String getDescription() {
         return  "Checks whether comments found in all html and css files.\n" +
-                "Half mark: At least one html and css present\n" +
-                "Half mark: All html and css pages have html and css comments (if css.count > 1 and html.count > 1)";
+                "Half marks: At least one html and css present\n" +
+                "Half marks: All html and css pages have html and css comments (if css.count > 1 and html.count > 1)";
     }
 
     @Override
