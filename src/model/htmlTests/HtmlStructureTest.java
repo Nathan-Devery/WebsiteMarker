@@ -16,7 +16,8 @@ import static junit.TestUtility.getXMLDocument;
 
 /**
  * Checks html for presence of !doctype, html, head, body tags.
- * Correct order is not required, only opening tags required.
+ * Requires that html encapsulates head and body tags.
+ * Non-closed tags are accepted, provided the opening tag is in the correct order.
  * Half marks: At least half of required html files contain correct structure.
  * Half marks: All html files contain correct structure.
  */
@@ -29,21 +30,23 @@ public class HtmlStructureTest extends Testable {
     @Override
     public String getDescription() {
         return  "Checks html for presence of !doctype, html, head, body tags.\n" +
+                "Requires that html encapsulates head and body tags.\n" +
+                "Non-closed tags are accepted, provided the opening tag is in the correct order.\n" +
                 "Half marks: At least half of required html files contain correct structure.\n" +
                 "Half marks: All html files contain correct structure.";
     }
 
     @Override
     public TestResult runTest(ArrayList<Document> documents, ArrayList<Document> xmlDocs, CSSStyleSheet sheet, String cssDocString, CompilationUnitTree tree, double percentage) {
-        //TODO allow this to work with capitalized elements, maybe make everything lowercase?
         double result = 0;
         String report = "";
 
         int correct = 0;
 
         for (Document document : xmlDocs) { //'xmlDocs' is used as the html structure is automatically appended to normal 'documents'
-            if (checkDoctype(document) && !document.select("html").isEmpty()
-                    && !document.select("head").isEmpty() && !document.select("body").isEmpty()) {
+            if(checkDoctype(document) && !document.select("html").isEmpty()
+                    && !document.select("html").select("head").isEmpty()
+                    && !document.select("html").select("body").isEmpty()){
                 report += "Correct structure:" + document.location() + "\n";
                 correct++;
             }else{

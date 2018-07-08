@@ -13,8 +13,7 @@ import java.util.ArrayList;
 
 /**
  * Checks if table tag present, tr present, th present, td present, nested inside the table tag.
- * Half marks: Table found with tr and td tags
- * Half marks: Table found with th and tr tags
+ * Full Marks: Table found, contains at least one tr tag with a td tag.
  */
 public class TableTest extends Testable {
 
@@ -25,10 +24,43 @@ public class TableTest extends Testable {
     @Override
     public String getDescription() {
         return  "Checks if table tag present, tr present, th present, td present, nested inside the table tag.\n" +
-                "Half marks: Table found with tr and td tags\n" +
-                "Half marks: Table found with th and tr tags";
+                "Full Marks: Table found, contains at least one tr tag with a td tag. ";
     }
 
+    @Override
+    public TestResult runTest(ArrayList<Document> documents, ArrayList<Document> xmlDocs, CSSStyleSheet sheet, String cssDocString, CompilationUnitTree tree, double percentage) {
+        String report = "";
+        double result = 0;
+
+        boolean foundTd = false;
+        for(Document document: xmlDocs){
+            for(Element table: document.select("table")){
+                report += "\n\n-" + document.location() + "-\n\n";
+                report += table;
+                Elements tr = table.select("tr");
+                for(Element row: tr){
+                    Elements td = row.select("td");
+                    if(!td.isEmpty()){
+                        foundTd = true;
+                    }
+                }
+            }
+        }
+        String reportStart = "";
+
+        if(foundTd){
+            reportStart += "<td>,<tr> tags present.\n";
+            result = percentage;
+        }else{
+            reportStart += "<td> tags with <tr> not present.\n";
+        }
+
+        report = reportStart + "\n" + report;
+
+        return new TestResult(toString(), result, report);
+    }
+
+    /*
     @Override
     public TestResult runTest(ArrayList<Document> documents, ArrayList<Document> xmlDocs, CSSStyleSheet sheet, String cssDocString, CompilationUnitTree tree, double percentage) {
         String report = "";
@@ -75,5 +107,6 @@ public class TableTest extends Testable {
         if(result > percentage) result = percentage;
         return new TestResult(toString(), result, report);
     }
+    */
 
 }

@@ -3,6 +3,7 @@ package junit;
 import com.steadystate.css.parser.CSSOMParser;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.parser.Parser;
 import org.w3c.css.sac.InputSource;
 import org.w3c.dom.css.CSSStyleSheet;
 
@@ -30,7 +31,7 @@ public class TestUtility {
     public static ArrayList<Document> getXMLDocument(String fileName){   //Duplicated method, create a utility class?
         File file = new File("src/conditionTestFiles/" + fileName + ".html");
         try {
-            Document doc = Jsoup.parse(fileToString(file), file.getName(), org.jsoup.parser.Parser.xmlParser());
+            Document doc = Jsoup.parse(fileToString(file), file.getName(), Parser.xmlParser());
             ArrayList toReturn = new ArrayList();
             toReturn.add(doc);
             return toReturn;

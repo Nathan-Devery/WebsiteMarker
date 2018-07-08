@@ -77,6 +77,24 @@ public class XmlDocTests {
     }
 
     @Test
+    public void structureTest_BodyOutsideHtml_Return0() {
+        HtmlStructureTest structureTest = new HtmlStructureTest();
+        assertEquals(0, structureTest.runTest(null, getXMLDocument("structure9"),null, null, null, 1).getResult(), 0);
+    }
+
+    @Test
+    public void structureTest_HeadOutsideHtml_Return0() {
+        HtmlStructureTest structureTest = new HtmlStructureTest();
+        assertEquals(0, structureTest.runTest(null, getXMLDocument("structure10"),null, null, null, 1).getResult(), 0);
+    }
+
+    @Test
+    public void structureTest_NoClosingCorrectOrder_Return0() {
+        HtmlStructureTest structureTest = new HtmlStructureTest();
+        assertEquals(1, structureTest.runTest(null, getXMLDocument("structure11"),null, null, null, 1).getResult(), 0);
+    }
+
+    @Test
     public void tableTest_allWorking_returnFull(){
         TableTest tableTest = new TableTest();
         ArrayList<Document> documents = getXMLDocument("table1");
@@ -108,7 +126,7 @@ public class XmlDocTests {
         ArrayList<Document> documents = getXMLDocument("table3");
         documents.add(getDocument("table2").get(0));
 
-        assertEquals(0.5, tableTest.runTest(null, documents, null, null, null, 1).getResult(),0);
+        assertEquals(1, tableTest.runTest(null, documents, null, null, null, 1).getResult(),0);
     }
 
     @Test
@@ -123,10 +141,10 @@ public class XmlDocTests {
     @Test
     public void tableTest_allWorkingNoTdHt_returnHalf(){
         TableTest tableTest = new TableTest();
-        ArrayList<Document> documents = getXMLDocument("table5");
+        ArrayList<Document> documents = getXMLDocument("table2");
         documents.add(getDocument("table2").get(0));
 
-        assertEquals(10, tableTest.runTest(null, documents, null, null, null, 20).getResult(),0);
+        assertEquals(0, tableTest.runTest(null, documents, null, null, null, 20).getResult(),0);
     }
 
     @Test
