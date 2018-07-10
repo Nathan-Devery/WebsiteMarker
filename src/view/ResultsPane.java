@@ -14,7 +14,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.lang.reflect.Array;
+import java.security.cert.CollectionCertStoreParameters;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -140,15 +143,6 @@ public class ResultsPane extends JPanel {
         return pane;
     }
 
-    private JTextPane createOverallGradePane(){
-        JTextPane pane = new JTextPane();
-        pane.setEditable(false);
-        pane.setText("grade: 0");
-
-        //gradeLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-        return pane;
-    }
-
     private DefaultTableModel getResultData() {
         ArrayList<Assignment> assignments = model.getAssignments();
         ArrayList<TestResult> testResults = new ArrayList<>();
@@ -171,9 +165,11 @@ public class ResultsPane extends JPanel {
 
     private DefaultTableModel getStudentData() {
         ArrayList<Assignment> assignments = model.getAssignments();
+
         String[][] data = new String[assignments.size()][2];
 
         for (int i = 0; i < assignments.size(); i++) {
+            //System.out.println(assignments.get(i).getNameID());
             data[i][0] = assignments.get(i).getNameID();    //get name
             data[i][1] = String.valueOf(assignments.get(i).getTotalPercentage());
         }

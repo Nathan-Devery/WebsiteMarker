@@ -91,9 +91,10 @@ public class UI implements Observer {
             chooser.showOpenDialog(frame);
                 try {
                     controller.loadFolders(chooser.getSelectedFiles());
-                    if(!model.getUnmarkables().isEmpty()){
-                        displayMessage(frame, "Loading complete\n" +
-                                model.getUnmarkables().size() + " Unmarkable assignments added to 'needs attention pane'");
+                    if(!model.getAssignments().isEmpty() || !model.getUnmarkables().isEmpty()){
+                        displayMessage(frame, "Loading complete\n"
+                                + model.getAssignments().size() + " Assignments successfully loaded.\n"
+                                + model.getUnmarkables().size() + " Unmarkable assignments added to 'requires attention pane'");
                     }
                 } catch (IllegalOperationException k) {
                     displayError(this.frame, k);

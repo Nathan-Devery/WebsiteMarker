@@ -6,10 +6,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,7 +14,6 @@ import com.steadystate.css.parser.CSSOMParser;
 import org.w3c.css.sac.InputSource;
 import org.w3c.dom.css.CSSStyleSheet;
 import jdk.nashorn.api.tree.*;
-
 
 /**
  * Acts as the model in an MVC pattern. Also works as a facade for utility classes.
@@ -27,12 +23,11 @@ public class Model extends java.util.Observable {
     private CSVManager csvManager = new CSVManager(this);
     private Config config = new Config(new ArrayList<>(), new ArrayList<>());   //Default config is empty, none selected
 
-    private Map<String, Assignment> assignments = new HashMap<>();
+    private Map<String, Assignment> assignments = new TreeMap<>();
     private ArrayList<Malformed> unmarkables = new ArrayList<>();
     private List<Testable> currentTests = new ArrayList<>();
 
     private String filePath;
-
 
     /***
      * Parses the html, css and javascript. Invalid sections are ignored ie: invalid values for css properties.
@@ -70,6 +65,7 @@ public class Model extends java.util.Observable {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
+                    //unmarkables.add(new Malformed(folders[i].getName(), e.getMessage()));
                     //TODO add something to log, maybe just print to a visible console
                 }
                 //TODO add some error/log info if there css/html/javascript is null;
@@ -77,7 +73,7 @@ public class Model extends java.util.Observable {
 
             String id = getID(folders[i].getName());
 
-            String unmarkableString = checkValid(htmlDocs, cssDocs, javascriptDocs);
+            String unmarkableString = checkValid(htmlDocs, cssDocs, javascriptDocs, id);
             if(unmarkableString.equals("")){
                 if(!javascriptDocs.isEmpty()) {
                     assignments.put(id, new Assignment(folders[i].getName(), htmlDocs, xmlHtmlDocs, cssDocs.get(0), cssDocString, javascriptDocs.get(0)));
@@ -88,9 +84,11 @@ public class Model extends java.util.Observable {
                 unmarkables.add(new Malformed(folders[i].getName(), unmarkableString));
             }
         }
+
+        assignments = entriesSortedByValues2(assignments);
+
         setChanged();
         notifyObservers();
-
     }
 
     /**
@@ -199,13 +197,16 @@ public class Model extends java.util.Observable {
      * @param javascriptDocs
      * @return A string containing the reason why the assignment is invalid based on documents. An empty string will return otherwise
      */
-    private String checkValid(ArrayList<Document> htmlDocs, ArrayList<CSSStyleSheet> cssDocs, ArrayList<CompilationUnitTree> javascriptDocs){
+    private String checkValid(ArrayList<Document> htmlDocs, ArrayList<CSSStyleSheet> cssDocs,
+                              ArrayList<CompilationUnitTree> javascriptDocs, String id){
         String reason = "";
         if(htmlDocs.isEmpty()) reason += "No html found- ";
-        if(cssDocs.isEmpty()) reason += "No css found-";
-        if(cssDocs.size() > 1) reason += ">1 css document found-";
-        //if(javascriptDocs.isEmpty()) reason += "No javascript file found ,";
-        //if(javascriptDocs.size() > 1) reason += ">1 javascript file found";
+        if(cssDocs.isEmpty()) reason += "No css found- ";
+        if(cssDocs.size() > 1) reason += ">1 css document found- ";
+        if(id == null) reason += "No/Invalid student ID- ";
+
+        Assignment duplicate = assignments.get(id);
+        if(duplicate != null) reason += "Duplicate Student ID to: " + duplicate.getNameID();
         return reason;
     }
 
@@ -224,7 +225,8 @@ public class Model extends java.util.Observable {
      * @return
      */
     private String getID(String fileName){
-        Pattern p = Pattern.compile("[0-9]+");
+        //Pattern p = Pattern.compile("[0-9]{9}");
+        Pattern p = Pattern.compile("[0-9]{9}");
         Matcher m = p.matcher(fileName);
         m.find();
         try{
@@ -233,8 +235,7 @@ public class Model extends java.util.Observable {
         }catch (Exception e){
             e.printStackTrace();
         }
-        //return "\"" + m.group() + "\""; //TODO: Add to unmarkable, handle this!!!!!!!!!!!!!!!!!!!1
-        return "";
+        return null;
     }
 
     private String fileToString(File file){
@@ -265,6 +266,14 @@ public class Model extends java.util.Observable {
             ex.printStackTrace();
         }
         return result;
+    }
+
+    //TODO fix the assignment ordering so you do not have to use sorting functions.
+    private static Map<String,Assignment> entriesSortedByValues2(Map<String,Assignment> map) {
+        TreeMap<String,Assignment> sortedMap = new TreeMap<>(
+                (x,y) -> map.get(x).getNameID().toLowerCase().compareTo(map.get(y).getNameID().toLowerCase()));
+        sortedMap.putAll(map);
+        return sortedMap;
     }
 
 }
