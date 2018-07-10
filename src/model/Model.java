@@ -225,7 +225,6 @@ public class Model extends java.util.Observable {
      * @return
      */
     private String getID(String fileName){
-        //Pattern p = Pattern.compile("[0-9]{9}");
         Pattern p = Pattern.compile("[0-9]{9}");
         Matcher m = p.matcher(fileName);
         m.find();

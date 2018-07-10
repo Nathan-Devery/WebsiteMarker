@@ -8,6 +8,8 @@ import org.w3c.dom.css.CSSStyleSheet;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Checks whether number correct number of html files are present.
@@ -46,10 +48,10 @@ public class PageCountIndexTest extends Testable {
         }
 
         TestResult testResult = new TestResult(toString(), result, report);
-        reset();
+        reset();    //TODO Ew state
         return testResult;
-    }
 
+}
     private boolean checkPageCount(ArrayList<Document> documents){
         boolean result;
         if(documents.size() >= requirePageNumber){
@@ -66,12 +68,19 @@ public class PageCountIndexTest extends Testable {
     private boolean checkIndex(ArrayList<Document> documents){
         for(Document document: documents){
             String name = document.location();
-            if(name.equals("index.html") || name.equals("Index.html")){
-                report += "index.html file present.\n";
-                return true;
-            }
-        }
 
+            Pattern p = Pattern.compile("(?i)(index)");
+            Matcher m = p.matcher(name);
+            m.find();
+            try{
+                m.group();
+            }catch(Exception e){
+                e.printStackTrace();
+                continue;
+            }
+            report += "index.html file present.\n";
+            return true;
+        }
         report += "No index.html file present\n";
         return false;
     }

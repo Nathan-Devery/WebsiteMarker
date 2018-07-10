@@ -12,7 +12,7 @@ import javax.print.Doc;
 import java.util.ArrayList;
 
 /**
- * Checks if table tag present, tr present, th present, td present, nested inside the table tag.
+ * Checks if table tag present, tr present, td present and nested inside the table tag.
  * Full Marks: Table found, contains at least one tr tag with a td tag.
  */
 public class TableTest extends Testable {
@@ -23,7 +23,7 @@ public class TableTest extends Testable {
 
     @Override
     public String getDescription() {
-        return  "Checks if table tag present, tr present, th present, td present, nested inside the table tag.\n" +
+        return  "Checks if table tag present, tr present, td present and nested inside the table tag.\n" +
                 "Full Marks: Table found, contains at least one tr tag with a td tag. ";
     }
 
