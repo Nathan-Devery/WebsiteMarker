@@ -271,4 +271,14 @@ public class cssHtmlTests {
         assertEquals(0, test.runTest(documents, null, sheet, null, null, 20).getResult(),0);
     }
 
+    @Test
+    public void UniqueElementTest_SpanWithStyle_return1(){
+        UniqueElementTest test = new UniqueElementTest(UniqueElement.SPAN);
+        ArrayList<Document> documents = getDocument("uniqueElement8");
+        //documents.add(getDocument("uniqueElement1").get(0));
+        CSSStyleSheet sheet = getCss("uniqueElement8");
+        test.runTest(documents, null, sheet, null, null, 1).getResult();
+        assertEquals(1, test.runTest(documents, null, sheet, null, null, 1).getResult(),0);
+    }
+
 }

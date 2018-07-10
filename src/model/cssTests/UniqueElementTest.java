@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 /**
  * Checks if element exists in html.
- * Checks if css contains a reference to that html element. This css rule must be non-empty.
+ * Checks if css contains a reference to that html element (or style attribute used). This css rule must be non-empty.
  * Full marks: present and referenced.
  */
 public class UniqueElementTest extends Testable {
@@ -30,49 +30,60 @@ public class UniqueElementTest extends Testable {
     @Override
     public String getDescription() {
         return  "Checks if element exists in html.\n" +
-                "Checks if css contains a reference to that html element. This css rule must be non-empty.\n" +
+                "Checks if css contains a reference to that html element (or style attribute used). This css rule must be non-empty.\n" +
                 "Full marks: present and referenced.";
     }
 
     @Override
     public TestResult runTest(ArrayList<Document> documents, ArrayList<Document> xmlDocs, CSSStyleSheet sheet, String cssDocString, CompilationUnitTree tree, double percentage) {
-        double result = 0;
+        boolean elementFound = false;
+        boolean cssRuleFound = false;
+
         String report = "";
 
         for (Document document : documents) {
             report += "\n-" + document.location() + "-\n\n";
             Elements elements = document.select(divSpan.htmlAttribute);
             for (Element element : elements) {
+                elementFound = true;
+                report += "Element:\n" + element + "\n\n";
                 CSSStyleRule rule;
                 if (element.attr("class").length() > 0) {
                     rule = searchCss("." + element.attr("class"), sheet);
                     if(rule != null && rule.getStyle().getLength() != 0){
-                        report += "Element:\n" + element + "\n\n";
+                        //report += "Element:\n" + element + "\n\n";
                         report += "Corresponding CSS:\n" + rule + "\n\n";
-                        result = percentage;
+                        cssRuleFound = true;
                     }
                 } else if (element.attr("id").length() > 0) {
                     rule = searchCss("#" + element.attr("id"), sheet);
                     if(rule != null && rule.getStyle().getLength() != 0){
-                        report += "Element:\n" + element + "\n\n";
+                        //report += "Element:\n" + element + "\n\n";
                         report += "Corresponding CSS\n" + rule + "\n\n";
-                        result = percentage;
+                        cssRuleFound = true;
                     }
+                } else if (element.attr("style").length() > 0){
+                    cssRuleFound = true;
                 } else {
                     rule = searchCss(divSpan.htmlAttribute, sheet);
                     if(rule != null && rule.getStyle().getLength() != 0){
-                        report += "Element:\n" + element + "\n\n";
+                        //report += "Element:\n" + element + "\n\n";
                         report += "Corresponding CSS\n" + rule + "\n\n";
-                        result = percentage;
+                        cssRuleFound = true;
                     }
                 }
             }
         }
 
-        if(result > 0){
+        double result = 0;
+
+        if(elementFound && cssRuleFound){
             report = "Present in html.\nCorresponding css present.\n\n" + report;
+            result = percentage;
+        }else if(elementFound){
+            report = "Element present in html.\nNo corresponding css present.\n\n" + report;
         }else{
-            report = "Not present in html.\nCorresponding css not present.\n\n" + report;
+            report = "Element not present in html.\nNo corresponding css present.\n\n" + report;
         }
 
         return new TestResult(toString(), result, report);
