@@ -33,13 +33,13 @@ public class CSVManager {
         filepath = file;
         BufferedReader br = null;
         String line;
-        //String cvsSplitBy = ",";
-        String cvsSplitBy = "\t";
+        String delimiter = ","; //blackboard exports csv
+        //String delimiter = "\t";
 
         try {
             br = new BufferedReader(new FileReader(file));
             while ((line = br.readLine()) != null) {
-                csvArray.add(line.split(cvsSplitBy));
+                csvArray.add(line.split(delimiter));
             }
 
         } catch (Exception e) {
@@ -119,7 +119,7 @@ public class CSVManager {
         this.unpairables = unpairables;
     }
 
-    private void outputCSV(){
+    private void outputCSV() throws IllegalOperationException{
         try {
             String fileNameNoExt = filepath.getName().replaceFirst("[.][^.]+$", "");
 
@@ -140,10 +140,12 @@ public class CSVManager {
             writer.close();
         }catch (Exception e){
             e.printStackTrace();
+            emptyFields();
+            throw new IllegalOperationException("Invalid CSV");
         }
     }
 
-    private void outputCsvReport(){
+    private void outputCsvReport() throws IllegalOperationException{
         String fileNameNoExt = filepath.getName().replaceFirst("[.][^.]+$", "");
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd HH_mm");
@@ -162,8 +164,12 @@ public class CSVManager {
             writer.close();
         }catch(UnsupportedEncodingException e){
             e.printStackTrace();
+            emptyFields();
+            throw new IllegalOperationException("Unsupported Encoding");
         }catch (FileNotFoundException e){
             e.printStackTrace();
+            emptyFields();
+            throw new IllegalOperationException("File not found");
         }
     }
 

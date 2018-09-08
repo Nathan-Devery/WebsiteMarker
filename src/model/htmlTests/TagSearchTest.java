@@ -30,7 +30,7 @@ public class TagSearchTest extends Testable {
     @Override
     public String getDescription() {
         return  "Checks whether the " + tagType.name() + " tag is found in the html." +
-                "\nChecks if the number required is present." +
+                "\nChecks if " + numberRequired + " of the elements are present." +
                 "\nHalf marks: At least one found" +
                 "\nHalf marks: Number found equals number required.";
     }

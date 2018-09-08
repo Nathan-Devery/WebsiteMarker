@@ -115,6 +115,38 @@ public class TagTypeSearchTests {
         assertEquals(0, test.runTest(documents, null,  null, null, null, 1).getResult(), 0);
     }
 
+    /*
+    @Test
+    public void submitButton_1Required1Present_ReturnFull() {
+        ArrayList<Document> documents = TestUtility.getDocument("submitButton1");
+        TagSearchTest test = new TagSearchTest(TagType.SUBMITBUTTON, 1);
+        assertEquals(1, test.runTest(documents, null,  null, null, null, 1).getResult(), 0);
+    }
+
+    @Test
+    public void submitButton_1Required0Present_Return0() {
+        ArrayList<Document> documents = TestUtility.getDocument("structure1");
+        TagSearchTest test = new TagSearchTest(TagType.SUBMITBUTTON, 1);
+        assertEquals(0, test.runTest(documents, null,  null, null, null, 1).getResult(), 0);
+    }
+
+
+    Tests test the form class itself.
+
+    @Test
+    public void button_1Required1Present_ReturnFull() {
+        ArrayList<Document> documents = TestUtility.getDocument("button1");
+        TagSearchTest test = new TagSearchTest(TagType.BUTTON, 1);
+        assertEquals(1, test.runTest(documents, null,  null, null, null, 1).getResult(), 0);
+    }
+
+    @Test
+    public void button_1Required0Present_Return0() {
+        ArrayList<Document> documents = TestUtility.getDocument("structure1");
+        TagSearchTest test = new TagSearchTest(TagType.BUTTON, 1);
+        assertEquals(0, test.runTest(documents, null,  null, null, null, 1).getResult(), 0);
+    }
+
     @Test
     public void form_1Required1Present_ReturnFull() {
         ArrayList<Document> documents = TestUtility.getDocument("form1");
@@ -142,33 +174,6 @@ public class TagTypeSearchTests {
         TagSearchTest test = new TagSearchTest(TagType.TEXTINPUT, 1);
         assertEquals(0, test.runTest(documents, null,  null, null, null, 1).getResult(), 0);
     }
-
-    @Test
-    public void submitButton_1Required1Present_ReturnFull() {
-        ArrayList<Document> documents = TestUtility.getDocument("submitButton1");
-        TagSearchTest test = new TagSearchTest(TagType.SUBMITBUTTON, 1);
-        assertEquals(1, test.runTest(documents, null,  null, null, null, 1).getResult(), 0);
-    }
-
-    @Test
-    public void submitButton_1Required0Present_Return0() {
-        ArrayList<Document> documents = TestUtility.getDocument("structure1");
-        TagSearchTest test = new TagSearchTest(TagType.SUBMITBUTTON, 1);
-        assertEquals(0, test.runTest(documents, null,  null, null, null, 1).getResult(), 0);
-    }
-
-    @Test
-    public void button_1Required1Present_ReturnFull() {
-        ArrayList<Document> documents = TestUtility.getDocument("button1");
-        TagSearchTest test = new TagSearchTest(TagType.BUTTON, 1);
-        assertEquals(1, test.runTest(documents, null,  null, null, null, 1).getResult(), 0);
-    }
-
-    @Test
-    public void button_1Required0Present_Return0() {
-        ArrayList<Document> documents = TestUtility.getDocument("structure1");
-        TagSearchTest test = new TagSearchTest(TagType.BUTTON, 1);
-        assertEquals(0, test.runTest(documents, null,  null, null, null, 1).getResult(), 0);
-    }
+    */
 
 }
