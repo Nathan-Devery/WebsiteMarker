@@ -54,7 +54,7 @@ public class UI implements Observer {
     }
 
     private void initializeFrame() {
-        frame = new JFrame("Website Marker 1.2 - INFO101");
+        frame = new JFrame("Website Marker 1.3 - INFO101");
         frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //ImageIcon img = new ImageIcon("src/assets/tick.png");
@@ -134,7 +134,7 @@ public class UI implements Observer {
         menuItem = new JMenuItem("About");
         menuItem.addActionListener(e -> {
             JOptionPane.showMessageDialog(frame,
-                    "Build 1.2\nAuthor: Nathan Devery",
+                    "Build 1.3\nAuthor: Nathan Devery",
                     "About",
                     JOptionPane.INFORMATION_MESSAGE,
                     //new ImageIcon("src/assets/victoriaLogo.png"));

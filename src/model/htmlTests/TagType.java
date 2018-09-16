@@ -8,13 +8,19 @@ package model.htmlTests;
  * Created by Nathan on 22/11/2017.
  */
 public enum  TagType {
-
     LINK("a[href]"),
     IMAGE("img"),
     UNORDEREDLIST("ul"),
     ORDEREDLIST("ol"),
     YOUTUBE("iframe[src*=youtube]"),
-    GOOGLEMAP("iframe[src*=www.google.com/maps/embed]");
+    GOOGLEMAP("iframe[src*=www.google.com/maps/embed]"),
+    LINEBREAK("br"),
+    STRONG("strong"),
+    PARAGRAPH("p"),
+    ABBREVIATION("abbr"),
+    ADDRESS("address"),
+    HEADING1("h1");
+    ;
 
     /*
     Form testing is split into its own testing class.

@@ -9,7 +9,16 @@ public enum Property {
     FONTFAMILY("font-family"),
     FONTSIZE("font-size"),
     COLOR("color"),
-    BACKGROUND("background");
+    BACKGROUNDCOLOR("background-color"),
+    BACKGROUNDIMAGE("background-image"),
+    BORDER("border"),   //TODO: test this
+    BORDERCOLOR("border-color"),    //TODO: test this
+    HEIGHTCSS("height"),    //TODO: test this
+    WIDTHCSS("width"),  //TODO: test this
+    MARGIN("^margin"),  //TODO: test this
+    PADDING("^padding"),    //TODO: test this
+    FLOAT("^float");    //TODO: test this
+    ;
 
     public String propertyString;
 
